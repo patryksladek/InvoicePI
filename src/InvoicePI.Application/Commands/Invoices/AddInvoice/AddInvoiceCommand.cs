@@ -1,0 +1,28 @@
+﻿using InvoicePI.Application.Dto;
+using MediatR;
+
+namespace InvoicePI.Application.Commands.Invoices.AddInvoice;
+
+public class AddInvoiceCommand : IRequest<InvoiceDetailDto>
+{
+    public bool IsApproved { get; set; }
+    public string Number { get; set; }
+    public DateOnly Date { get; set; }
+    public int CustomerId { get; set; }
+    public string Description { get; set; }
+    public decimal Net { get; set; }
+    public decimal Vat { get; set; }
+    public decimal Gross { get; set; }
+    public ICollection<AddInvoiceItemCommand> InvoiceItems { get; set; }
+}
+
+public class AddInvoiceItemCommand
+{
+    public int ProductId { get; set; }
+    public int Quantity { get; set; }
+    public decimal Net { get; set; }
+    public decimal Vat { get; set; }
+    public decimal Gross { get; set; }
+    public int CurrencyId { get; set; }
+    public int VatRateId { get; set; }
+}
