@@ -75,7 +75,15 @@
             lblNumber = new DevExpress.XtraEditors.LabelControl();
             lblStreet = new DevExpress.XtraEditors.LabelControl();
             gcInvoices = new DevExpress.XtraGrid.GridControl();
+            invoiceDtoBindingSource = new System.Windows.Forms.BindingSource(components);
             gvInvoices = new DevExpress.XtraGrid.Views.Grid.GridView();
+            colIsApproved = new DevExpress.XtraGrid.Columns.GridColumn();
+            colNumber = new DevExpress.XtraGrid.Columns.GridColumn();
+            colDate = new DevExpress.XtraGrid.Columns.GridColumn();
+            colNet = new DevExpress.XtraGrid.Columns.GridColumn();
+            colVat = new DevExpress.XtraGrid.Columns.GridColumn();
+            colGross = new DevExpress.XtraGrid.Columns.GridColumn();
+            colCurrency = new DevExpress.XtraGrid.Columns.GridColumn();
             lblInvoices = new DevExpress.XtraEditors.LabelControl();
             lblNameRequired = new DevExpress.XtraEditors.LabelControl();
             lblCodeRequired = new DevExpress.XtraEditors.LabelControl();
@@ -104,6 +112,7 @@
             ((System.ComponentModel.ISupportInitialize)teNumber.Properties).BeginInit();
             ((System.ComponentModel.ISupportInitialize)teStreet.Properties).BeginInit();
             ((System.ComponentModel.ISupportInitialize)gcInvoices).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)invoiceDtoBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)gvInvoices).BeginInit();
             ((System.ComponentModel.ISupportInitialize)cbeStatus.Properties).BeginInit();
             ((System.ComponentModel.ISupportInitialize)errorProvider).BeginInit();
@@ -544,7 +553,7 @@
             // gcInvoices
             // 
             gcInvoices.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
-            gcInvoices.Enabled = false;
+            gcInvoices.DataSource = invoiceDtoBindingSource;
             gcInvoices.Location = new System.Drawing.Point(425, 183);
             gcInvoices.MainView = gvInvoices;
             gcInvoices.MenuManager = ribbon;
@@ -553,13 +562,82 @@
             gcInvoices.TabIndex = 50;
             gcInvoices.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] { gvInvoices });
             // 
+            // invoiceDtoBindingSource
+            // 
+            invoiceDtoBindingSource.DataSource = typeof(Application.Dto.InvoiceDto);
+            // 
             // gvInvoices
             // 
+            gvInvoices.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] { colIsApproved, colNumber, colDate, colNet, colVat, colGross, colCurrency });
             gvInvoices.GridControl = gcInvoices;
             gvInvoices.Name = "gvInvoices";
             gvInvoices.OptionsBehavior.Editable = false;
             gvInvoices.OptionsBehavior.ReadOnly = true;
             gvInvoices.OptionsView.ShowGroupPanel = false;
+            gvInvoices.OptionsView.ShowIndicator = false;
+            // 
+            // colIsApproved
+            // 
+            colIsApproved.Caption = "APPROVED";
+            colIsApproved.FieldName = "IsApproved";
+            colIsApproved.Name = "colIsApproved";
+            colIsApproved.OptionsColumn.AllowFocus = false;
+            colIsApproved.Visible = true;
+            colIsApproved.VisibleIndex = 0;
+            // 
+            // colNumber
+            // 
+            colNumber.Caption = "NUMBER";
+            colNumber.FieldName = "Number";
+            colNumber.Name = "colNumber";
+            colNumber.OptionsColumn.AllowFocus = false;
+            colNumber.Visible = true;
+            colNumber.VisibleIndex = 1;
+            // 
+            // colDate
+            // 
+            colDate.Caption = "DATE";
+            colDate.FieldName = "Date";
+            colDate.Name = "colDate";
+            colDate.OptionsColumn.AllowFocus = false;
+            colDate.Visible = true;
+            colDate.VisibleIndex = 2;
+            // 
+            // colNet
+            // 
+            colNet.Caption = "NET";
+            colNet.FieldName = "Net";
+            colNet.Name = "colNet";
+            colNet.OptionsColumn.AllowFocus = false;
+            colNet.Visible = true;
+            colNet.VisibleIndex = 3;
+            // 
+            // colVat
+            // 
+            colVat.Caption = "VAT";
+            colVat.FieldName = "Vat";
+            colVat.Name = "colVat";
+            colVat.OptionsColumn.AllowFocus = false;
+            colVat.Visible = true;
+            colVat.VisibleIndex = 4;
+            // 
+            // colGross
+            // 
+            colGross.Caption = "GROSS";
+            colGross.FieldName = "Gross";
+            colGross.Name = "colGross";
+            colGross.OptionsColumn.AllowFocus = false;
+            colGross.Visible = true;
+            colGross.VisibleIndex = 5;
+            // 
+            // colCurrency
+            // 
+            colCurrency.Caption = "CURRENCY";
+            colCurrency.FieldName = "Currency";
+            colCurrency.Name = "colCurrency";
+            colCurrency.OptionsColumn.AllowFocus = false;
+            colCurrency.Visible = true;
+            colCurrency.VisibleIndex = 6;
             // 
             // lblInvoices
             // 
@@ -668,6 +746,7 @@
             ((System.ComponentModel.ISupportInitialize)teNumber.Properties).EndInit();
             ((System.ComponentModel.ISupportInitialize)teStreet.Properties).EndInit();
             ((System.ComponentModel.ISupportInitialize)gcInvoices).EndInit();
+            ((System.ComponentModel.ISupportInitialize)invoiceDtoBindingSource).EndInit();
             ((System.ComponentModel.ISupportInitialize)gvInvoices).EndInit();
             ((System.ComponentModel.ISupportInitialize)cbeStatus.Properties).EndInit();
             ((System.ComponentModel.ISupportInitialize)errorProvider).EndInit();
@@ -729,5 +808,13 @@
         private DevExpress.XtraEditors.LabelControl lblCountryRequired;
         private DevExpress.XtraEditors.TextEdit teCity;
         private DevExpress.XtraEditors.LabelControl lblCity;
+        private System.Windows.Forms.BindingSource invoiceDtoBindingSource;
+        private DevExpress.XtraGrid.Columns.GridColumn colIsApproved;
+        private DevExpress.XtraGrid.Columns.GridColumn colNumber;
+        private DevExpress.XtraGrid.Columns.GridColumn colDate;
+        private DevExpress.XtraGrid.Columns.GridColumn colNet;
+        private DevExpress.XtraGrid.Columns.GridColumn colVat;
+        private DevExpress.XtraGrid.Columns.GridColumn colGross;
+        private DevExpress.XtraGrid.Columns.GridColumn colCurrency;
     }
 }

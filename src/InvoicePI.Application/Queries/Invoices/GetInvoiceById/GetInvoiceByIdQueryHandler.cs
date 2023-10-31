@@ -45,7 +45,6 @@ public class GetInvoiceByIdQueryHandler : IRequestHandler<GetInvoiceByIdQuery, I
                 Currency = invoiceItem.Currency.Symbol,
                 VatRateId = invoiceItem.VatRateId,
                 VatRate = invoiceItem.VatRate.Symbol,
-
             });
         }
 

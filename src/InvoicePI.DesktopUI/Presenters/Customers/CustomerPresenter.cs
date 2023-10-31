@@ -168,6 +168,8 @@ public class CustomerPresenter : IPresenter<ICustomerView>
         _view.Mobile = customer.Mobile;
         _view.Email = customer.Email;
         _view.Fax = customer.Fax;
+        _view.InvoiceList = customer.Invoices.ToList();
+
     }
 
     private async Task AddCustomer()

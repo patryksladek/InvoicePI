@@ -18,4 +18,6 @@ public class CustomerDetailDto
     public string Mobile { get; set; }
     public string Email { get; set; }
     public string Fax { get; set; }
+    public virtual IEnumerable<InvoiceDto> Invoices { get; set; }
+
 }

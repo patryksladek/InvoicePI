@@ -1,5 +1,4 @@
 ﻿using InvoicePI.Infrastructure.DataExport.Abstractions;
-using Newtonsoft.Json;
 using OfficeOpenXml;
 
 namespace InvoicePI.Infrastructure.DataExport.Strategies;

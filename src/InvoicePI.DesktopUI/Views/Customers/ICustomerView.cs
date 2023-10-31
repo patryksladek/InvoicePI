@@ -30,6 +30,7 @@ public interface ICustomerView : IView, IError
     event EventHandler TeCodeEditValueChangedEventRaised;
     event EventHandler TeNameEditValueChangedEventRaised;
 
+    IList<InvoiceDto> InvoiceList { get; set; }
     IList<CountryDto> CountryList { get; set; }
     ICollection SegmentList { get; set; }
     ICollection StatusList { get; set; }

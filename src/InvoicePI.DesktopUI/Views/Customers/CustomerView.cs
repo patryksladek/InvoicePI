@@ -53,6 +53,12 @@ namespace InvoicePI.DesktopUI.Views.Modules.Customers
             set { Text = value; }
         }
 
+        public IList<InvoiceDto> InvoiceList
+        {
+            get { return (IList<InvoiceDto>)invoiceDtoBindingSource.DataSource; }
+            set { invoiceDtoBindingSource.DataSource = value; }
+        }
+
         public IList<CountryDto> CountryList
         {
             get { return (IList<CountryDto>)countryDtoBindingSource.DataSource; }

@@ -27,6 +27,7 @@ internal class CustomerReadOnlyRepository : ICustomerReadOnlyRepository
         return await _dbContext.Customers
             .Include(x => x.Address).ThenInclude(x => x.Country)
             .Include(x => x.Contact)
+            .Include(x => x.Invoices).ThenInclude(x => x.Currency)
             .AsNoTracking()
             .SingleOrDefaultAsync(x => x.Id == id, cancellation);
     }
