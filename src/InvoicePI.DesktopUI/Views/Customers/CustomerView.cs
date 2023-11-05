@@ -55,7 +55,12 @@ namespace InvoicePI.DesktopUI.Views.Modules.Customers
 
         public IList<InvoiceDto> InvoiceList
         {
-            get { return (IList<InvoiceDto>)invoiceDtoBindingSource.DataSource; }
+            get
+            {
+                if (invoiceDtoBindingSource.DataSource is not IList<InvoiceDto>)
+                    invoiceDtoBindingSource.DataSource = new List<InvoiceDto>();
+                return (IList<InvoiceDto>)invoiceDtoBindingSource.DataSource;
+            }
             set { invoiceDtoBindingSource.DataSource = value; }
         }
 

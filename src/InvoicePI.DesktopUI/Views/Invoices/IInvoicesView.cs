@@ -11,11 +11,14 @@ public interface IInvoicesView : IView
     event EventHandler BtnAddItemClickedEventRaised;
     event EventHandler BtnEditItemClickedEventRaised;
     event EventHandler BtnDeleteItemClickedEventRaised;
+    event EventHandler GvInvoicesFocusedRowChangedEventRaised;
 
     event EventHandler BtnExportXmlItemClickedEventRaised;
     event EventHandler BtnExportCsvItemClickedEventRaised;
     event EventHandler BtnExportXlsxItemClickedEventRaised;
     event EventHandler BtnExportTxtItemClickedEventRaised;
+
+    bool IsDeletable { set; }
 
     IList<InvoiceDto> InvoiceList { get; set; }
 }

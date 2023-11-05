@@ -32,10 +32,11 @@ public class GetInvoicesQueryHandler : IRequestHandler<GetInvoicesQuery, IReadOn
             Currency = x.Currency.Symbol,
             InvoiceItems = x.InvoiceItems.Select(x => new InvoiceItemDto()
             {
+                OrdinalNumber = x.OrdinalNumber,
                 Product = x.Product.Name,
                 Quantity = x.Quantity,
+                Price = x.Price,
                 Net = x.Net,
-                Vat = x.Vat,
                 Gross = x.Gross,
                 Currency = x.Currency.Symbol
             })

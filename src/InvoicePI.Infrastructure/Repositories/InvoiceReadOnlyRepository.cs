@@ -35,4 +35,14 @@ internal class InvoiceReadOnlyRepository : IInvoiceReadOnlyRepository
             .AsNoTracking()
             .SingleOrDefaultAsync(x => x.Id == id, cancellation);
     }
+
+    public async Task<InvoiceItem> GetInvoiceItemByIdWithDetailAsync(int itemId, CancellationToken cancellation = default)
+    {
+        return await _dbContext.InvoiceItems
+            .Include(x => x.Product)
+            .Include(x => x.Currency)
+            .Include(x => x.VatRate)
+            .AsNoTracking()
+            .SingleOrDefaultAsync(x => x.Id == itemId, cancellation);
+    }
 }

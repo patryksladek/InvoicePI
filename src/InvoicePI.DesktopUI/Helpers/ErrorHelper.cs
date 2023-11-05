@@ -27,6 +27,20 @@ public class ErrorHelper
             errorProvider.SetErrorMessage(sender as Control, string.Empty, ErrorType.None);
     }
 
+    public static void SetErrorMessage(string message, IError errorProvider, ErrorType errorType, object sender, EventArgs e)
+    {
+        if (!string.IsNullOrEmpty(message))
+        {
+            errorProvider.SetErrorMessage(sender as Control, message, errorType);
+            if (errorType == ErrorType.Critical)
+                (e as CancelEventArgs).Cancel = true;
+            else
+                (e as CancelEventArgs).Cancel = false;
+        }
+        else
+            errorProvider.SetErrorMessage(sender as Control, string.Empty, ErrorType.None);
+    }
+
     public static ErrorType GetErrorType(Severity severity) =>
       severity switch
       {

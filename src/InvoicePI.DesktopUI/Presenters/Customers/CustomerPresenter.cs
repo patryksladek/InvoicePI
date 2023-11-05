@@ -79,7 +79,7 @@ public class CustomerPresenter : IPresenter<ICustomerView>
             await EditCustomer(_view.CustomerId.Value);
 
         _view.IsResettableChanges = true;
-        _view.IsDeletable = true;
+        _view.IsDeletable = IsDeletable();
     }
 
     private async Task OnBtnResetChangesItemClickedEventRaised(object sender, EventArgs e)
@@ -132,7 +132,7 @@ public class CustomerPresenter : IPresenter<ICustomerView>
         {
             await InitializeCustomer(_view.CustomerId.Value);
             _view.IsResettableChanges = true;
-            _view.IsDeletable = true;
+            _view.IsDeletable = IsDeletable();
         }
 
         _view.IsSavable = IsSavable();
@@ -143,9 +143,6 @@ public class CustomerPresenter : IPresenter<ICustomerView>
         _view.CustomerCode = CodeConstants.Next;
         _view.CustomerIsActive = true;
         _view.CountryId = _view.CountryList.Single(x => x.Symbol == "PL").Id;
-
-        _view.IsResettableChanges = false;
-        _view.IsDeletable = false;
 
         await Task.CompletedTask;
     }
@@ -260,6 +257,9 @@ public class CustomerPresenter : IPresenter<ICustomerView>
     private bool IsSavable()
         => (!string.IsNullOrEmpty(_view.CustomerCode) &&
              !string.IsNullOrEmpty(_view.CustomerName));
+
+    private bool IsDeletable()
+        => _view.InvoiceList.Count == 0;
 
     private async Task OnTeNameValidatingEventRaised(object sender, EventArgs e)
     {

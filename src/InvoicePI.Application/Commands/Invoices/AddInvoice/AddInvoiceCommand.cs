@@ -13,15 +13,17 @@ public class AddInvoiceCommand : IRequest<InvoiceDetailDto>
     public decimal Net { get; set; }
     public decimal Vat { get; set; }
     public decimal Gross { get; set; }
-    public ICollection<AddInvoiceItemCommand> InvoiceItems { get; set; }
+    public int CurrencyId { get; set; }
+    public IEnumerable<AddInvoiceItemCommand> InvoiceItems { get; set; }
 }
 
 public class AddInvoiceItemCommand
 {
+    public int OrdinalNumber { get; set; }
     public int ProductId { get; set; }
     public int Quantity { get; set; }
+    public decimal Price { get; set; }
     public decimal Net { get; set; }
-    public decimal Vat { get; set; }
     public decimal Gross { get; set; }
     public int CurrencyId { get; set; }
     public int VatRateId { get; set; }

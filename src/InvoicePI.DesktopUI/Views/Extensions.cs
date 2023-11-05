@@ -25,6 +25,7 @@ public static class Extensions
 
         services.AddTransient<IInvoicesView, InvoicesView>();
         services.AddTransient<IInvoiceView, InvoiceView>();
+        services.AddTransient<IInvoiceItemView, InvoiceItemView>();
 
         return services;
     }

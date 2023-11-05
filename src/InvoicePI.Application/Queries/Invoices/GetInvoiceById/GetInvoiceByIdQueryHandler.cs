@@ -35,11 +35,13 @@ public class GetInvoiceByIdQueryHandler : IRequestHandler<GetInvoiceByIdQuery, I
         {
             invoiceDto.InvoiceItems.Add(new InvoiceItemDetailDto()
             {
+                Id = invoiceItem.Id,
+                OrdinalNumber = invoiceItem.OrdinalNumber,
                 ProductId = invoiceItem.ProductId,
                 Product = invoiceItem.Product.Name,
                 Quantity = invoiceItem.Quantity,
+                Price = invoiceItem.Price,
                 Net = invoiceItem.Net,
-                Vat = invoiceItem.Vat,
                 Gross = invoiceItem.Gross,
                 CurrencyId = invoiceItem.CurrencyId,
                 Currency = invoiceItem.Currency.Symbol,

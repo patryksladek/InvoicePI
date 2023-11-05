@@ -1,6 +1,7 @@
 ﻿using InvoicePI.Domain.Abstractions;
 using InvoicePI.Infrastructure.Constatns;
 using InvoicePI.Infrastructure.Context;
+using InvoicePI.Infrastructure.Converters;
 using InvoicePI.Infrastructure.Database;
 using InvoicePI.Infrastructure.DataGeneration;
 using InvoicePI.Infrastructure.Repositories;
@@ -22,6 +23,8 @@ public static class Extensions
         services.AddScoped<IUnitReadOnlyRepository, UnitReadOnlyRepository>();
         services.AddScoped<IVatRateReadOnlyRepository, VatRateReadOnlyRepository>();
         services.AddScoped<ICurrencyReadOnlyRepository, CurrencyReadOnlyRepository>();
+        services.AddScoped<ICurrencyConverter, CurrencyConverter>();
+        services.AddScoped<IExchangeRateReadOnlyRepository, ExchangeRateReadOnlyRepository>();
         services.AddScoped<IInvoiceReadOnlyRepository, InvoiceReadOnlyRepository>();
         services.AddScoped<IInvoiceRepository, InvoiceRepository>();
         services.AddScoped<IUnitOfWork, UnitOfWork>();
@@ -44,7 +47,7 @@ public static class Extensions
         string password = configuration[ConnectionStringConstatns.Password];
 
         if (string.IsNullOrEmpty(server) && string.IsNullOrEmpty(database))
-            return string.Empty;
+            return $"Server=.;Initial Catalog=InvoiceDB;Integrated Security=True;TrustServerCertificate=True";
 
         if (integratedLogin)
             return $"Server={server};Initial Catalog={database};Integrated Security=True;TrustServerCertificate=True";

@@ -6,20 +6,33 @@ using System;
 using System.Collections.Generic;
 using DevExpress.XtraGrid.Views.Grid;
 using System.Linq;
+using System.Threading.Tasks;
+using DevExpress.XtraGrid.Views.Base;
 
 namespace InvoicePI.DesktopUI.Views.Invoices
 {
     public partial class InvoicesView : RibbonForm, IInvoicesView
     {
+        private const int GvInvoicesRelationCount = 1;
+        private const string GvInvoicesRelationName = "Items";
+
         public event EventHandler InvoicesViewLoadedEventRaised;
         public event EventHandler BtnAddItemClickedEventRaised;
         public event EventHandler BtnEditItemClickedEventRaised;
         public event EventHandler BtnDeleteItemClickedEventRaised;
-
+        public event EventHandler GvInvoicesFocusedRowChangedEventRaised;
+        
         public event EventHandler BtnExportXmlItemClickedEventRaised;
         public event EventHandler BtnExportCsvItemClickedEventRaised;
         public event EventHandler BtnExportXlsxItemClickedEventRaised;
         public event EventHandler BtnExportTxtItemClickedEventRaised;
+
+        public Func<Task> HideInvoiceView;
+
+        public bool IsDeletable
+        {
+            set { btnDelete.Enabled = value; }
+        }
 
         public InvoicesView()
         {
@@ -47,6 +60,9 @@ namespace InvoicePI.DesktopUI.Views.Invoices
         private void btnEdit_ItemClick(object sender, ItemClickEventArgs e)
             => EventHelper.RaiseEvent(objectRaisingEvent: gvInvoices, eventHandlerRaised: BtnEditItemClickedEventRaised, eventArgs: e);
 
+        private void gridControl_DoubleClick_1(object sender, EventArgs e)
+            => EventHelper.RaiseEvent(objectRaisingEvent: gvInvoices, eventHandlerRaised: BtnEditItemClickedEventRaised, eventArgs: e);
+
         private void btnDelete_ItemClick(object sender, ItemClickEventArgs e)
             => EventHelper.RaiseEvent(objectRaisingEvent: gvInvoices, eventHandlerRaised: BtnDeleteItemClickedEventRaised, eventArgs: e);
 
@@ -70,25 +86,24 @@ namespace InvoicePI.DesktopUI.Views.Invoices
         }
 
         private void gvInvoices_MasterRowGetRelationCount(object sender, DevExpress.XtraGrid.Views.Grid.MasterRowGetRelationCountEventArgs e)
-        {
-            e.RelationCount = 1;
-        }
+            => e.RelationCount = GvInvoicesRelationCount;
 
         private void gvInvoices_MasterRowGetRelationName(object sender, DevExpress.XtraGrid.Views.Grid.MasterRowGetRelationNameEventArgs e)
-        {
-            e.RelationName = "Items";
-        }
+            => e.RelationName = GvInvoicesRelationName;
 
         private void btnExportXML_ItemClick(object sender, ItemClickEventArgs e)
-            => EventHelper.RaiseEvent(objectRaisingEvent: gvInvoiceItems, eventHandlerRaised: BtnExportXmlItemClickedEventRaised, eventArgs: e);
+            => EventHelper.RaiseEvent(objectRaisingEvent: gvInvoices, eventHandlerRaised: BtnExportXmlItemClickedEventRaised, eventArgs: e);
 
         private void btnExportCSV_ItemClick(object sender, ItemClickEventArgs e)
-            => EventHelper.RaiseEvent(objectRaisingEvent: gvInvoiceItems, eventHandlerRaised: BtnExportCsvItemClickedEventRaised, eventArgs: e);
+            => EventHelper.RaiseEvent(objectRaisingEvent: gvInvoices, eventHandlerRaised: BtnExportCsvItemClickedEventRaised, eventArgs: e);
 
         private void btnExportXLSX_ItemClick(object sender, ItemClickEventArgs e)
-            => EventHelper.RaiseEvent(objectRaisingEvent: gvInvoiceItems, eventHandlerRaised: BtnExportXlsxItemClickedEventRaised, eventArgs: e);
+            => EventHelper.RaiseEvent(objectRaisingEvent: gvInvoices, eventHandlerRaised: BtnExportXlsxItemClickedEventRaised, eventArgs: e);
 
         private void btnExportTXT_ItemClick(object sender, ItemClickEventArgs e)
-            => EventHelper.RaiseEvent(objectRaisingEvent: gvInvoiceItems, eventHandlerRaised: BtnExportTxtItemClickedEventRaised, eventArgs: e);
+            => EventHelper.RaiseEvent(objectRaisingEvent: gvInvoices, eventHandlerRaised: BtnExportTxtItemClickedEventRaised, eventArgs: e);
+
+        private void gvInvoices_FocusedRowChanged(object sender, FocusedRowChangedEventArgs e)
+            => EventHelper.RaiseEvent(objectRaisingEvent: gvInvoices, eventHandlerRaised: GvInvoicesFocusedRowChangedEventRaised, eventArgs: e);
     }
 }

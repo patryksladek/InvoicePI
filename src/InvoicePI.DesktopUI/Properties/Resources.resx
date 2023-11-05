@@ -123,6 +123,9 @@
   <data name="AddInvoiceCaption" xml:space="preserve">
     <value>Add new invoice</value>
   </data>
+  <data name="AddInvoiceItemCaption" xml:space="preserve">
+    <value>Add new invoice item</value>
+  </data>
   <data name="AddProductCaption" xml:space="preserve">
     <value>Add new product</value>
   </data>
@@ -153,6 +156,10 @@
     <value>Edit invoice {0}</value>
     <comment>{0} - Invoice Number</comment>
   </data>
+  <data name="EditInvoiceItemCaption" xml:space="preserve">
+    <value>Edit invoice item {0} - {1}</value>
+    <comment>{0} - Ordinal Number, {1} - Product Name</comment>
+  </data>
   <data name="EditProductCaption" xml:space="preserve">
     <value>Edit product {0}</value>
     <comment>{0} - Product Name</comment>
@@ -180,10 +187,17 @@
   </data>
   <data name="RemoveCustomerText" xml:space="preserve">
     <value>Do you want to remove the customer {0} (Code: {1})?</value>
-    <comment>{0} - Customer Name, {1} - Product Code</comment>
+    <comment>{0} - Customer Name, {1} - Customer Code</comment>
   </data>
   <data name="RemoveInvoiceCaption" xml:space="preserve">
     <value>Remove invoice</value>
+  </data>
+  <data name="RemoveInvoiceItemCaption" xml:space="preserve">
+    <value>Remove invoice item</value>
+  </data>
+  <data name="RemoveInvoiceItemText" xml:space="preserve">
+    <value>Do you want to remove the invoice item {0} - {1}?</value>
+    <comment>{0} - Ordinal Number, {1} - Product Name</comment>
   </data>
   <data name="RemoveInvoiceText" xml:space="preserve">
     <value>Do you want to remove the invoice {0}?</value>

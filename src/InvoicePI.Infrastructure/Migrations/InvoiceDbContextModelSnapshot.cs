@@ -346,6 +346,13 @@ namespace InvoicePI.Infrastructure.Migrations
                         .HasPrecision(14, 2)
                         .HasColumnType("decimal(14,2)");
 
+                    b.Property<int>("OrdinalNumber")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("Price")
+                        .HasPrecision(14, 2)
+                        .HasColumnType("decimal(14,2)");
+
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
 
@@ -354,10 +361,6 @@ namespace InvoicePI.Infrastructure.Migrations
 
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("datetime2(0)");
-
-                    b.Property<decimal>("Vat")
-                        .HasPrecision(14, 2)
-                        .HasColumnType("decimal(14,2)");
 
                     b.Property<int>("VatRateId")
                         .HasColumnType("int");

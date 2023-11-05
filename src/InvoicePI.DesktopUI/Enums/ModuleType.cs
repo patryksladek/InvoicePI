@@ -7,6 +7,7 @@ public enum ModuleType
     Main,
     Invoices,
     Invoice,
+    InvoiceItem,
     Customers,
     Customer,
     Products,

@@ -1,6 +1,7 @@
 ﻿using FluentValidation;
 using InvoicePI.Application.Commands.Customers.AddCustomer;
 using InvoicePI.Application.Commands.Customers.EditCusotmer;
+using InvoicePI.Application.Commands.Invoices.AddInvoice;
 using InvoicePI.Application.Commands.Products.AddProduct;
 using InvoicePI.Application.Validation.Behaviors;
 using MediatR;
@@ -20,6 +21,7 @@ public static class Extensions
         services.AddScoped<IValidator<EditCustomerCommand>, EditCustomerCommandValidator>();
         services.AddScoped<IValidator<AddProductCommand>, AddProductCommandValidator>();
         services.AddScoped<IValidator<EditProductCommand>, EditProductCommandValidator>();
+        services.AddScoped<IValidator<AddInvoiceCommand>, AddInvoiceCommandValidator>();
 
         services.AddTransient(typeof(IPipelineBehavior<,>), typeof(CommandValidationBehavior<,>));
 

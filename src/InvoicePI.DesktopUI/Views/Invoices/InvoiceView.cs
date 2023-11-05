@@ -8,13 +8,11 @@ using InvoicePI.DesktopUI.Properties;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static InvoicePI.DesktopUI.Events.EventHelper;
-using Microsoft.EntityFrameworkCore;
 using InvoicePI.DesktopUI.Constatns;
-using System.Linq;
+using DevExpress.XtraGrid.Views.Base;
 
 namespace InvoicePI.DesktopUI.Views.Invoices
 {
@@ -22,14 +20,18 @@ namespace InvoicePI.DesktopUI.Views.Invoices
     {
         public event AsyncEventHandler InvoiceViewLoadedEventRaised;
         public event AsyncEventHandler BtnSaveItemClickedEventRaised;
+        public event AsyncEventHandler BtnConfirmAndCloseItemClicedEventRaised;
         public event AsyncEventHandler BtnResetChangesItemClickedEventRaised;
         public event AsyncEventHandler BtnDeleteItemClickedEventRaised;
 
-        public event AsyncEventHandler TeDateValidatingEventRaised;
-        public event AsyncEventHandler GlueCustomerValidatingEventRaised;
-
-        public event EventHandler TeDateEditValueChangedEventRaised;
+        public event EventHandler GlueCustomerValidatingEventRaised;
+        public event EventHandler GlueCustomerEditValueChanged;
+        public event EventHandler GvInvoiceItemsRowCountChanged;
         public event EventHandler TeGlueCustomerEditValueChangedEventRaised;
+
+        public event EventHandler BtnNewItemClickedEventRaised;
+        public event EventHandler BtnOpenItemClickedEventRaised;
+        public event EventHandler BtnRemoveItemClickedEventRaised;
 
         public Func<Task> UpdateInvoiceListView;
 
@@ -58,10 +60,14 @@ namespace InvoicePI.DesktopUI.Views.Invoices
 
         public IList<InvoiceItemDetailDto> InvoiceItemList
         {
-            get { return (IList<InvoiceItemDetailDto>)invoiceItemDetailDtoBindingSource.DataSource; }
+            get
+            {
+                if (invoiceItemDetailDtoBindingSource.DataSource is not IList<InvoiceItemDetailDto>)
+                    invoiceItemDetailDtoBindingSource.DataSource = new List<InvoiceItemDetailDto>();
+                return (IList<InvoiceItemDetailDto>)invoiceItemDetailDtoBindingSource.DataSource;
+            }
             set { invoiceItemDetailDtoBindingSource.DataSource = value; }
         }
-
 
         public ICollection InvoiceStatusList
         {
@@ -74,10 +80,10 @@ namespace InvoicePI.DesktopUI.Views.Invoices
 
         public DateOnly InvoiceDate
         {
-            get { return (DateOnly)deDate.EditValue; }
-            set { deDate.EditValue = value; }
+            get { return DateOnly.FromDateTime((DateTime)deDate.EditValue); }
+            set { deDate.EditValue = value.ToDateTime(TimeOnly.Parse("00:00")); }
         }
-        public int? CustomerId
+        public int CustomerId
         {
             get { return Convert.ToInt32(glueCustomer.EditValue); }
             set { glueCustomer.EditValue = value; }
@@ -120,7 +126,7 @@ namespace InvoicePI.DesktopUI.Views.Invoices
                     glueCustomer.ReadOnly = true;
                     gvInvoiceItems.OptionsBehavior.ReadOnly = true;
                     btnNewItem.Enabled = false;
-                    btnEditItem.Enabled = false;
+                    btnOpenItem.Enabled = false;
                     btnRemoveItem.Enabled = false;
                     meDescription.ReadOnly = true;
                 }
@@ -130,7 +136,7 @@ namespace InvoicePI.DesktopUI.Views.Invoices
                     glueCustomer.ReadOnly = false;
                     gvInvoiceItems.OptionsBehavior.ReadOnly = false;
                     btnNewItem.Enabled = true;
-                    btnEditItem.Enabled = true;
+                    btnOpenItem.Enabled = true;
                     btnRemoveItem.Enabled = true;
                     meDescription.ReadOnly = false;
                 }
@@ -162,6 +168,15 @@ namespace InvoicePI.DesktopUI.Views.Invoices
             set { btnDelete.Enabled = value; }
         }
 
+        public bool IsEditableItems
+        {
+            set
+            {
+                btnOpenItem.Enabled = value;
+                btnRemoveItem.Enabled = value;
+            }
+        }
+
 
         public void SetErrorMessage(Control control, string errorMessage, ErrorType errorType)
             => errorProvider.SetError(control, errorMessage, errorType);
@@ -180,11 +195,12 @@ namespace InvoicePI.DesktopUI.Views.Invoices
         {
             await RaiseEventAsync(objectRaisingEvent: sender, eventHandlerRaised: BtnSaveItemClickedEventRaised, eventArgs: e);
             await UpdateInvoiceListView?.Invoke();
+            Close();
         }
 
-        private async void btnSaveAndClose_ItemClick(object sender, ItemClickEventArgs e)
+        private async void btnConfirmAndClose_ItemClick(object sender, ItemClickEventArgs e)
         {
-            await RaiseEventAsync(objectRaisingEvent: sender, eventHandlerRaised: BtnSaveItemClickedEventRaised, eventArgs: e);
+            await RaiseEventAsync(objectRaisingEvent: sender, eventHandlerRaised: BtnConfirmAndCloseItemClicedEventRaised, eventArgs: e);
             await UpdateInvoiceListView?.Invoke();
             Close();
         }
@@ -201,17 +217,36 @@ namespace InvoicePI.DesktopUI.Views.Invoices
 
         private void btnNewItem_Click(object sender, EventArgs e)
         {
-
+            RaiseEvent(objectRaisingEvent: gvInvoiceItems, eventHandlerRaised: BtnNewItemClickedEventRaised, eventArgs: e);
+            gcInvoiceItems.RefreshDataSource();
         }
 
-        private void btnEditItem_Click(object sender, EventArgs e)
-        {
 
+        private void btnOpenItem_Click(object sender, EventArgs e)
+        {
+            RaiseEvent(objectRaisingEvent: gvInvoiceItems, eventHandlerRaised: BtnOpenItemClickedEventRaised, eventArgs: e);
+            gcInvoiceItems.RefreshDataSource();
         }
 
         private void btnRemoveItem_Click(object sender, EventArgs e)
         {
+            RaiseEvent(objectRaisingEvent: gvInvoiceItems, eventHandlerRaised: BtnRemoveItemClickedEventRaised, eventArgs: e);
+            gcInvoiceItems.RefreshDataSource();
+        }
 
+        private void glueCustomer_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            RaiseEvent(objectRaisingEvent: gvInvoiceItems, eventHandlerRaised: GlueCustomerValidatingEventRaised, eventArgs: e);
+        }
+
+        private void glueCustomer_EditValueChanged(object sender, EventArgs e)
+        {
+            RaiseEvent(objectRaisingEvent: sender, eventHandlerRaised: GlueCustomerEditValueChanged, eventArgs: e);
+        }
+
+        private void gvInvoiceItems_RowCountChanged(object sender, EventArgs e)
+        {
+            RaiseEvent(objectRaisingEvent: gvInvoiceItems, eventHandlerRaised: GvInvoiceItemsRowCountChanged, eventArgs: e);
         }
     }
 }

@@ -15,6 +15,7 @@ public class InvoiceDbContext : DbContext
     public DbSet<Unit> Units { get; set; }
     public DbSet<VatRate> VatRates { get; set; }
     public DbSet<Currency> Currencies { get; set; }
+    public DbSet<ExchangeRate> ExchangeRates { get; set; }
     public DbSet<Invoice> Invoices { get; set; }
     public DbSet<InvoiceItem> InvoiceItems { get; set; }
 

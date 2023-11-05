@@ -43,6 +43,7 @@ public class InvoicesPresenter : IPresenter<IInvoicesView>
         _view.BtnAddItemClickedEventRaised += new EventHandler(OnBtnAddItemClickedEventRaised);
         _view.BtnEditItemClickedEventRaised += new EventHandler(OnBtnEditItemClickedEventRaised);
         _view.BtnDeleteItemClickedEventRaised += new EventHandler(OnDeleteItemClickedEventRaised);
+        _view.GvInvoicesFocusedRowChangedEventRaised += new EventHandler(OnGvInvoicesFocusedRowChangedEventRaised);
 
         _view.BtnExportXmlItemClickedEventRaised += new EventHandler(OnBtnExportXmlItemClickedEventRaised);
         _view.BtnExportCsvItemClickedEventRaised += new EventHandler(OnBtnExportCsvItemClickedEventRaised);
@@ -88,6 +89,15 @@ public class InvoicesPresenter : IPresenter<IInvoicesView>
             await _mediator.Send(new RemoveInvoiceCommand(invoice.Id));
             await UpdateInvoiceListViewAsync();
         }
+    }
+
+    private void OnGvInvoicesFocusedRowChangedEventRaised(object sender, EventArgs e)
+    {
+        var invoice = ((GridView)sender).GetRow(((GridView)sender).FocusedRowHandle) as InvoiceDto;
+        if (invoice != null && invoice.IsApproved)
+            _view.IsDeletable = false;
+        else
+            _view.IsDeletable = true;
     }
 
     private void OnBtnExportXmlItemClickedEventRaised(object sender, EventArgs e)

@@ -12,16 +12,17 @@ public class EditInvoiceCommand : IRequest
     public decimal Net { get; set; }
     public decimal Vat { get; set; }
     public decimal Gross { get; set; }
-    public ICollection<EditInvoiceItemCommand> InvoiceItems { get; set; }
+    public IEnumerable<EditInvoiceItemCommand> InvoiceItems { get; set; }
 }
 
 public class EditInvoiceItemCommand
 {
-    public int Id { get; set; }
+    public int? Id { get; set; }
+    public int OrdinalNumber { get; set; }
     public int ProductId { get; set; }
     public int Quantity { get; set; }
+    public decimal Price { get; set; }
     public decimal Net { get; set; }
-    public decimal Vat { get; set; }
     public decimal Gross { get; set; }
     public int CurrencyId { get; set; }
     public int VatRateId { get; set; }

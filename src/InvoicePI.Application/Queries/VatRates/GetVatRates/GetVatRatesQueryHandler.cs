@@ -23,7 +23,8 @@ internal class GetVatRatesQueryHandler : IRequestHandler<GetVatRatesQuery, IRead
         var vatRatesDto = await vatRates.Select(x => new VatRateDto()
         {
             Id = x.Id,
-            Symbol = x.Symbol
+            Symbol = x.Symbol,
+            Value = x.Value
         })
         .ToListAsync();
 

@@ -67,33 +67,40 @@ namespace InvoicePI.DesktopUI.Views.Invoices
             // gvInvoiceItems
             // 
             gvInvoiceItems.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] { colSubProduct });
+            gvInvoiceItems.DetailHeight = 431;
             gvInvoiceItems.GridControl = gridControl;
             gvInvoiceItems.Name = "gvInvoiceItems";
+            gvInvoiceItems.OptionsEditForm.PopupEditFormWidth = 933;
             gvInvoiceItems.OptionsView.ShowIndicator = false;
             // 
             // colSubProduct
             // 
             colSubProduct.Caption = "PRODUCT";
             colSubProduct.FieldName = "Product";
+            colSubProduct.MinWidth = 23;
             colSubProduct.Name = "colSubProduct";
             colSubProduct.OptionsColumn.AllowFocus = false;
             colSubProduct.Visible = true;
             colSubProduct.VisibleIndex = 0;
+            colSubProduct.Width = 87;
             // 
             // gridControl
             // 
             gridControl.DataSource = invoiceDtoBindingSource;
             gridControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            gridControl.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(4);
             gridLevelNode1.LevelTemplate = gvInvoiceItems;
             gridLevelNode1.RelationName = "SubView";
             gridControl.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] { gridLevelNode1 });
-            gridControl.Location = new System.Drawing.Point(0, 158);
+            gridControl.Location = new System.Drawing.Point(0, 193);
             gridControl.MainView = gvInvoices;
+            gridControl.Margin = new System.Windows.Forms.Padding(4);
             gridControl.MenuManager = ribbon;
             gridControl.Name = "gridControl";
-            gridControl.Size = new System.Drawing.Size(442, 291);
+            gridControl.Size = new System.Drawing.Size(516, 360);
             gridControl.TabIndex = 7;
             gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] { gvInvoices, gvInvoiceItems });
+            gridControl.DoubleClick += gridControl_DoubleClick_1;
             // 
             // invoiceDtoBindingSource
             // 
@@ -102,6 +109,7 @@ namespace InvoicePI.DesktopUI.Views.Invoices
             // gvInvoices
             // 
             gvInvoices.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] { colIsApproved, colNumber, colDate, colCustomer, colNet, colVat, colGross, colCurrency });
+            gvInvoices.DetailHeight = 431;
             gvInvoices.GridControl = gridControl;
             gvInvoices.Name = "gvInvoices";
             gvInvoices.OptionsBehavior.AllowPixelScrolling = DevExpress.Utils.DefaultBoolean.False;
@@ -111,6 +119,7 @@ namespace InvoicePI.DesktopUI.Views.Invoices
             gvInvoices.OptionsDetail.DetailMode = DevExpress.XtraGrid.Views.Grid.DetailMode.Embedded;
             gvInvoices.OptionsDetail.SmartDetailExpandButtonMode = DevExpress.XtraGrid.Views.Grid.DetailExpandButtonMode.AlwaysEnabled;
             gvInvoices.OptionsDetail.SmartDetailHeight = true;
+            gvInvoices.OptionsEditForm.PopupEditFormWidth = 933;
             gvInvoices.OptionsFilter.ColumnFilterPopupMode = DevExpress.XtraGrid.Columns.ColumnFilterPopupMode.Excel;
             gvInvoices.OptionsFind.AlwaysVisible = true;
             gvInvoices.OptionsFind.FindNullPrompt = "Search Customers (Ctrl + F)";
@@ -122,97 +131,109 @@ namespace InvoicePI.DesktopUI.Views.Invoices
             gvInvoices.MasterRowGetChildList += gvInvoices_MasterRowGetChildList;
             gvInvoices.MasterRowGetRelationName += gvInvoices_MasterRowGetRelationName;
             gvInvoices.MasterRowGetRelationCount += gvInvoices_MasterRowGetRelationCount;
+            gvInvoices.FocusedRowChanged += gvInvoices_FocusedRowChanged;
             // 
             // colIsApproved
             // 
             colIsApproved.Caption = "APPROVED";
             colIsApproved.FieldName = "IsApproved";
-            colIsApproved.MaxWidth = 30;
+            colIsApproved.MaxWidth = 35;
+            colIsApproved.MinWidth = 23;
             colIsApproved.Name = "colIsApproved";
             colIsApproved.OptionsColumn.AllowFocus = false;
             colIsApproved.Visible = true;
             colIsApproved.VisibleIndex = 0;
-            colIsApproved.Width = 30;
+            colIsApproved.Width = 35;
             // 
             // colNumber
             // 
             colNumber.Caption = "NUMBER";
             colNumber.FieldName = "Number";
+            colNumber.MinWidth = 23;
             colNumber.Name = "colNumber";
             colNumber.OptionsColumn.AllowFocus = false;
             colNumber.Visible = true;
             colNumber.VisibleIndex = 1;
-            colNumber.Width = 58;
+            colNumber.Width = 68;
             // 
             // colDate
             // 
             colDate.Caption = "DATE";
             colDate.FieldName = "Date";
+            colDate.MinWidth = 23;
             colDate.Name = "colDate";
             colDate.OptionsColumn.AllowFocus = false;
             colDate.Visible = true;
             colDate.VisibleIndex = 2;
-            colDate.Width = 58;
+            colDate.Width = 68;
             // 
             // colCustomer
             // 
             colCustomer.Caption = "CUSTOMER";
             colCustomer.FieldName = "Customer";
+            colCustomer.MinWidth = 23;
             colCustomer.Name = "colCustomer";
             colCustomer.OptionsColumn.AllowFocus = false;
             colCustomer.Visible = true;
             colCustomer.VisibleIndex = 3;
-            colCustomer.Width = 58;
+            colCustomer.Width = 68;
             // 
             // colNet
             // 
             colNet.Caption = "NET";
             colNet.FieldName = "Net";
+            colNet.MinWidth = 23;
             colNet.Name = "colNet";
             colNet.OptionsColumn.AllowFocus = false;
             colNet.Visible = true;
             colNet.VisibleIndex = 4;
-            colNet.Width = 58;
+            colNet.Width = 68;
             // 
             // colVat
             // 
             colVat.Caption = "VAT";
             colVat.FieldName = "Vat";
+            colVat.MinWidth = 23;
             colVat.Name = "colVat";
             colVat.OptionsColumn.AllowFocus = false;
             colVat.Visible = true;
             colVat.VisibleIndex = 5;
-            colVat.Width = 58;
+            colVat.Width = 68;
             // 
             // colGross
             // 
             colGross.Caption = "GROSS";
             colGross.FieldName = "Gross";
+            colGross.MinWidth = 23;
             colGross.Name = "colGross";
             colGross.OptionsColumn.AllowFocus = false;
             colGross.Visible = true;
             colGross.VisibleIndex = 6;
-            colGross.Width = 58;
+            colGross.Width = 68;
             // 
             // colCurrency
             // 
             colCurrency.Caption = "CURRNECY";
             colCurrency.FieldName = "Currency";
+            colCurrency.MinWidth = 23;
             colCurrency.Name = "colCurrency";
             colCurrency.OptionsColumn.AllowFocus = false;
             colCurrency.Visible = true;
             colCurrency.VisibleIndex = 7;
-            colCurrency.Width = 62;
+            colCurrency.Width = 72;
             // 
             // ribbon
             // 
+            ribbon.EmptyAreaImageOptions.ImagePadding = new System.Windows.Forms.Padding(35, 37, 35, 37);
             ribbon.ExpandCollapseItem.Id = 0;
             ribbon.Items.AddRange(new DevExpress.XtraBars.BarItem[] { ribbon.ExpandCollapseItem, btnAdd, btnDelete, btnEdit, btnExportXML, btnExportCSV, btnExportXLSX, btnExportTXT });
             ribbon.Location = new System.Drawing.Point(0, 0);
+            ribbon.Margin = new System.Windows.Forms.Padding(4);
             ribbon.MaxItemId = 8;
             ribbon.Name = "ribbon";
+            ribbon.OptionsMenuMinWidth = 385;
             ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] { rpHome });
-            ribbon.Size = new System.Drawing.Size(442, 158);
+            ribbon.Size = new System.Drawing.Size(516, 193);
             // 
             // btnAdd
             // 
@@ -310,11 +331,12 @@ namespace InvoicePI.DesktopUI.Views.Invoices
             // 
             // InvoicesView
             // 
-            AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(442, 449);
+            ClientSize = new System.Drawing.Size(516, 553);
             Controls.Add(gridControl);
             Controls.Add(ribbon);
+            Margin = new System.Windows.Forms.Padding(4);
             Name = "InvoicesView";
             Ribbon = ribbon;
             Text = "Invoices";

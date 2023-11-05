@@ -6,4 +6,3 @@ public interface ICurrencyReadOnlyRepository
 {
     public IQueryable<Currency> GetAllAsync();
 }
-

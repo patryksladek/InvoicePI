@@ -79,6 +79,15 @@ namespace InvoicePI.DesktopUI.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add new invoice item.
+        /// </summary>
+        internal static string AddInvoiceItemCaption {
+            get {
+                return ResourceManager.GetString("AddInvoiceItemCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Add new product.
         /// </summary>
         internal static string AddProductCaption {
@@ -160,6 +169,15 @@ namespace InvoicePI.DesktopUI.Properties {
         internal static string EditInvoiceCaption {
             get {
                 return ResourceManager.GetString("EditInvoiceCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit invoice item {0} - {1}.
+        /// </summary>
+        internal static string EditInvoiceItemCaption {
+            get {
+                return ResourceManager.GetString("EditInvoiceItemCaption", resourceCulture);
             }
         }
         
@@ -254,6 +272,24 @@ namespace InvoicePI.DesktopUI.Properties {
         internal static string RemoveInvoiceCaption {
             get {
                 return ResourceManager.GetString("RemoveInvoiceCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remove invoice item.
+        /// </summary>
+        internal static string RemoveInvoiceItemCaption {
+            get {
+                return ResourceManager.GetString("RemoveInvoiceItemCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Do you want to remove the invoice item {0} - {1}?.
+        /// </summary>
+        internal static string RemoveInvoiceItemText {
+            get {
+                return ResourceManager.GetString("RemoveInvoiceItemText", resourceCulture);
             }
         }
         

@@ -41,6 +41,9 @@ public class ViewFactory : IViewFactory
             case ModuleType.Invoice:
                 viewCreatorBase = new InvoiceViewCreator(_mediator, this, _serviceProvider);
                 break;
+            case ModuleType.InvoiceItem:
+                viewCreatorBase = new InvoiceItemViewCreator(_mediator, this, _serviceProvider);
+                break;
             case ModuleType.Customers:
                 viewCreatorBase = new CustomersViewCreator(_mediator, this, _serviceProvider);
                 break;

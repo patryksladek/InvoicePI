@@ -15,6 +15,9 @@ public class InvoiceItemConfiguration : AuditableEntityConfiguration<InvoiceItem
            .HasForeignKey(s => s.InvoiceId)
            .OnDelete(DeleteBehavior.Cascade);
 
+        builder.Property(x => x.OrdinalNumber)
+           .IsRequired();
+
         builder.HasOne(s => s.Product)
            .WithMany(g => g.InvoiceItems)
            .HasForeignKey(s => s.ProductId)
@@ -23,11 +26,11 @@ public class InvoiceItemConfiguration : AuditableEntityConfiguration<InvoiceItem
         builder.Property(x => x.Quantity)
           .IsRequired();
 
-        builder.Property(x => x.Net)
+        builder.Property(x => x.Price)
             .HasPrecision(14, 2)
             .IsRequired();
 
-        builder.Property(x => x.Vat)
+        builder.Property(x => x.Net)
             .HasPrecision(14, 2)
             .IsRequired();
 

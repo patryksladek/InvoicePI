@@ -1,9 +1,7 @@
 ﻿using InvoicePI.Application.Dto;
 using InvoicePI.Domain.Abstractions;
 using InvoicePI.Domain.Entities.Invoices;
-using InvoicePI.Domain.Entities.Products;
 using InvoicePI.Domain.Enums;
-using InvoicePI.Domain.Exceptions;
 using MediatR;
 
 namespace InvoicePI.Application.Commands.Invoices.AddInvoice;
@@ -30,28 +28,27 @@ internal class AddInvoiceCommandHandler : IRequestHandler<AddInvoiceCommand, Inv
             Net = request.Net,
             Vat = request.Vat,
             Gross = request.Gross,
-            InvoiceItems = new List<InvoiceItem>()
-        };
-
-        foreach (var invoiceItem in request.InvoiceItems)
-        {
-            newInvoice.InvoiceItems.Add(new InvoiceItem()
+            CurrencyId = request.CurrencyId,
+            Status = request.IsApproved ? InvoiceStatus.Confirmed : InvoiceStatus.Buffer,
+            InvoiceItems = request.InvoiceItems.Select(x => new InvoiceItem
             {
-                ProductId = invoiceItem.ProductId,
-                Quantity = invoiceItem.Quantity,
-                Net = invoiceItem.Net,
-                Vat = invoiceItem.Vat,
-                Gross = invoiceItem.Gross,
-                CurrencyId = invoiceItem.CurrencyId,
-                VatRateId = invoiceItem.VatRateId
-            });
-        }
+                OrdinalNumber = x.OrdinalNumber,
+                ProductId = x.ProductId,
+                Quantity = x.Quantity,
+                Price = x.Price,
+                Net = x.Net,
+                Gross = x.Gross,
+                CurrencyId = x.CurrencyId,
+                VatRateId = x.VatRateId
+            }).ToList()
+        };
 
         _invoiceRepository.Add(newInvoice);
         await _unitOfWork.SaveChangesAsync(cancellationToken);
 
         var invoiceDetailDto = new InvoiceDetailDto()
         {
+            Id = newInvoice.Id,
             Number = request.Number,
             Date = request.Date,
             CustomerId = request.CustomerId,
