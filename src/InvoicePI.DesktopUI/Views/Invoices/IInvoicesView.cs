@@ -1,4 +1,5 @@
 ﻿using InvoicePI.Application.Dto;
+using InvoicePI.DesktopUI.Events;
 using InvoicePI.DesktopUI.Views.Abstractions;
 using System;
 using System.Collections.Generic;
@@ -17,6 +18,8 @@ public interface IInvoicesView : IView
     event EventHandler BtnExportCsvItemClickedEventRaised;
     event EventHandler BtnExportXlsxItemClickedEventRaised;
     event EventHandler BtnExportTxtItemClickedEventRaised;
+
+    public event AsyncEventHandler BtnGenerateInvoiceMonthlySummariesItemClickedEventRaised;
 
     bool IsDeletable { set; }
 

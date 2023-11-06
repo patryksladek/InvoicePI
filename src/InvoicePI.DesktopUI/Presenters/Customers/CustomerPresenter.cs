@@ -6,6 +6,8 @@ using InvoicePI.Application.Commands.Customers.RemoveCustomer;
 using InvoicePI.Application.Dto;
 using InvoicePI.Application.Queries.Countries.GetCountries;
 using InvoicePI.Application.Queries.Customers.GetCustomerById;
+using InvoicePI.Application.Queries.Reports.GenerateCustomersInvoices;
+using InvoicePI.Application.Queries.Reports.GenerateNumberOfCustomersInCountry;
 using InvoicePI.DesktopUI.Constatns;
 using InvoicePI.DesktopUI.Events;
 using InvoicePI.DesktopUI.Factories.Abstractions;
@@ -17,6 +19,7 @@ using InvoicePI.DesktopUI.Views.Customers;
 using MediatR;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -63,6 +66,8 @@ public class CustomerPresenter : IPresenter<ICustomerView>
 
         _view.TeCodeEditValueChangedEventRaised += new EventHandler(OnTeCodeEditValueChangedEventRaised);
         _view.TeNameEditValueChangedEventRaised += new EventHandler(OnTeNameEditValueChangedEventRaised);
+    
+        _view.BtnCustomersInvoicesWithTotalAmountsItemClickEventRaised += new AsyncEventHandler(OnBtnCustomersInvoicesWithTotalAmountsItemClickEventRaised);
     }
 
     private async Task OnCustomerViewLoadedEventRaised(object sender, EventArgs e)
@@ -429,4 +434,21 @@ public class CustomerPresenter : IPresenter<ICustomerView>
         ErrorHelper.SetErrorMessage(result, _view, sender, e);
     }
 
+
+    private async Task OnBtnCustomersInvoicesWithTotalAmountsItemClickEventRaised(object sender, EventArgs e)
+    {
+        byte[] pdfBytes = await _mediator.Send(new GenerateCustomersInvoicesQuery(_view.CustomerId.Value));
+
+        using (XtraSaveFileDialog saveFileDialog = new XtraSaveFileDialog())
+        {
+            saveFileDialog.Filter = "PDF files (*.pdf)|*.pdf";
+            saveFileDialog.FileName = $"Customers_invoices_{DateTime.Now.ToShortDateString().Replace('.', '_')}";
+
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                string filePath = saveFileDialog.FileName;
+                File.WriteAllBytes(filePath, pdfBytes); ;
+            }
+        }
+    }
 }

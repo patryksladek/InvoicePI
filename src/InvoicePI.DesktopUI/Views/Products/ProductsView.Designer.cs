@@ -36,6 +36,8 @@ namespace InvoicePI.DesktopUI.Views.Products
             btnAdd = new DevExpress.XtraBars.BarButtonItem();
             btnDelete = new DevExpress.XtraBars.BarButtonItem();
             btnEdit = new DevExpress.XtraBars.BarButtonItem();
+            btnExportXML = new DevExpress.XtraBars.BarButtonItem();
+            btnExportCSV = new DevExpress.XtraBars.BarButtonItem();
             rpHome = new DevExpress.XtraBars.Ribbon.RibbonPage();
             rpgActions = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             rpgExport = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -47,10 +49,6 @@ namespace InvoicePI.DesktopUI.Views.Products
             colBarcode = new DevExpress.XtraGrid.Columns.GridColumn();
             colPrice = new DevExpress.XtraGrid.Columns.GridColumn();
             colCurrency = new DevExpress.XtraGrid.Columns.GridColumn();
-            btnExportXML = new DevExpress.XtraBars.BarButtonItem();
-            btnExportCSV = new DevExpress.XtraBars.BarButtonItem();
-            btnExportXLSX = new DevExpress.XtraBars.BarButtonItem();
-            btnExportTXT = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)ribbon).BeginInit();
             ((System.ComponentModel.ISupportInitialize)productDtoBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)gridControl).BeginInit();
@@ -59,13 +57,16 @@ namespace InvoicePI.DesktopUI.Views.Products
             // 
             // ribbon
             // 
+            ribbon.EmptyAreaImageOptions.ImagePadding = new System.Windows.Forms.Padding(35, 37, 35, 37);
             ribbon.ExpandCollapseItem.Id = 0;
-            ribbon.Items.AddRange(new DevExpress.XtraBars.BarItem[] { ribbon.ExpandCollapseItem, btnAdd, btnDelete, btnEdit, btnExportXML, btnExportCSV, btnExportXLSX, btnExportTXT });
+            ribbon.Items.AddRange(new DevExpress.XtraBars.BarItem[] { ribbon.ExpandCollapseItem, btnAdd, btnDelete, btnEdit, btnExportXML, btnExportCSV });
             ribbon.Location = new System.Drawing.Point(0, 0);
+            ribbon.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             ribbon.MaxItemId = 8;
             ribbon.Name = "ribbon";
+            ribbon.OptionsMenuMinWidth = 385;
             ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] { rpHome });
-            ribbon.Size = new System.Drawing.Size(442, 158);
+            ribbon.Size = new System.Drawing.Size(516, 193);
             // 
             // btnAdd
             // 
@@ -99,6 +100,26 @@ namespace InvoicePI.DesktopUI.Views.Products
             btnEdit.Name = "btnEdit";
             btnEdit.ItemClick += btnEdit_ItemClick;
             // 
+            // btnExportXML
+            // 
+            btnExportXML.Caption = "XML";
+            btnExportXML.Hint = "Export records to XML";
+            btnExportXML.Id = 4;
+            btnExportXML.ImageOptions.Image = (System.Drawing.Image)resources.GetObject("btnExportXML.ImageOptions.Image");
+            btnExportXML.ImageOptions.LargeImage = (System.Drawing.Image)resources.GetObject("btnExportXML.ImageOptions.LargeImage");
+            btnExportXML.Name = "btnExportXML";
+            btnExportXML.ItemClick += btnExportXML_ItemClick;
+            // 
+            // btnExportCSV
+            // 
+            btnExportCSV.Caption = "CSV";
+            btnExportCSV.Hint = "Export to CSV";
+            btnExportCSV.Id = 5;
+            btnExportCSV.ImageOptions.Image = (System.Drawing.Image)resources.GetObject("btnExportCSV.ImageOptions.Image");
+            btnExportCSV.ImageOptions.LargeImage = (System.Drawing.Image)resources.GetObject("btnExportCSV.ImageOptions.LargeImage");
+            btnExportCSV.Name = "btnExportCSV";
+            btnExportCSV.ItemClick += btnExportCSV_ItemClick;
+            // 
             // rpHome
             // 
             rpHome.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] { rpgActions, rpgExport });
@@ -117,8 +138,6 @@ namespace InvoicePI.DesktopUI.Views.Products
             // 
             rpgExport.ItemLinks.Add(btnExportXML);
             rpgExport.ItemLinks.Add(btnExportCSV);
-            rpgExport.ItemLinks.Add(btnExportXLSX);
-            rpgExport.ItemLinks.Add(btnExportTXT);
             rpgExport.Name = "rpgExport";
             rpgExport.Text = "Export";
             // 
@@ -130,22 +149,26 @@ namespace InvoicePI.DesktopUI.Views.Products
             // 
             gridControl.DataSource = productDtoBindingSource;
             gridControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            gridControl.Location = new System.Drawing.Point(0, 158);
+            gridControl.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            gridControl.Location = new System.Drawing.Point(0, 193);
             gridControl.MainView = gridView;
+            gridControl.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             gridControl.MenuManager = ribbon;
             gridControl.Name = "gridControl";
-            gridControl.Size = new System.Drawing.Size(442, 291);
+            gridControl.Size = new System.Drawing.Size(516, 360);
             gridControl.TabIndex = 7;
             gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] { gridView });
             // 
             // gridView
             // 
             gridView.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] { colName, colCode, colBarcode, colPrice, colCurrency });
+            gridView.DetailHeight = 431;
             gridView.GridControl = gridControl;
             gridView.Name = "gridView";
             gridView.OptionsBehavior.AllowPixelScrolling = DevExpress.Utils.DefaultBoolean.False;
             gridView.OptionsBehavior.Editable = false;
             gridView.OptionsBehavior.ReadOnly = true;
+            gridView.OptionsEditForm.PopupEditFormWidth = 933;
             gridView.OptionsFilter.ColumnFilterPopupMode = DevExpress.XtraGrid.Columns.ColumnFilterPopupMode.Excel;
             gridView.OptionsFind.AlwaysVisible = true;
             gridView.OptionsFind.FindNullPrompt = "Search Customers (Ctrl + F)";
@@ -158,98 +181,65 @@ namespace InvoicePI.DesktopUI.Views.Products
             // 
             colName.Caption = "NAME";
             colName.FieldName = "Name";
+            colName.MinWidth = 23;
             colName.Name = "colName";
             colName.OptionsColumn.AllowFocus = false;
             colName.Visible = true;
             colName.VisibleIndex = 0;
-            colName.Width = 93;
+            colName.Width = 108;
             // 
             // colCode
             // 
             colCode.Caption = "CODE";
             colCode.FieldName = "Code";
+            colCode.MinWidth = 23;
             colCode.Name = "colCode";
             colCode.OptionsColumn.AllowFocus = false;
             colCode.Visible = true;
             colCode.VisibleIndex = 1;
-            colCode.Width = 46;
+            colCode.Width = 54;
             // 
             // colBarcode
             // 
             colBarcode.Caption = "BARCODE";
             colBarcode.FieldName = "Barcode";
+            colBarcode.MinWidth = 23;
             colBarcode.Name = "colBarcode";
             colBarcode.OptionsColumn.AllowFocus = false;
             colBarcode.Visible = true;
             colBarcode.VisibleIndex = 2;
-            colBarcode.Width = 46;
+            colBarcode.Width = 54;
             // 
             // colPrice
             // 
             colPrice.Caption = "PRICE";
             colPrice.FieldName = "Price";
+            colPrice.MinWidth = 23;
             colPrice.Name = "colPrice";
             colPrice.OptionsColumn.AllowFocus = false;
             colPrice.Visible = true;
             colPrice.VisibleIndex = 3;
-            colPrice.Width = 46;
+            colPrice.Width = 54;
             // 
             // colCurrency
             // 
             colCurrency.Caption = "CURRENCY";
             colCurrency.FieldName = "Currency";
+            colCurrency.MinWidth = 23;
             colCurrency.Name = "colCurrency";
             colCurrency.OptionsColumn.AllowFocus = false;
             colCurrency.Visible = true;
             colCurrency.VisibleIndex = 4;
-            // 
-            // btnExportXML
-            // 
-            btnExportXML.Caption = "XML";
-            btnExportXML.Hint = "Export records to XML";
-            btnExportXML.Id = 4;
-            btnExportXML.ImageOptions.Image = (System.Drawing.Image)resources.GetObject("btnExportXML.ImageOptions.Image");
-            btnExportXML.ImageOptions.LargeImage = (System.Drawing.Image)resources.GetObject("btnExportXML.ImageOptions.LargeImage");
-            btnExportXML.Name = "btnExportXML";
-            btnExportXML.ItemClick += btnExportXML_ItemClick;
-            // 
-            // btnExportCSV
-            // 
-            btnExportCSV.Caption = "CSV";
-            btnExportCSV.Hint = "Export to CSV";
-            btnExportCSV.Id = 5;
-            btnExportCSV.ImageOptions.Image = (System.Drawing.Image)resources.GetObject("barButtonItem1.ImageOptions.Image");
-            btnExportCSV.ImageOptions.LargeImage = (System.Drawing.Image)resources.GetObject("barButtonItem1.ImageOptions.LargeImage");
-            btnExportCSV.Name = "btnExportCSV";
-            btnExportCSV.ItemClick += btnExportCSV_ItemClick;
-            // 
-            // btnExportXLSX
-            // 
-            btnExportXLSX.Caption = "XLSX";
-            btnExportXLSX.Hint = "Export to XLSX";
-            btnExportXLSX.Id = 6;
-            btnExportXLSX.ImageOptions.Image = (System.Drawing.Image)resources.GetObject("btnExportXLSX.ImageOptions.Image");
-            btnExportXLSX.ImageOptions.LargeImage = (System.Drawing.Image)resources.GetObject("btnExportXLSX.ImageOptions.LargeImage");
-            btnExportXLSX.Name = "btnExportXLSX";
-            btnExportXLSX.ItemClick += btnExportXLSX_ItemClick;
-            // 
-            // btnExportTXT
-            // 
-            btnExportTXT.Caption = "TXT";
-            btnExportTXT.Hint = "Export to TXT";
-            btnExportTXT.Id = 7;
-            btnExportTXT.ImageOptions.Image = (System.Drawing.Image)resources.GetObject("barButtonItem1.ImageOptions.Image1");
-            btnExportTXT.ImageOptions.LargeImage = (System.Drawing.Image)resources.GetObject("barButtonItem1.ImageOptions.LargeImage1");
-            btnExportTXT.Name = "btnExportTXT";
-            btnExportTXT.ItemClick += btnExportTXT_ItemClick;
+            colCurrency.Width = 87;
             // 
             // ProductsView
             // 
-            AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(442, 449);
+            ClientSize = new System.Drawing.Size(516, 553);
             Controls.Add(gridControl);
             Controls.Add(ribbon);
+            Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             Name = "ProductsView";
             Ribbon = ribbon;
             Text = "Products";
@@ -282,7 +272,5 @@ namespace InvoicePI.DesktopUI.Views.Products
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup rpgExport;
         private DevExpress.XtraBars.BarButtonItem btnExportXML;
         private DevExpress.XtraBars.BarButtonItem btnExportCSV;
-        private DevExpress.XtraBars.BarButtonItem btnExportXLSX;
-        private DevExpress.XtraBars.BarButtonItem btnExportTXT;
     }
 }

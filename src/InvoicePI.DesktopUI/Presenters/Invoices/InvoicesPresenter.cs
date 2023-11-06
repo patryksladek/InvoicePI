@@ -9,14 +9,18 @@ using DevExpress.XtraGrid.Views.Grid;
 using System.Windows.Forms;
 using InvoicePI.Application.Dto;
 using DevExpress.XtraEditors;
-using InvoicePI.Application.Commands.Customers.RemoveCustomer;
 using InvoicePI.DesktopUI.Properties;
 using InvoicePI.DesktopUI.Views.Invoices;
 using InvoicePI.Application.Queries.Invoices.GetProducts;
 using InvoicePI.Application.Commands.Invoices.RemoveInvoice;
-using InvoicePI.DesktopUI.Settings;
 using InvoicePI.Infrastructure.DataExport.Strategies;
 using InvoicePI.Infrastructure.DataExport;
+using InvoicePI.Infrastructure.DataExport.Adapters.Xml.Invoices;
+using InvoicePI.Infrastructure.DataExport.Adapters.CSV.Invoices;
+using InvoicePI.DesktopUI.Events;
+using InvoicePI.Application.Queries.Reports.GenerateNumberOfCustomersInCountry;
+using InvoicePI.Application.Queries.Reports.InvoiceMonthlySummaries;
+using System.IO;
 
 namespace InvoicePI.DesktopUI.Presenters.Invoices;
 
@@ -47,8 +51,8 @@ public class InvoicesPresenter : IPresenter<IInvoicesView>
 
         _view.BtnExportXmlItemClickedEventRaised += new EventHandler(OnBtnExportXmlItemClickedEventRaised);
         _view.BtnExportCsvItemClickedEventRaised += new EventHandler(OnBtnExportCsvItemClickedEventRaised);
-        _view.BtnExportXlsxItemClickedEventRaised += new EventHandler(OnBtnExportXlsxItemClickedEventRaised);
-        _view.BtnExportTxtItemClickedEventRaised += new EventHandler(OnBtnExportTxtItemClickedEventRaised);
+        
+        _view.BtnGenerateInvoiceMonthlySummariesItemClickedEventRaised += new AsyncEventHandler(BtnGenerateInvoiceMonthlySummariesItemClickedEventRaised);
     }
 
     private async void OnCustomersViewLoadedEventRaised(object sender, EventArgs e)
@@ -105,12 +109,13 @@ public class InvoicesPresenter : IPresenter<IInvoicesView>
         using (XtraSaveFileDialog saveFileDialog = new XtraSaveFileDialog())
         {
             saveFileDialog.Filter = "XML files (*.xml)|*.xml|All files (*.*)|*.*";
+            saveFileDialog.FileName = $"Invoices_{DateTime.Now.ToShortDateString().Replace('.','_')}";
 
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
                 string filePath = saveFileDialog.FileName;
                 DataExporter exporter = new DataExporter(new XmlExportStrategy());
-                exporter.ExportData(_view.InvoiceList, filePath);
+                exporter.ExportData(XmlInvoiceAdapter.Convert(_view.InvoiceList), filePath);
             }
         }
     }
@@ -120,42 +125,13 @@ public class InvoicesPresenter : IPresenter<IInvoicesView>
         using (XtraSaveFileDialog saveFileDialog = new XtraSaveFileDialog())
         {
             saveFileDialog.Filter = "CSV files (*.csv)|*.csv|All files (*.*)|*.*";
+            saveFileDialog.FileName = $"Invoices_{DateTime.Now.ToShortDateString().Replace('.', '_')}";
 
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
                 string filePath = saveFileDialog.FileName;
                 DataExporter exporter = new DataExporter(new CsvExportStrategy());
-                exporter.ExportData(_view.InvoiceList, filePath);
-            }
-        }
-    }
-
-    private void OnBtnExportXlsxItemClickedEventRaised(object sender, EventArgs e)
-    {
-        using (XtraSaveFileDialog saveFileDialog = new XtraSaveFileDialog())
-        {
-            saveFileDialog.Filter = "XLS files (*.xlsx)|*.xlsx|All files (*.*)|*.*";
-
-            if (saveFileDialog.ShowDialog() == DialogResult.OK)
-            {
-                string filePath = saveFileDialog.FileName;
-                DataExporter exporter = new DataExporter(new XlsExportStrategy());
-                exporter.ExportData(_view.InvoiceList, filePath);
-            }
-        }
-    }
-
-    private void OnBtnExportTxtItemClickedEventRaised(object sender, EventArgs e)
-    {
-        using (XtraSaveFileDialog saveFileDialog = new XtraSaveFileDialog())
-        {
-            saveFileDialog.Filter = "Txt files (*.txt)|*.txt|All files (*.*)|*.*";
-
-            if (saveFileDialog.ShowDialog() == DialogResult.OK)
-            {
-                string filePath = saveFileDialog.FileName;
-                DataExporter exporter = new DataExporter(new TxtExportStrategy());
-                exporter.ExportData(_view.InvoiceList, filePath);
+                exporter.ExportData(CsvInvoiceAdapter.Convert(_view.InvoiceList), filePath);
             }
         }
     }
@@ -164,5 +140,22 @@ public class InvoicesPresenter : IPresenter<IInvoicesView>
     {
         var invoiceList = await _mediator.Send(new GetInvoicesQuery());
         _view.InvoiceList = invoiceList.ToList();
+    }
+
+    private async Task BtnGenerateInvoiceMonthlySummariesItemClickedEventRaised(object sender, EventArgs e)
+    {
+        byte[] pdfBytes = await _mediator.Send(new GenerateInvoiceMonthlySummariesQuery());
+
+        using (XtraSaveFileDialog saveFileDialog = new XtraSaveFileDialog())
+        {
+            saveFileDialog.Filter = "PDF files (*.pdf)|*.pdf";
+            saveFileDialog.FileName = $"Invoice_monthly_summaries_{DateTime.Now.ToShortDateString().Replace('.', '_')}";
+
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                string filePath = saveFileDialog.FileName;
+                File.WriteAllBytes(filePath, pdfBytes); ;
+            }
+        }
     }
 }

@@ -35,10 +35,13 @@
             btnSaveAndClose = new DevExpress.XtraBars.BarButtonItem();
             btnResetChanges = new DevExpress.XtraBars.BarButtonItem();
             btnDelete = new DevExpress.XtraBars.BarButtonItem();
+            btnGenerate = new DevExpress.XtraBars.BarSubItem();
+            btnCustomersInvoicesWithTotalAmounts = new DevExpress.XtraBars.BarButtonItem();
             rpCustomer = new DevExpress.XtraBars.Ribbon.RibbonPage();
             rpgSave = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             rpgEdit = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             rpgDelete = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            rpgReports = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             lblName = new DevExpress.XtraEditors.LabelControl();
             lblCode = new DevExpress.XtraEditors.LabelControl();
             teCode = new DevExpress.XtraEditors.TextEdit();
@@ -120,21 +123,18 @@
             // 
             // ribbon
             // 
-            ribbon.EmptyAreaImageOptions.ImagePadding = new System.Windows.Forms.Padding(35, 37, 35, 37);
             ribbon.ExpandCollapseItem.Id = 0;
-            ribbon.Items.AddRange(new DevExpress.XtraBars.BarItem[] { ribbon.ExpandCollapseItem, btnSave, btnSaveAndClose, btnResetChanges, btnDelete });
+            ribbon.Items.AddRange(new DevExpress.XtraBars.BarItem[] { ribbon.ExpandCollapseItem, btnSave, btnSaveAndClose, btnResetChanges, btnDelete, btnGenerate, btnCustomersInvoicesWithTotalAmounts });
             ribbon.Location = new System.Drawing.Point(0, 0);
-            ribbon.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            ribbon.MaxItemId = 8;
+            ribbon.MaxItemId = 10;
             ribbon.Name = "ribbon";
-            ribbon.OptionsMenuMinWidth = 385;
             ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] { rpCustomer });
             ribbon.ShowApplicationButton = DevExpress.Utils.DefaultBoolean.False;
             ribbon.ShowDisplayOptionsMenuButton = DevExpress.Utils.DefaultBoolean.False;
             ribbon.ShowExpandCollapseButton = DevExpress.Utils.DefaultBoolean.False;
             ribbon.ShowPageHeadersMode = DevExpress.XtraBars.Ribbon.ShowPageHeadersMode.Hide;
             ribbon.ShowToolbarCustomizeItem = false;
-            ribbon.Size = new System.Drawing.Size(1164, 193);
+            ribbon.Size = new System.Drawing.Size(998, 158);
             ribbon.Toolbar.ShowCustomizeItem = false;
             // 
             // btnSave
@@ -173,9 +173,28 @@
             btnDelete.Name = "btnDelete";
             btnDelete.ItemClick += btnDelete_ItemClick;
             // 
+            // btnGenerate
+            // 
+            btnGenerate.Caption = "Generate";
+            btnGenerate.Hint = "Generate report";
+            btnGenerate.Id = 8;
+            btnGenerate.ImageOptions.Image = (System.Drawing.Image)resources.GetObject("btnGenerate.ImageOptions.Image");
+            btnGenerate.ImageOptions.LargeImage = (System.Drawing.Image)resources.GetObject("btnGenerate.ImageOptions.LargeImage");
+            btnGenerate.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] { new DevExpress.XtraBars.LinkPersistInfo(btnCustomersInvoicesWithTotalAmounts) });
+            btnGenerate.Name = "btnGenerate";
+            // 
+            // btnCustomersInvoicesWithTotalAmounts
+            // 
+            btnCustomersInvoicesWithTotalAmounts.Caption = "Customers invoices with total amounts";
+            btnCustomersInvoicesWithTotalAmounts.Id = 9;
+            btnCustomersInvoicesWithTotalAmounts.ImageOptions.Image = (System.Drawing.Image)resources.GetObject("btnCustomersInvoicesWithTotalAmounts.ImageOptions.Image");
+            btnCustomersInvoicesWithTotalAmounts.ImageOptions.LargeImage = (System.Drawing.Image)resources.GetObject("btnCustomersInvoicesWithTotalAmounts.ImageOptions.LargeImage");
+            btnCustomersInvoicesWithTotalAmounts.Name = "btnCustomersInvoicesWithTotalAmounts";
+            btnCustomersInvoicesWithTotalAmounts.ItemClick += btnCustomersInvoicesWithTotalAmounts_ItemClick;
+            // 
             // rpCustomer
             // 
-            rpCustomer.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] { rpgSave, rpgEdit, rpgDelete });
+            rpCustomer.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] { rpgSave, rpgEdit, rpgDelete, rpgReports });
             rpCustomer.Name = "rpCustomer";
             rpCustomer.Text = "CUSTOMER";
             // 
@@ -198,23 +217,27 @@
             rpgDelete.Name = "rpgDelete";
             rpgDelete.Text = "Delete";
             // 
+            // rpgReports
+            // 
+            rpgReports.ItemLinks.Add(btnGenerate);
+            rpgReports.Name = "rpgReports";
+            rpgReports.Text = "Reports";
+            // 
             // lblName
             // 
             lblName.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left;
-            lblName.Location = new System.Drawing.Point(50, 238);
-            lblName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            lblName.Location = new System.Drawing.Point(43, 193);
             lblName.Name = "lblName";
-            lblName.Size = new System.Drawing.Size(33, 16);
+            lblName.Size = new System.Drawing.Size(27, 13);
             lblName.TabIndex = 2;
             lblName.Text = "Name";
             // 
             // lblCode
             // 
             lblCode.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left;
-            lblCode.Location = new System.Drawing.Point(50, 206);
-            lblCode.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            lblCode.Location = new System.Drawing.Point(43, 167);
             lblCode.Name = "lblCode";
-            lblCode.Size = new System.Drawing.Size(29, 16);
+            lblCode.Size = new System.Drawing.Size(25, 13);
             lblCode.TabIndex = 5;
             lblCode.Text = "Code";
             // 
@@ -222,11 +245,10 @@
             // 
             teCode.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left;
             errorProvider.SetIconAlignment(teCode, System.Windows.Forms.ErrorIconAlignment.MiddleRight);
-            teCode.Location = new System.Drawing.Point(142, 202);
-            teCode.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            teCode.Location = new System.Drawing.Point(122, 164);
             teCode.MenuManager = ribbon;
             teCode.Name = "teCode";
-            teCode.Size = new System.Drawing.Size(293, 22);
+            teCode.Size = new System.Drawing.Size(251, 20);
             teCode.TabIndex = 0;
             teCode.EditValueChanged += teCode_EditValueChanged;
             teCode.Validating += teCode_Validating;
@@ -235,11 +257,10 @@
             // 
             teName.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left;
             errorProvider.SetIconAlignment(teName, System.Windows.Forms.ErrorIconAlignment.MiddleRight);
-            teName.Location = new System.Drawing.Point(142, 234);
-            teName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            teName.Location = new System.Drawing.Point(122, 190);
             teName.MenuManager = ribbon;
             teName.Name = "teName";
-            teName.Size = new System.Drawing.Size(293, 22);
+            teName.Size = new System.Drawing.Size(251, 20);
             teName.TabIndex = 1;
             teName.EditValueChanged += teName_EditValueChanged;
             teName.Validating += teName_Validating;
@@ -247,44 +268,40 @@
             // teNIP
             // 
             errorProvider.SetIconAlignment(teNIP, System.Windows.Forms.ErrorIconAlignment.MiddleRight);
-            teNIP.Location = new System.Drawing.Point(142, 265);
-            teNIP.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            teNIP.Location = new System.Drawing.Point(122, 215);
             teNIP.MenuManager = ribbon;
             teNIP.Name = "teNIP";
-            teNIP.Size = new System.Drawing.Size(293, 22);
+            teNIP.Size = new System.Drawing.Size(251, 20);
             teNIP.TabIndex = 2;
             teNIP.Validating += teNIP_Validating;
             // 
             // lblSegment
             // 
             lblSegment.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
-            lblSegment.Location = new System.Drawing.Point(50, 300);
-            lblSegment.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            lblSegment.Location = new System.Drawing.Point(43, 244);
             lblSegment.Name = "lblSegment";
-            lblSegment.Size = new System.Drawing.Size(51, 16);
+            lblSegment.Size = new System.Drawing.Size(42, 13);
             lblSegment.TabIndex = 11;
             lblSegment.Text = "Segment";
             // 
             // lblNip
             // 
             lblNip.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
-            lblNip.Location = new System.Drawing.Point(50, 268);
-            lblNip.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            lblNip.Location = new System.Drawing.Point(43, 218);
             lblNip.Name = "lblNip";
-            lblNip.Size = new System.Drawing.Size(19, 16);
+            lblNip.Size = new System.Drawing.Size(17, 13);
             lblNip.TabIndex = 10;
             lblNip.Text = "NIP";
             // 
             // cbeSegment
             // 
             errorProvider.SetIconAlignment(cbeSegment, System.Windows.Forms.ErrorIconAlignment.MiddleRight);
-            cbeSegment.Location = new System.Drawing.Point(142, 297);
-            cbeSegment.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            cbeSegment.Location = new System.Drawing.Point(122, 241);
             cbeSegment.MenuManager = ribbon;
             cbeSegment.Name = "cbeSegment";
             cbeSegment.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] { new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo) });
             cbeSegment.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            cbeSegment.Size = new System.Drawing.Size(293, 22);
+            cbeSegment.Size = new System.Drawing.Size(251, 20);
             cbeSegment.TabIndex = 3;
             // 
             // gcContact
@@ -297,10 +314,9 @@
             gcContact.Controls.Add(lblMobile);
             gcContact.Controls.Add(lblEmail);
             gcContact.Controls.Add(teMobile);
-            gcContact.Location = new System.Drawing.Point(33, 545);
-            gcContact.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            gcContact.Location = new System.Drawing.Point(28, 443);
             gcContact.Name = "gcContact";
-            gcContact.Size = new System.Drawing.Size(425, 181);
+            gcContact.Size = new System.Drawing.Size(364, 147);
             gcContact.TabIndex = 20;
             gcContact.Text = "Contact";
             // 
@@ -308,11 +324,10 @@
             // 
             teFax.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
             errorProvider.SetIconAlignment(teFax, System.Windows.Forms.ErrorIconAlignment.MiddleRight);
-            teFax.Location = new System.Drawing.Point(110, 138);
-            teFax.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            teFax.Location = new System.Drawing.Point(94, 112);
             teFax.MenuManager = ribbon;
             teFax.Name = "teFax";
-            teFax.Size = new System.Drawing.Size(293, 22);
+            teFax.Size = new System.Drawing.Size(251, 20);
             teFax.TabIndex = 12;
             teFax.Validating += teFax_Validating;
             // 
@@ -320,11 +335,10 @@
             // 
             tePhone.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
             errorProvider.SetIconAlignment(tePhone, System.Windows.Forms.ErrorIconAlignment.MiddleRight);
-            tePhone.Location = new System.Drawing.Point(110, 43);
-            tePhone.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            tePhone.Location = new System.Drawing.Point(94, 35);
             tePhone.MenuManager = ribbon;
             tePhone.Name = "tePhone";
-            tePhone.Size = new System.Drawing.Size(293, 22);
+            tePhone.Size = new System.Drawing.Size(251, 20);
             tePhone.TabIndex = 9;
             tePhone.Validating += tePhone_Validating;
             // 
@@ -332,51 +346,46 @@
             // 
             teEmail.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
             errorProvider.SetIconAlignment(teEmail, System.Windows.Forms.ErrorIconAlignment.MiddleRight);
-            teEmail.Location = new System.Drawing.Point(110, 106);
-            teEmail.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            teEmail.Location = new System.Drawing.Point(94, 86);
             teEmail.MenuManager = ribbon;
             teEmail.Name = "teEmail";
-            teEmail.Size = new System.Drawing.Size(293, 22);
+            teEmail.Size = new System.Drawing.Size(251, 20);
             teEmail.TabIndex = 11;
             teEmail.Validating += teEmail_Validating;
             // 
             // lblPhone
             // 
             lblPhone.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
-            lblPhone.Location = new System.Drawing.Point(18, 47);
-            lblPhone.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            lblPhone.Location = new System.Drawing.Point(15, 38);
             lblPhone.Name = "lblPhone";
-            lblPhone.Size = new System.Drawing.Size(35, 16);
+            lblPhone.Size = new System.Drawing.Size(30, 13);
             lblPhone.TabIndex = 21;
             lblPhone.Text = "Phone";
             // 
             // lblFax
             // 
             lblFax.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
-            lblFax.Location = new System.Drawing.Point(18, 142);
-            lblFax.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            lblFax.Location = new System.Drawing.Point(15, 115);
             lblFax.Name = "lblFax";
-            lblFax.Size = new System.Drawing.Size(21, 16);
+            lblFax.Size = new System.Drawing.Size(18, 13);
             lblFax.TabIndex = 26;
             lblFax.Text = "Fax";
             // 
             // lblMobile
             // 
             lblMobile.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
-            lblMobile.Location = new System.Drawing.Point(18, 79);
-            lblMobile.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            lblMobile.Location = new System.Drawing.Point(15, 64);
             lblMobile.Name = "lblMobile";
-            lblMobile.Size = new System.Drawing.Size(37, 16);
+            lblMobile.Size = new System.Drawing.Size(30, 13);
             lblMobile.TabIndex = 22;
             lblMobile.Text = "Mobile";
             // 
             // lblEmail
             // 
             lblEmail.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
-            lblEmail.Location = new System.Drawing.Point(18, 110);
-            lblEmail.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            lblEmail.Location = new System.Drawing.Point(15, 89);
             lblEmail.Name = "lblEmail";
-            lblEmail.Size = new System.Drawing.Size(31, 16);
+            lblEmail.Size = new System.Drawing.Size(24, 13);
             lblEmail.TabIndex = 25;
             lblEmail.Text = "Email";
             // 
@@ -384,11 +393,10 @@
             // 
             teMobile.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
             errorProvider.SetIconAlignment(teMobile, System.Windows.Forms.ErrorIconAlignment.MiddleRight);
-            teMobile.Location = new System.Drawing.Point(110, 75);
-            teMobile.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            teMobile.Location = new System.Drawing.Point(94, 61);
             teMobile.MenuManager = ribbon;
             teMobile.Name = "teMobile";
-            teMobile.Size = new System.Drawing.Size(293, 22);
+            teMobile.Size = new System.Drawing.Size(251, 20);
             teMobile.TabIndex = 10;
             teMobile.Validating += teMobile_Validating;
             // 
@@ -407,31 +415,28 @@
             gcAddress.Controls.Add(teStreet);
             gcAddress.Controls.Add(lblNumber);
             gcAddress.Controls.Add(lblStreet);
-            gcAddress.Location = new System.Drawing.Point(33, 340);
-            gcAddress.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            gcAddress.Location = new System.Drawing.Point(28, 276);
             gcAddress.Name = "gcAddress";
-            gcAddress.Size = new System.Drawing.Size(425, 183);
+            gcAddress.Size = new System.Drawing.Size(364, 149);
             gcAddress.TabIndex = 26;
             gcAddress.Text = "Address";
             // 
             // teCity
             // 
             teCity.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
-            teCity.Location = new System.Drawing.Point(110, 108);
-            teCity.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            teCity.Location = new System.Drawing.Point(94, 88);
             teCity.MenuManager = ribbon;
             teCity.Name = "teCity";
-            teCity.Size = new System.Drawing.Size(293, 22);
+            teCity.Size = new System.Drawing.Size(251, 20);
             teCity.TabIndex = 7;
             teCity.Validating += teCity_Validating;
             // 
             // lblCity
             // 
             lblCity.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
-            lblCity.Location = new System.Drawing.Point(16, 112);
-            lblCity.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            lblCity.Location = new System.Drawing.Point(14, 91);
             lblCity.Name = "lblCity";
-            lblCity.Size = new System.Drawing.Size(21, 16);
+            lblCity.Size = new System.Drawing.Size(19, 13);
             lblCity.TabIndex = 45;
             lblCity.Text = "City";
             // 
@@ -439,18 +444,16 @@
             // 
             lblCountryRequired.Appearance.ForeColor = System.Drawing.Color.Red;
             lblCountryRequired.Appearance.Options.UseForeColor = true;
-            lblCountryRequired.Location = new System.Drawing.Point(274, 144);
-            lblCountryRequired.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            lblCountryRequired.Location = new System.Drawing.Point(235, 117);
             lblCountryRequired.Name = "lblCountryRequired";
-            lblCountryRequired.Size = new System.Drawing.Size(8, 16);
+            lblCountryRequired.Size = new System.Drawing.Size(6, 13);
             lblCountryRequired.TabIndex = 43;
             lblCountryRequired.Text = "*";
             // 
             // glueCountry
             // 
             errorProvider.SetIconAlignment(glueCountry, System.Windows.Forms.ErrorIconAlignment.MiddleRight);
-            glueCountry.Location = new System.Drawing.Point(295, 140);
-            glueCountry.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            glueCountry.Location = new System.Drawing.Point(253, 114);
             glueCountry.MenuManager = ribbon;
             glueCountry.Name = "glueCountry";
             glueCountry.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] { new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo) });
@@ -459,7 +462,7 @@
             glueCountry.Properties.NullText = "";
             glueCountry.Properties.PopupView = gridLookUpEdit1View;
             glueCountry.Properties.ValueMember = "Id";
-            glueCountry.Size = new System.Drawing.Size(107, 22);
+            glueCountry.Size = new System.Drawing.Size(92, 20);
             glueCountry.TabIndex = 9;
             // 
             // countryDtoBindingSource
@@ -469,124 +472,109 @@
             // gridLookUpEdit1View
             // 
             gridLookUpEdit1View.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] { colSymbol, colName });
-            gridLookUpEdit1View.DetailHeight = 431;
             gridLookUpEdit1View.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
             gridLookUpEdit1View.Name = "gridLookUpEdit1View";
             gridLookUpEdit1View.OptionsBehavior.Editable = false;
             gridLookUpEdit1View.OptionsBehavior.ReadOnly = true;
-            gridLookUpEdit1View.OptionsEditForm.PopupEditFormWidth = 933;
             gridLookUpEdit1View.OptionsSelection.EnableAppearanceFocusedCell = false;
             gridLookUpEdit1View.OptionsView.ShowGroupPanel = false;
             // 
             // colSymbol
             // 
             colSymbol.FieldName = "Symbol";
-            colSymbol.MinWidth = 23;
             colSymbol.Name = "colSymbol";
             colSymbol.Visible = true;
             colSymbol.VisibleIndex = 0;
-            colSymbol.Width = 87;
             // 
             // colName
             // 
             colName.FieldName = "Name";
-            colName.MinWidth = 23;
             colName.Name = "colName";
             colName.Visible = true;
             colName.VisibleIndex = 1;
-            colName.Width = 87;
             // 
             // tePostalCode
             // 
             tePostalCode.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
-            tePostalCode.Location = new System.Drawing.Point(110, 140);
-            tePostalCode.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            tePostalCode.Location = new System.Drawing.Point(94, 114);
             tePostalCode.MenuManager = ribbon;
             tePostalCode.Name = "tePostalCode";
-            tePostalCode.Size = new System.Drawing.Size(105, 22);
+            tePostalCode.Size = new System.Drawing.Size(90, 20);
             tePostalCode.TabIndex = 8;
             tePostalCode.Validating += tePostalCode_Validating;
             // 
             // lblCountry
             // 
             lblCountry.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
-            lblCountry.Location = new System.Drawing.Point(226, 144);
-            lblCountry.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            lblCountry.Location = new System.Drawing.Point(194, 117);
             lblCountry.Name = "lblCountry";
-            lblCountry.Size = new System.Drawing.Size(44, 16);
+            lblCountry.Size = new System.Drawing.Size(39, 13);
             lblCountry.TabIndex = 32;
             lblCountry.Text = "Country";
             // 
             // lblPostalCode
             // 
             lblPostalCode.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
-            lblPostalCode.Location = new System.Drawing.Point(16, 144);
-            lblPostalCode.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            lblPostalCode.Location = new System.Drawing.Point(14, 117);
             lblPostalCode.Name = "lblPostalCode";
-            lblPostalCode.Size = new System.Drawing.Size(65, 16);
+            lblPostalCode.Size = new System.Drawing.Size(55, 13);
             lblPostalCode.TabIndex = 30;
             lblPostalCode.Text = "Postal code";
             // 
             // teBuilding
             // 
             teBuilding.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
-            teBuilding.Location = new System.Drawing.Point(295, 76);
-            teBuilding.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            teBuilding.Location = new System.Drawing.Point(253, 62);
             teBuilding.MenuManager = ribbon;
             teBuilding.Name = "teBuilding";
-            teBuilding.Size = new System.Drawing.Size(107, 22);
+            teBuilding.Size = new System.Drawing.Size(92, 20);
             teBuilding.TabIndex = 6;
             teBuilding.Validating += teBuilding_Validating;
             // 
             // lblBuilding
             // 
             lblBuilding.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
-            lblBuilding.Location = new System.Drawing.Point(226, 80);
-            lblBuilding.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            lblBuilding.Location = new System.Drawing.Point(194, 65);
             lblBuilding.Name = "lblBuilding";
-            lblBuilding.Size = new System.Drawing.Size(44, 16);
+            lblBuilding.Size = new System.Drawing.Size(36, 13);
             lblBuilding.TabIndex = 28;
             lblBuilding.Text = "Building";
             // 
             // teNumber
             // 
             teNumber.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
-            teNumber.Location = new System.Drawing.Point(110, 76);
-            teNumber.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            teNumber.Location = new System.Drawing.Point(94, 62);
             teNumber.MenuManager = ribbon;
             teNumber.Name = "teNumber";
-            teNumber.Size = new System.Drawing.Size(105, 22);
+            teNumber.Size = new System.Drawing.Size(90, 20);
             teNumber.TabIndex = 5;
             teNumber.Validating += teStreetNumber_Validating;
             // 
             // teStreet
             // 
             teStreet.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
-            teStreet.Location = new System.Drawing.Point(110, 44);
-            teStreet.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            teStreet.Location = new System.Drawing.Point(94, 36);
             teStreet.MenuManager = ribbon;
             teStreet.Name = "teStreet";
-            teStreet.Size = new System.Drawing.Size(293, 22);
+            teStreet.Size = new System.Drawing.Size(251, 20);
             teStreet.TabIndex = 4;
             teStreet.Validating += teStreet_Validating;
             // 
             // lblNumber
             // 
             lblNumber.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
-            lblNumber.Location = new System.Drawing.Point(16, 80);
-            lblNumber.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            lblNumber.Location = new System.Drawing.Point(14, 65);
             lblNumber.Name = "lblNumber";
-            lblNumber.Size = new System.Drawing.Size(45, 16);
+            lblNumber.Size = new System.Drawing.Size(37, 13);
             lblNumber.TabIndex = 19;
             lblNumber.Text = "Number";
             // 
             // lblStreet
             // 
             lblStreet.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
-            lblStreet.Location = new System.Drawing.Point(16, 48);
-            lblStreet.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            lblStreet.Location = new System.Drawing.Point(14, 39);
             lblStreet.Name = "lblStreet";
-            lblStreet.Size = new System.Drawing.Size(35, 16);
+            lblStreet.Size = new System.Drawing.Size(30, 13);
             lblStreet.TabIndex = 18;
             lblStreet.Text = "Street";
             // 
@@ -594,13 +582,11 @@
             // 
             gcInvoices.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
             gcInvoices.DataSource = invoiceDtoBindingSource;
-            gcInvoices.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            gcInvoices.Location = new System.Drawing.Point(496, 225);
+            gcInvoices.Location = new System.Drawing.Point(425, 183);
             gcInvoices.MainView = gvInvoices;
-            gcInvoices.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             gcInvoices.MenuManager = ribbon;
             gcInvoices.Name = "gcInvoices";
-            gcInvoices.Size = new System.Drawing.Size(635, 535);
+            gcInvoices.Size = new System.Drawing.Size(544, 435);
             gcInvoices.TabIndex = 50;
             gcInvoices.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] { gvInvoices });
             // 
@@ -611,12 +597,10 @@
             // gvInvoices
             // 
             gvInvoices.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] { colIsApproved, colNumber, colDate, colNet, colVat, colGross, colCurrency });
-            gvInvoices.DetailHeight = 431;
             gvInvoices.GridControl = gcInvoices;
             gvInvoices.Name = "gvInvoices";
             gvInvoices.OptionsBehavior.Editable = false;
             gvInvoices.OptionsBehavior.ReadOnly = true;
-            gvInvoices.OptionsEditForm.PopupEditFormWidth = 933;
             gvInvoices.OptionsView.ShowGroupPanel = false;
             gvInvoices.OptionsView.ShowIndicator = false;
             // 
@@ -624,86 +608,71 @@
             // 
             colIsApproved.Caption = "APPROVED";
             colIsApproved.FieldName = "IsApproved";
-            colIsApproved.MinWidth = 23;
             colIsApproved.Name = "colIsApproved";
             colIsApproved.OptionsColumn.AllowFocus = false;
             colIsApproved.Visible = true;
             colIsApproved.VisibleIndex = 0;
-            colIsApproved.Width = 87;
             // 
             // colNumber
             // 
             colNumber.Caption = "NUMBER";
             colNumber.FieldName = "Number";
-            colNumber.MinWidth = 23;
             colNumber.Name = "colNumber";
             colNumber.OptionsColumn.AllowFocus = false;
             colNumber.Visible = true;
             colNumber.VisibleIndex = 1;
-            colNumber.Width = 87;
             // 
             // colDate
             // 
             colDate.Caption = "DATE";
             colDate.FieldName = "Date";
-            colDate.MinWidth = 23;
             colDate.Name = "colDate";
             colDate.OptionsColumn.AllowFocus = false;
             colDate.Visible = true;
             colDate.VisibleIndex = 2;
-            colDate.Width = 87;
             // 
             // colNet
             // 
             colNet.Caption = "NET";
             colNet.FieldName = "Net";
-            colNet.MinWidth = 23;
             colNet.Name = "colNet";
             colNet.OptionsColumn.AllowFocus = false;
             colNet.Visible = true;
             colNet.VisibleIndex = 3;
-            colNet.Width = 87;
             // 
             // colVat
             // 
             colVat.Caption = "VAT";
             colVat.FieldName = "Vat";
-            colVat.MinWidth = 23;
             colVat.Name = "colVat";
             colVat.OptionsColumn.AllowFocus = false;
             colVat.Visible = true;
             colVat.VisibleIndex = 4;
-            colVat.Width = 87;
             // 
             // colGross
             // 
             colGross.Caption = "GROSS";
             colGross.FieldName = "Gross";
-            colGross.MinWidth = 23;
             colGross.Name = "colGross";
             colGross.OptionsColumn.AllowFocus = false;
             colGross.Visible = true;
             colGross.VisibleIndex = 5;
-            colGross.Width = 87;
             // 
             // colCurrency
             // 
             colCurrency.Caption = "CURRENCY";
             colCurrency.FieldName = "Currency";
-            colCurrency.MinWidth = 23;
             colCurrency.Name = "colCurrency";
             colCurrency.OptionsColumn.AllowFocus = false;
             colCurrency.Visible = true;
             colCurrency.VisibleIndex = 6;
-            colCurrency.Width = 87;
             // 
             // lblInvoices
             // 
             lblInvoices.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
-            lblInvoices.Location = new System.Drawing.Point(496, 202);
-            lblInvoices.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            lblInvoices.Location = new System.Drawing.Point(425, 164);
             lblInvoices.Name = "lblInvoices";
-            lblInvoices.Size = new System.Drawing.Size(46, 16);
+            lblInvoices.Size = new System.Drawing.Size(40, 13);
             lblInvoices.TabIndex = 32;
             lblInvoices.Text = "Invoices";
             // 
@@ -712,10 +681,9 @@
             lblNameRequired.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left;
             lblNameRequired.Appearance.ForeColor = System.Drawing.Color.Red;
             lblNameRequired.Appearance.Options.UseForeColor = true;
-            lblNameRequired.Location = new System.Drawing.Point(86, 206);
-            lblNameRequired.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            lblNameRequired.Location = new System.Drawing.Point(74, 167);
             lblNameRequired.Name = "lblNameRequired";
-            lblNameRequired.Size = new System.Drawing.Size(8, 16);
+            lblNameRequired.Size = new System.Drawing.Size(6, 13);
             lblNameRequired.TabIndex = 35;
             lblNameRequired.Text = "*";
             // 
@@ -724,32 +692,29 @@
             lblCodeRequired.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left;
             lblCodeRequired.Appearance.ForeColor = System.Drawing.Color.Red;
             lblCodeRequired.Appearance.Options.UseForeColor = true;
-            lblCodeRequired.Location = new System.Drawing.Point(86, 238);
-            lblCodeRequired.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            lblCodeRequired.Location = new System.Drawing.Point(74, 193);
             lblCodeRequired.Name = "lblCodeRequired";
-            lblCodeRequired.Size = new System.Drawing.Size(8, 16);
+            lblCodeRequired.Size = new System.Drawing.Size(6, 13);
             lblCodeRequired.TabIndex = 36;
             lblCodeRequired.Text = "*";
             // 
             // cbeStatus
             // 
             errorProvider.SetIconAlignment(cbeStatus, System.Windows.Forms.ErrorIconAlignment.MiddleRight);
-            cbeStatus.Location = new System.Drawing.Point(142, 736);
-            cbeStatus.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            cbeStatus.Location = new System.Drawing.Point(122, 598);
             cbeStatus.MenuManager = ribbon;
             cbeStatus.Name = "cbeStatus";
             cbeStatus.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] { new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo) });
             cbeStatus.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            cbeStatus.Size = new System.Drawing.Size(293, 22);
+            cbeStatus.Size = new System.Drawing.Size(251, 20);
             cbeStatus.TabIndex = 13;
             // 
             // lblStatus
             // 
             lblStatus.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
-            lblStatus.Location = new System.Drawing.Point(46, 740);
-            lblStatus.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            lblStatus.Location = new System.Drawing.Point(39, 601);
             lblStatus.Name = "lblStatus";
-            lblStatus.Size = new System.Drawing.Size(36, 16);
+            lblStatus.Size = new System.Drawing.Size(31, 13);
             lblStatus.TabIndex = 39;
             lblStatus.Text = "Status";
             // 
@@ -759,9 +724,9 @@
             // 
             // CustomerView
             // 
-            AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
+            AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(1164, 804);
+            ClientSize = new System.Drawing.Size(998, 653);
             Controls.Add(cbeStatus);
             Controls.Add(lblStatus);
             Controls.Add(lblCodeRequired);
@@ -780,7 +745,6 @@
             Controls.Add(lblName);
             Controls.Add(ribbon);
             FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             Name = "CustomerView";
             Ribbon = ribbon;
             StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
@@ -880,5 +844,8 @@
         private DevExpress.XtraGrid.Columns.GridColumn colVat;
         private DevExpress.XtraGrid.Columns.GridColumn colGross;
         private DevExpress.XtraGrid.Columns.GridColumn colCurrency;
+        private DevExpress.XtraBars.BarSubItem btnGenerate;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup rpgReports;
+        private DevExpress.XtraBars.BarButtonItem btnCustomersInvoicesWithTotalAmounts;
     }
 }

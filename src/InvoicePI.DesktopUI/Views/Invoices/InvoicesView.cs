@@ -21,11 +21,13 @@ namespace InvoicePI.DesktopUI.Views.Invoices
         public event EventHandler BtnEditItemClickedEventRaised;
         public event EventHandler BtnDeleteItemClickedEventRaised;
         public event EventHandler GvInvoicesFocusedRowChangedEventRaised;
-        
+
         public event EventHandler BtnExportXmlItemClickedEventRaised;
         public event EventHandler BtnExportCsvItemClickedEventRaised;
         public event EventHandler BtnExportXlsxItemClickedEventRaised;
         public event EventHandler BtnExportTxtItemClickedEventRaised;
+
+        public event AsyncEventHandler BtnGenerateInvoiceMonthlySummariesItemClickedEventRaised;
 
         public Func<Task> HideInvoiceView;
 
@@ -105,5 +107,9 @@ namespace InvoicePI.DesktopUI.Views.Invoices
 
         private void gvInvoices_FocusedRowChanged(object sender, FocusedRowChangedEventArgs e)
             => EventHelper.RaiseEvent(objectRaisingEvent: gvInvoices, eventHandlerRaised: GvInvoicesFocusedRowChangedEventRaised, eventArgs: e);
+
+        private async void btnGenerateInvoiceMonthlySummaries_ItemClick(object sender, ItemClickEventArgs e)
+            => await EventHelper.RaiseEventAsync(objectRaisingEvent: sender, eventHandlerRaised: BtnGenerateInvoiceMonthlySummariesItemClickedEventRaised, eventArgs: e);
+
     }
 }

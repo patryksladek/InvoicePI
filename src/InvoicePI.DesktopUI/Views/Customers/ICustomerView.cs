@@ -30,6 +30,8 @@ public interface ICustomerView : IView, IError
     event EventHandler TeCodeEditValueChangedEventRaised;
     event EventHandler TeNameEditValueChangedEventRaised;
 
+    event AsyncEventHandler BtnCustomersInvoicesWithTotalAmountsItemClickEventRaised;
+
     IList<InvoiceDto> InvoiceList { get; set; }
     IList<CountryDto> CountryList { get; set; }
     ICollection SegmentList { get; set; }

@@ -46,8 +46,6 @@ public class ProductsPresenter : IPresenter<IProductsView>
 
         _view.BtnExportXmlItemClickedEventRaised += new EventHandler(OnBtnExportXmlItemClickedEventRaised);
         _view.BtnExportCsvItemClickedEventRaised += new EventHandler(OnBtnExportCsvItemClickedEventRaised);
-        _view.BtnExportXlsxItemClickedEventRaised += new EventHandler(OnBtnExportXlsxItemClickedEventRaised);
-        _view.BtnExportTxtItemClickedEventRaised += new EventHandler(OnBtnExportTxtItemClickedEventRaised);
     }
 
     private async void OnCustomersViewLoadedEventRaised(object sender, EventArgs e)
@@ -115,36 +113,6 @@ public class ProductsPresenter : IPresenter<IProductsView>
             {
                 string filePath = saveFileDialog.FileName;
                 DataExporter exporter = new DataExporter(new CsvExportStrategy());
-                exporter.ExportData(_view.ProductList, filePath);
-            }
-        }
-    }
-
-    private void OnBtnExportXlsxItemClickedEventRaised(object sender, EventArgs e)
-    {
-        using (XtraSaveFileDialog saveFileDialog = new XtraSaveFileDialog())
-        {
-            saveFileDialog.Filter = "XLS files (*.xlsx)|*.xlsx|All files (*.*)|*.*";
-
-            if (saveFileDialog.ShowDialog() == DialogResult.OK)
-            {
-                string filePath = saveFileDialog.FileName;
-                DataExporter exporter = new DataExporter(new XlsExportStrategy());
-                exporter.ExportData(_view.ProductList, filePath);
-            }
-        }
-    }
-
-    private void OnBtnExportTxtItemClickedEventRaised(object sender, EventArgs e)
-    {
-        using (XtraSaveFileDialog saveFileDialog = new XtraSaveFileDialog())
-        {
-            saveFileDialog.Filter = "Txt files (*.txt)|*.txt|All files (*.*)|*.*";
-
-            if (saveFileDialog.ShowDialog() == DialogResult.OK)
-            {
-                string filePath = saveFileDialog.FileName;
-                DataExporter exporter = new DataExporter(new TxtExportStrategy());
                 exporter.ExportData(_view.ProductList, filePath);
             }
         }

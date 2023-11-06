@@ -4,6 +4,7 @@ using InvoicePI.Infrastructure.Context;
 using InvoicePI.Infrastructure.Converters;
 using InvoicePI.Infrastructure.Database;
 using InvoicePI.Infrastructure.DataGeneration;
+using InvoicePI.Infrastructure.Reports;
 using InvoicePI.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -27,12 +28,15 @@ public static class Extensions
         services.AddScoped<IExchangeRateReadOnlyRepository, ExchangeRateReadOnlyRepository>();
         services.AddScoped<IInvoiceReadOnlyRepository, InvoiceReadOnlyRepository>();
         services.AddScoped<IInvoiceRepository, InvoiceRepository>();
+        services.AddScoped<IReportRepository, ReportRepository>();
         services.AddScoped<IUnitOfWork, UnitOfWork>();
 
         services.AddDbContext<InvoiceDbContext>(ctx => ctx.UseSqlServer(GetConnectionString(configuration)));
-
         services.AddScoped<DatabaseInitializer>();
         services.AddScoped<DataGenerator>();
+        services.AddScoped<IReportGenerator, PdfReportGenerator>();
+        services.AddHtmlToPdf();
+        services.AddRazorLightEngine();
 
         return services;
     }

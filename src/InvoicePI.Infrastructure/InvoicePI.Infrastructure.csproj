@@ -4,7 +4,15 @@
     <TargetFramework>net7.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>disable</Nullable>
+	<PreserveCompilationReferences>true</PreserveCompilationReferences>
+	<PreserveCompilationContext>true</PreserveCompilationContext>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Reports\Templates\CustomersInvoicesWithTotalAmounts.cshtml" />
+    <None Remove="Reports\Templates\NumberOfCustomersInCountry.cshtml" />
+    <None Remove="Reports\Templates\TotalInvoicesOnMonthlyBasis.cshtml" />
+  </ItemGroup>
 
   <ItemGroup>
     <COMReference Include="{215d64d2-031c-33c7-96e3-61794cd1ee61}">
@@ -16,9 +24,16 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="Reports\Templates\CustomersInvoicesWithTotalAmounts.cshtml" />
+    <EmbeddedResource Include="Reports\Templates\TotalInvoicesOnMonthlyBasis.cshtml" />
+    <EmbeddedResource Include="Reports\Templates\NumberOfCustomersInCountry.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Bogus" Version="34.0.2" />
     <PackageReference Include="CsvHelper" Version="30.0.1" />
     <PackageReference Include="EPPlus" Version="7.0.0" />
+    <PackageReference Include="HiQPdf.Free.NetCore" Version="15.0.8" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.12" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.12">
       <PrivateAssets></PrivateAssets>
@@ -31,6 +46,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="RazorLight" Version="2.3.1" />
   </ItemGroup>
 
   <ItemGroup>

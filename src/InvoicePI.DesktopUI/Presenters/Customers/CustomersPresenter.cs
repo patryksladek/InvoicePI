@@ -20,6 +20,8 @@ using InvoicePI.Infrastructure.DataExport.Strategies;
 using InvoicePI.Infrastructure.DataExport;
 using System.Collections.Generic;
 using InvoicePI.DesktopUI.Settings;
+using InvoicePI.Application.Queries.Reports.GenerateNumberOfCustomersInCountry;
+using System.IO;
 
 namespace InvoicePI.DesktopUI.Presenters.Customers;
 
@@ -50,8 +52,8 @@ public class CustomersPresenter : IPresenter<ICustomersView>
 
         _view.BtnExportXmlItemClickedEventRaised += new EventHandler(OnBtnExportXmlItemClickedEventRaised);
         _view.BtnExportCsvItemClickedEventRaised += new EventHandler(OnBtnExportCsvItemClickedEventRaised);
-        _view.BtnExportXlsxItemClickedEventRaised += new EventHandler(OnBtnExportXlsxItemClickedEventRaised);
-        _view.BtnExportTxtItemClickedEventRaised += new EventHandler(OnBtnExportTxtItemClickedEventRaised);
+
+        _view.BtnGenerateNumberOfContractorsInCountryReportItemClickedEventRaised += new AsyncEventHandler(OnBtnGenerateNumberOfContractorsInCountryReportItemClickedEventRaised);
     }
 
     private async Task OnCustomersViewLoadedEventRaised(object sender, EventArgs e)
@@ -94,6 +96,12 @@ public class CustomersPresenter : IPresenter<ICustomersView>
         }
     }
 
+    private async Task UpdateCustomerListViewAsync()
+    {
+        var customerList = await _mediator.Send(new GetCustomersQuery());
+        _view.CustomerList = customerList.ToList();
+    }
+
     private void OnBtnExportXmlItemClickedEventRaised(object sender, EventArgs e)
     {
         using (XtraSaveFileDialog saveFileDialog = new XtraSaveFileDialog())
@@ -124,39 +132,20 @@ public class CustomersPresenter : IPresenter<ICustomersView>
         }
     }
 
-    private void OnBtnExportXlsxItemClickedEventRaised(object sender, EventArgs e)
+    private async Task OnBtnGenerateNumberOfContractorsInCountryReportItemClickedEventRaised(object sender, EventArgs e)
     {
+        byte[] pdfBytes = await _mediator.Send(new GenerateCustomersInCountryQuery());
+
         using (XtraSaveFileDialog saveFileDialog = new XtraSaveFileDialog())
         {
-            saveFileDialog.Filter = "XLS files (*.xlsx)|*.xlsx|All files (*.*)|*.*";
+            saveFileDialog.Filter = "PDF files (*.pdf)|*.pdf";
+            saveFileDialog.FileName = $"Customers_in_country_{DateTime.Now.ToShortDateString().Replace('.', '_')}";
 
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
                 string filePath = saveFileDialog.FileName;
-                DataExporter exporter = new DataExporter(new XlsExportStrategy());
-                exporter.ExportData(_view.CustomerList, filePath);
+                File.WriteAllBytes(filePath, pdfBytes); ;
             }
         }
-    }
-
-    private void OnBtnExportTxtItemClickedEventRaised(object sender, EventArgs e)
-    {
-        using (XtraSaveFileDialog saveFileDialog = new XtraSaveFileDialog())
-        {
-            saveFileDialog.Filter = "Txt files (*.txt)|*.txt|All files (*.*)|*.*";
-
-            if (saveFileDialog.ShowDialog() == DialogResult.OK)
-            {
-                string filePath = saveFileDialog.FileName;
-                DataExporter exporter = new DataExporter(new TxtExportStrategy());
-                exporter.ExportData(_view.CustomerList, filePath);
-            }
-        }
-    }
-
-    private async Task UpdateCustomerListViewAsync()
-    {
-        var customerList = await _mediator.Send(new GetCustomersQuery());
-        _view.CustomerList = customerList.ToList();
     }
 }

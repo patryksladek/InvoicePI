@@ -16,7 +16,8 @@ public interface ICustomersView : IView
 
     event EventHandler BtnExportXmlItemClickedEventRaised;
     event EventHandler BtnExportCsvItemClickedEventRaised;
-    event EventHandler BtnExportXlsxItemClickedEventRaised;
-    event EventHandler BtnExportTxtItemClickedEventRaised;
+
+    event AsyncEventHandler BtnGenerateNumberOfContractorsInCountryReportItemClickedEventRaised;
+   
     IList<CustomerDto> CustomerList { get; set; }
 }

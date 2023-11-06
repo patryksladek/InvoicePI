@@ -18,8 +18,9 @@ namespace InvoicePI.DesktopUI.Views.Modules
 
         public event EventHandler BtnExportXmlItemClickedEventRaised;
         public event EventHandler BtnExportCsvItemClickedEventRaised;
-        public event EventHandler BtnExportXlsxItemClickedEventRaised;
-        public event EventHandler BtnExportTxtItemClickedEventRaised;
+
+        public event AsyncEventHandler BtnGenerateNumberOfContractorsInCountryReportItemClickedEventRaised;
+
 
         public CustomersView()
         {
@@ -59,10 +60,7 @@ namespace InvoicePI.DesktopUI.Views.Modules
         private void btnExportCSV_ItemClick(object sender, ItemClickEventArgs e)
             => EventHelper.RaiseEvent(objectRaisingEvent: gridView, eventHandlerRaised: BtnExportCsvItemClickedEventRaised, eventArgs: e);
 
-        private void btnExportXLSX_ItemClick(object sender, ItemClickEventArgs e)
-            => EventHelper.RaiseEvent(objectRaisingEvent: gridView, eventHandlerRaised: BtnExportXlsxItemClickedEventRaised, eventArgs: e);
-
-        private void btnExportTXT_ItemClick(object sender, ItemClickEventArgs e)
-            => EventHelper.RaiseEvent(objectRaisingEvent: gridView, eventHandlerRaised: BtnExportTxtItemClickedEventRaised, eventArgs: e);
+        private async void btnGenerateNumberOfContractorsInCountryReport_ItemClick(object sender, ItemClickEventArgs e)
+            => await EventHelper.RaiseEventAsync(objectRaisingEvent: sender, eventHandlerRaised: BtnGenerateNumberOfContractorsInCountryReportItemClickedEventRaised, eventArgs: e);
     }
 }

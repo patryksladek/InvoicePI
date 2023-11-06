@@ -38,11 +38,12 @@ namespace InvoicePI.DesktopUI.Views.Modules
             btnEdit = new DevExpress.XtraBars.BarButtonItem();
             btnExportCSV = new DevExpress.XtraBars.BarButtonItem();
             btnExportXML = new DevExpress.XtraBars.BarButtonItem();
-            btnExportTXT = new DevExpress.XtraBars.BarButtonItem();
-            btnExportXLSX = new DevExpress.XtraBars.BarButtonItem();
+            btnGenerate = new DevExpress.XtraBars.BarSubItem();
+            btnGenerateNumberOfContractorsInCountryReport = new DevExpress.XtraBars.BarButtonItem();
             rpHome = new DevExpress.XtraBars.Ribbon.RibbonPage();
             rpgActions = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             rpgExport = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            rpgReports = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             gridControl = new DevExpress.XtraGrid.GridControl();
             customerListDtoBindingSource = new System.Windows.Forms.BindingSource(components);
             gridView = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -63,9 +64,9 @@ namespace InvoicePI.DesktopUI.Views.Modules
             // ribbon
             // 
             ribbon.ExpandCollapseItem.Id = 0;
-            ribbon.Items.AddRange(new DevExpress.XtraBars.BarItem[] { ribbon.ExpandCollapseItem, btnAdd, btnDelete, btnEdit, btnExportCSV, btnExportXML, btnExportTXT, btnExportXLSX });
+            ribbon.Items.AddRange(new DevExpress.XtraBars.BarItem[] { ribbon.ExpandCollapseItem, btnAdd, btnDelete, btnEdit, btnExportCSV, btnExportXML, btnGenerate, btnGenerateNumberOfContractorsInCountryReport });
             ribbon.Location = new System.Drawing.Point(0, 0);
-            ribbon.MaxItemId = 8;
+            ribbon.MaxItemId = 10;
             ribbon.Name = "ribbon";
             ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] { rpHome });
             ribbon.Size = new System.Drawing.Size(535, 158);
@@ -105,7 +106,7 @@ namespace InvoicePI.DesktopUI.Views.Modules
             // btnExportCSV
             // 
             btnExportCSV.Caption = "CSV";
-            btnExportCSV.Hint = "Export records to CSV";
+            btnExportCSV.Hint = "Export to CSV";
             btnExportCSV.Id = 4;
             btnExportCSV.ImageOptions.Image = (System.Drawing.Image)resources.GetObject("btnExportCSV.ImageOptions.Image");
             btnExportCSV.ImageOptions.LargeImage = (System.Drawing.Image)resources.GetObject("btnExportCSV.ImageOptions.LargeImage");
@@ -115,36 +116,35 @@ namespace InvoicePI.DesktopUI.Views.Modules
             // btnExportXML
             // 
             btnExportXML.Caption = "XML";
-            btnExportXML.Hint = "Export records to XML";
+            btnExportXML.Hint = "Export to XML";
             btnExportXML.Id = 5;
             btnExportXML.ImageOptions.Image = (System.Drawing.Image)resources.GetObject("btnExportXML.ImageOptions.Image");
             btnExportXML.ImageOptions.LargeImage = (System.Drawing.Image)resources.GetObject("btnExportXML.ImageOptions.LargeImage");
             btnExportXML.Name = "btnExportXML";
             btnExportXML.ItemClick += btnExportXML_ItemClick;
             // 
-            // btnExportTXT
+            // btnGenerate
             // 
-            btnExportTXT.Caption = "TXT";
-            btnExportTXT.Hint = "Export records to TXT";
-            btnExportTXT.Id = 6;
-            btnExportTXT.ImageOptions.Image = (System.Drawing.Image)resources.GetObject("btnExportTXT.ImageOptions.Image");
-            btnExportTXT.ImageOptions.LargeImage = (System.Drawing.Image)resources.GetObject("btnExportTXT.ImageOptions.LargeImage");
-            btnExportTXT.Name = "btnExportTXT";
-            btnExportTXT.ItemClick += btnExportTXT_ItemClick;
+            btnGenerate.Caption = "Generate";
+            btnGenerate.Hint = "Generate report";
+            btnGenerate.Id = 8;
+            btnGenerate.ImageOptions.Image = (System.Drawing.Image)resources.GetObject("btnGenerate.ImageOptions.Image");
+            btnGenerate.ImageOptions.LargeImage = (System.Drawing.Image)resources.GetObject("btnGenerate.ImageOptions.LargeImage");
+            btnGenerate.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] { new DevExpress.XtraBars.LinkPersistInfo(btnGenerateNumberOfContractorsInCountryReport) });
+            btnGenerate.Name = "btnGenerate";
             // 
-            // btnExportXLSX
+            // btnGenerateNumberOfContractorsInCountryReport
             // 
-            btnExportXLSX.Caption = "XLSX";
-            btnExportXLSX.Hint = "Export records to XLSX";
-            btnExportXLSX.Id = 7;
-            btnExportXLSX.ImageOptions.Image = (System.Drawing.Image)resources.GetObject("btnExportXLS.ImageOptions.Image");
-            btnExportXLSX.ImageOptions.LargeImage = (System.Drawing.Image)resources.GetObject("btnExportXLS.ImageOptions.LargeImage");
-            btnExportXLSX.Name = "btnExportXLSX";
-            btnExportXLSX.ItemClick += btnExportXLSX_ItemClick;
+            btnGenerateNumberOfContractorsInCountryReport.Caption = "Number of contractors in country";
+            btnGenerateNumberOfContractorsInCountryReport.Id = 9;
+            btnGenerateNumberOfContractorsInCountryReport.ImageOptions.Image = (System.Drawing.Image)resources.GetObject("btnGenerateNumberOfContractorsInCountryReport.ImageOptions.Image");
+            btnGenerateNumberOfContractorsInCountryReport.ImageOptions.LargeImage = (System.Drawing.Image)resources.GetObject("btnGenerateNumberOfContractorsInCountryReport.ImageOptions.LargeImage");
+            btnGenerateNumberOfContractorsInCountryReport.Name = "btnGenerateNumberOfContractorsInCountryReport";
+            btnGenerateNumberOfContractorsInCountryReport.ItemClick += btnGenerateNumberOfContractorsInCountryReport_ItemClick;
             // 
             // rpHome
             // 
-            rpHome.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] { rpgActions, rpgExport });
+            rpHome.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] { rpgActions, rpgExport, rpgReports });
             rpHome.Name = "rpHome";
             rpHome.Text = "HOME";
             // 
@@ -160,10 +160,14 @@ namespace InvoicePI.DesktopUI.Views.Modules
             // 
             rpgExport.ItemLinks.Add(btnExportXML);
             rpgExport.ItemLinks.Add(btnExportCSV);
-            rpgExport.ItemLinks.Add(btnExportXLSX);
-            rpgExport.ItemLinks.Add(btnExportTXT);
             rpgExport.Name = "rpgExport";
             rpgExport.Text = "Export";
+            // 
+            // rpgReports
+            // 
+            rpgReports.ItemLinks.Add(btnGenerate);
+            rpgReports.Name = "rpgReports";
+            rpgReports.Text = "Reports";
             // 
             // gridControl
             // 
@@ -320,8 +324,9 @@ namespace InvoicePI.DesktopUI.Views.Modules
         private DevExpress.XtraBars.BarButtonItem btnEdit;
         private DevExpress.XtraBars.BarButtonItem btnExportCSV;
         private DevExpress.XtraBars.BarButtonItem btnExportXML;
-        private DevExpress.XtraBars.BarButtonItem btnExportTXT;
-        private DevExpress.XtraBars.BarButtonItem btnExportXLSX;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup rpgExport;
+        private DevExpress.XtraBars.BarSubItem btnGenerate;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup rpgReports;
+        private DevExpress.XtraBars.BarButtonItem btnGenerateNumberOfContractorsInCountryReport;
     }
 }

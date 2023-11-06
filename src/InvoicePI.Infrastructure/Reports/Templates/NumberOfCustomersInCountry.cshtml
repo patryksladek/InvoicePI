@@ -1,0 +1,106 @@
+﻿@model dynamic
+@using System
+@using System.Linq
+@using System.IO
+@using System.Collections.Generic;
+
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="" utf-8"">
+    <title>Number of customers in country</title>
+    <style type="text/css">
+
+        body {
+            margin: 20mm 20mm 20mm 20mm;
+        }
+
+        .col-6 {
+            width: 50%;
+            float: left;
+        }
+
+        .row {
+            clear: both;
+        }
+
+        .text-right {
+            text-align: right;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .text-left {
+            text-align: left;
+        }
+
+        .pdf-font-16 {
+            font-size: 16px;
+        }
+
+        .pdf-font-11 {
+            font-size: 11px;
+        }
+
+        .pdf-font-12 {
+            font-size: 12px;
+        }
+
+        .pdf-font-bold {
+            font-weight: bold;
+        }
+
+        .border-box {
+            border: 1px solid #000;
+        }
+
+        .table td span {
+            padding: 2px 7px;
+            display: block;
+        }
+
+        .clearfix {
+            clear: both;
+        }
+
+        .table-invoice th, .table-invoice td {
+            padding: 5px;
+        }
+        
+        .table-invoice th:first-child {
+            border-left: 1px solid #000;
+        }
+
+        .table-invoice th:last-child {
+            border-left: 1px solid #000;
+        }
+
+        .table-invoice th {
+            border-top: 1px solid #000;
+            border-bottom: 1px solid #000;
+        }
+    </style>
+</head>
+<body>
+    <table border="0" cellspacing="0" cellpadding="0" class="table table-invoice pdf-font-16" width="100%" border="0" style="margin-top: 40px">
+        <thead class="border-box " style="border: 1px solid #000">
+            <tr>
+                <th class="text-left" scope="col">Country</th>
+                <th class="text-left" scope="col">Number of customers</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (KeyValuePair<string,int> numberOfContractorsInCountry in Model)
+            {
+                <tr>
+                    <td class="text-left">@numberOfContractorsInCountry.Key</td>
+                    <td class="text-left">@numberOfContractorsInCountry.Value</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</body>
+</html>
+

@@ -40,6 +40,8 @@ namespace InvoicePI.DesktopUI.Views.Modules.Customers
         public event EventHandler TeCodeEditValueChangedEventRaised;
         public event EventHandler TeNameEditValueChangedEventRaised;
 
+        public event AsyncEventHandler BtnCustomersInvoicesWithTotalAmountsItemClickEventRaised;
+
         public Func<Task> UpdateCustomerListView;
 
         public CustomerView()
@@ -276,5 +278,9 @@ namespace InvoicePI.DesktopUI.Views.Modules.Customers
 
         private void teName_EditValueChanged(object sender, EventArgs e)
             => RaiseEvent(objectRaisingEvent: sender, eventHandlerRaised: TeNameEditValueChangedEventRaised, eventArgs: e);
+
+        private async void btnCustomersInvoicesWithTotalAmounts_ItemClick(object sender, ItemClickEventArgs e)
+            => await RaiseEventAsync(objectRaisingEvent: sender, eventHandlerRaised: BtnCustomersInvoicesWithTotalAmountsItemClickEventRaised, eventArgs: e);
+
     }
 }
