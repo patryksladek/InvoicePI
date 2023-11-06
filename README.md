@@ -38,7 +38,7 @@ Generate raports using [HiQPdf](https://www.hiqpdf.com).
 HiQPdf Free HTML to PDF Converter for .NET Core offers you a modern, simple, fast, flexible and powerful tool to create complex and stylish PDF documents in .NET Core applications with just a few lines of C# code.
 The Free version allows you to create small PDF documents with up to 3 PDF pages. 
 
-## How to run and configure application
+## How to configure and run application
 1. Run app from Visual Studio, NET CLI or using a file with the .exe extension.
 2. Set connection settings to the database server.
 2. Optionally generate sample data.
