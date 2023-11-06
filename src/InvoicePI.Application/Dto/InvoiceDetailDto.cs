@@ -12,5 +12,5 @@ public class InvoiceDetailDto
     public decimal Vat { get; set; }
     public decimal Gross { get; set; }
     public int CurrencyId { get; set; }
-    public ICollection<InvoiceItemDetailDto> InvoiceItems { get; set; }
+    public IEnumerable<InvoiceItemDetailDto> InvoiceItems { get; set; }
 }

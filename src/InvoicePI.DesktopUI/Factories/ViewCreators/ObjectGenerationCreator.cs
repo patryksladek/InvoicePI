@@ -15,5 +15,4 @@ public class ObjectGenerationCreator : ViewCreatorBase
 
     public override IView GetView()
         => CreateView<IObjectGenerationView, ObjectGenerationPresenter>();
-
 }

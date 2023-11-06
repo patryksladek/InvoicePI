@@ -12,7 +12,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using static InvoicePI.DesktopUI.Events.EventHelper;
 using InvoicePI.DesktopUI.Constatns;
-using DevExpress.XtraGrid.Views.Base;
 
 namespace InvoicePI.DesktopUI.Views.Invoices
 {

@@ -1,6 +1,6 @@
 ﻿using InvoicePI.Application.Dto;
 
-namespace InvoicePI.Infrastructure.DataExport.Adapters.CSV.Invoices;
+namespace InvoicePI.Infrastructure.DataExport.Adapters.Csv.Invoices;
 
 public class Invoice
 {

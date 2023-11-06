@@ -15,5 +15,4 @@ public class MainViewCreator : ViewCreatorBase
 
     public override IView GetView()
         => CreateView<IMainView, MainPresenter>();
-
 }

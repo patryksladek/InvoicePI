@@ -14,5 +14,4 @@ public class ProductsViewCreator : ViewCreatorBase
     }
     public override IView GetView()
         => CreateView<IProductsView, ProductsPresenter>();
-
 }

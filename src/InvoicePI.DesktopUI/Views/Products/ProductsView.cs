@@ -2,7 +2,6 @@
 using DevExpress.XtraBars.Ribbon;
 using InvoicePI.Application.Dto;
 using InvoicePI.DesktopUI.Events;
-using InvoicePI.DesktopUI.Views.Customers;
 using System;
 using System.Collections.Generic;
 

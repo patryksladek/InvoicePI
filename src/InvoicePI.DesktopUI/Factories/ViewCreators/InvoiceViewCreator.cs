@@ -15,5 +15,4 @@ public class InvoiceViewCreator : ViewCreatorBase
     public override IView GetView()
 
         => CreateView<IInvoiceView, InvoicePresenter>();
-
 }

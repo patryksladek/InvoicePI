@@ -1,5 +1,4 @@
-﻿using InvoicePI.Application.Queries.Reports.GenerateNumberOfCustomersInCountry;
-using InvoicePI.Domain.Abstractions;
+﻿using InvoicePI.Domain.Abstractions;
 using InvoicePI.Domain.Enums;
 using MediatR;
 

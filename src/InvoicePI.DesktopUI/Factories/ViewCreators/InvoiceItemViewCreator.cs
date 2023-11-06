@@ -16,5 +16,4 @@ public class InvoiceItemViewCreator : ViewCreatorBase
     public override IView GetView()
 
         => CreateView<IInvoiceItemView, InvoiceItemPresenter>();
-
 }

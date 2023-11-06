@@ -14,12 +14,9 @@ using InvoicePI.Application.Dto;
 using DevExpress.XtraEditors;
 using InvoicePI.Application.Commands.Customers.RemoveCustomer;
 using InvoicePI.DesktopUI.Properties;
-using InvoicePI.Domain.Entities;
 using InvoicePI.DesktopUI.Events;
 using InvoicePI.Infrastructure.DataExport.Strategies;
 using InvoicePI.Infrastructure.DataExport;
-using System.Collections.Generic;
-using InvoicePI.DesktopUI.Settings;
 using InvoicePI.Application.Queries.Reports.GenerateNumberOfCustomersInCountry;
 using System.IO;
 

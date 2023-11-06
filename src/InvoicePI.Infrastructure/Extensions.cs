@@ -51,7 +51,7 @@ public static class Extensions
         string password = configuration[ConnectionStringConstatns.Password];
 
         if (string.IsNullOrEmpty(server) && string.IsNullOrEmpty(database))
-            return $"Server=.;Initial Catalog=InvoiceDB;Integrated Security=True;TrustServerCertificate=True";
+            return string.Empty;
 
         if (integratedLogin)
             return $"Server={server};Initial Catalog={database};Integrated Security=True;TrustServerCertificate=True";

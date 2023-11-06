@@ -2,6 +2,7 @@
 using InvoicePI.Domain.Abstractions;
 using InvoicePI.Domain.Enums;
 using MediatR;
+using System.Security.Cryptography.X509Certificates;
 
 namespace InvoicePI.Application.Queries.Invoices.GetProductById;
 
@@ -29,26 +30,21 @@ public class GetInvoiceByIdQueryHandler : IRequestHandler<GetInvoiceByIdQuery, I
         invoiceDto.Vat = invoice.Vat;
         invoiceDto.Gross = invoice.Gross;
         invoiceDto.CurrencyId = invoice.CurrencyId;
-        invoiceDto.InvoiceItems = new List<InvoiceItemDetailDto>();
-
-        foreach (var invoiceItem in invoice.InvoiceItems)
+        invoiceDto.InvoiceItems = invoice.InvoiceItems.Select(x => new InvoiceItemDetailDto()
         {
-            invoiceDto.InvoiceItems.Add(new InvoiceItemDetailDto()
-            {
-                Id = invoiceItem.Id,
-                OrdinalNumber = invoiceItem.OrdinalNumber,
-                ProductId = invoiceItem.ProductId,
-                Product = invoiceItem.Product.Name,
-                Quantity = invoiceItem.Quantity,
-                Price = invoiceItem.Price,
-                Net = invoiceItem.Net,
-                Gross = invoiceItem.Gross,
-                CurrencyId = invoiceItem.CurrencyId,
-                Currency = invoiceItem.Currency.Symbol,
-                VatRateId = invoiceItem.VatRateId,
-                VatRate = invoiceItem.VatRate.Symbol,
-            });
-        }
+            Id = x.Id,
+            OrdinalNumber = x.OrdinalNumber,
+            ProductId = x.ProductId,
+            Product = x.Product.Name,
+            Quantity = x.Quantity,
+            Price = x.Price,
+            Net = x.Net,
+            Gross = x.Gross,
+            CurrencyId = x.CurrencyId,
+            Currency = x.Currency.Symbol,
+            VatRateId = x.VatRateId,
+            VatRate = x.VatRate.Symbol,
+        });
 
         return invoiceDto;
     }

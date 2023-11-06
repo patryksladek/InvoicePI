@@ -1,7 +1,4 @@
-﻿using InvoicePI.Domain.Entities.Customers;
-using System.Numerics;
-
-namespace InvoicePI.Application.Dto;
+﻿namespace InvoicePI.Application.Dto;
 
 public class ProductDto
 {
@@ -11,8 +8,4 @@ public class ProductDto
     public string Barcode { get; set; }
     public decimal Price { get; set; }
     public string Currency { get; set; }
-    public override string ToString()
-    {
-        return $"{Id} | {Name} | {Code} | {Barcode} | {Price} | {Currency}";
-    }
 }

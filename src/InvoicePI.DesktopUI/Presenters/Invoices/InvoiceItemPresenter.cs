@@ -1,7 +1,6 @@
 ﻿using DevExpress.XtraEditors;
 using InvoicePI.Application.Dto;
 using InvoicePI.Application.Queries.Currencies.ConvertCurrency;
-using InvoicePI.Application.Queries.InvoiceItems.GetInvoiceItemById;
 using InvoicePI.Application.Queries.Products.GetProductById;
 using InvoicePI.Application.Queries.Products.GetProducts;
 using InvoicePI.Application.Queries.VatRates.GetVatRates;
@@ -11,7 +10,6 @@ using InvoicePI.DesktopUI.Factories.Abstractions;
 using InvoicePI.DesktopUI.Presenters.Abstractions;
 using InvoicePI.DesktopUI.Properties;
 using InvoicePI.DesktopUI.Views.Invoices;
-using InvoicePI.Domain.Entities.Invoices;
 using MediatR;
 using System;
 using System.Linq;

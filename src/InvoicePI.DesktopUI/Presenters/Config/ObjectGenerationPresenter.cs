@@ -1,20 +1,9 @@
-﻿using DevExpress.ClipboardSource.SpreadsheetML;
-using DevExpress.Mvvm.POCO;
-using DevExpress.XtraEditors;
-using DevExpress.XtraEditors.DXErrorProvider;
-using InvoicePI.DesktopUI.Constatns;
-using InvoicePI.DesktopUI.Factories.Abstractions;
+﻿using InvoicePI.DesktopUI.Factories.Abstractions;
 using InvoicePI.DesktopUI.Presenters.Abstractions;
 using InvoicePI.DesktopUI.Properties;
-using InvoicePI.DesktopUI.Settings;
 using InvoicePI.DesktopUI.Views.Config;
-using InvoicePI.Infrastructure.Context;
 using MediatR;
-using Microsoft.Data.SqlClient;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
 using System;
-using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace InvoicePI.DesktopUI.Presenters.Config;

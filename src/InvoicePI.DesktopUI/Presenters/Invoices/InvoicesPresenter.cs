@@ -16,11 +16,10 @@ using InvoicePI.Application.Commands.Invoices.RemoveInvoice;
 using InvoicePI.Infrastructure.DataExport.Strategies;
 using InvoicePI.Infrastructure.DataExport;
 using InvoicePI.Infrastructure.DataExport.Adapters.Xml.Invoices;
-using InvoicePI.Infrastructure.DataExport.Adapters.CSV.Invoices;
 using InvoicePI.DesktopUI.Events;
-using InvoicePI.Application.Queries.Reports.GenerateNumberOfCustomersInCountry;
 using InvoicePI.Application.Queries.Reports.InvoiceMonthlySummaries;
 using System.IO;
+using InvoicePI.Infrastructure.DataExport.Adapters.Csv.Invoices;
 
 namespace InvoicePI.DesktopUI.Presenters.Invoices;
 

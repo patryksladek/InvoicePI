@@ -1,10 +1,8 @@
 ﻿using InvoicePI.DesktopUI.Enums;
 using InvoicePI.DesktopUI.Factories.Abstractions;
 using InvoicePI.DesktopUI.Factories.ViewCreators;
-using InvoicePI.DesktopUI.Settings;
 using InvoicePI.DesktopUI.Views.Abstractions;
 using MediatR;
-using Microsoft.Extensions.DependencyInjection;
 using System;
 
 namespace InvoicePI.DesktopUI.Factories;

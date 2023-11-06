@@ -1,6 +1,5 @@
 ﻿using InvoicePI.DesktopUI.Factories.Abstractions;
 using InvoicePI.DesktopUI.Presenters.Config;
-using InvoicePI.DesktopUI.Settings;
 using InvoicePI.DesktopUI.Views.Abstractions;
 using InvoicePI.DesktopUI.Views.Config;
 using MediatR;
@@ -16,5 +15,4 @@ public class ConnectionConfigCreator : ViewCreatorBase
 
     public override IView GetView()
         => CreateView<IConnectionConfigView, ConnectionConfigPresenter>();
-
 }

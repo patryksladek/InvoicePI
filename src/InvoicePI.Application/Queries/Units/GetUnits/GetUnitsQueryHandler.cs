@@ -1,5 +1,4 @@
 ﻿using InvoicePI.Application.Dto;
-using InvoicePI.Application.Queries.Countries.GetCountries;
 using InvoicePI.Domain.Abstractions;
 using MediatR;
 using Microsoft.EntityFrameworkCore;

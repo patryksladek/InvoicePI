@@ -1,6 +1,5 @@
 ﻿using InvoicePI.DesktopUI.Factories.Abstractions;
 using InvoicePI.DesktopUI.Presenters.Customers;
-using InvoicePI.DesktopUI.Settings;
 using InvoicePI.DesktopUI.Views.Abstractions;
 using InvoicePI.DesktopUI.Views.Customers;
 using MediatR;
@@ -16,5 +15,4 @@ public class CustomerViewCreator : ViewCreatorBase
 
     public override IView GetView()
         => CreateView<ICustomerView, CustomerPresenter>();
-
 }

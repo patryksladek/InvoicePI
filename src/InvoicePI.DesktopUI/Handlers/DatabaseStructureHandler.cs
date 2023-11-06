@@ -1,10 +1,6 @@
 ﻿using DevExpress.Mvvm.POCO;
-using DevExpress.Xpo.Logger.Transport;
 using InvoicePI.DesktopUI.Handlers.Abstractions;
-using InvoicePI.DesktopUI.Handlers.Enums;
-using InvoicePI.DesktopUI.Settings;
 using InvoicePI.Infrastructure.Database;
-using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -47,7 +43,6 @@ public class DatabaseStructureHandler : IHandler
             _nextHandler.HandleRequest();
         }
     }
-
 
     private bool CanHandle()
         => _databaseInitializer.AnyMigrationsPending();

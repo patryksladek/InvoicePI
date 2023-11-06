@@ -2,7 +2,6 @@
 using InvoicePI.DesktopUI.Events;
 using InvoicePI.DesktopUI.Views.Abstractions;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 
 namespace InvoicePI.DesktopUI.Views.Invoices;

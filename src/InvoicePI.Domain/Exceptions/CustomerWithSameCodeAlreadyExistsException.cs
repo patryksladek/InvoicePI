@@ -1,6 +1,4 @@
-﻿using System.Xml.Linq;
-
-namespace InvoicePI.Domain.Exceptions;
+﻿namespace InvoicePI.Domain.Exceptions;
 
 public class CustomerWithSameCodeAlreadyExistsException : Exception
 {

@@ -1,5 +1,4 @@
-﻿using InvoicePI.Domain.Entities.Customers;
-using InvoicePI.Domain.Entities.Products;
+﻿using InvoicePI.Domain.Entities.Products;
 
 namespace InvoicePI.Domain.Abstractions;
 

@@ -1,9 +1,7 @@
 ﻿using InvoicePI.Domain.Abstractions;
 using InvoicePI.Domain.Entities.Customers;
 using InvoicePI.Infrastructure.Context;
-using MediatR;
 using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
 namespace InvoicePI.Infrastructure.Repositories;

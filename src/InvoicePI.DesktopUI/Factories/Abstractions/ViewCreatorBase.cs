@@ -3,7 +3,6 @@ using MediatR;
 using System;
 using Microsoft.Extensions.DependencyInjection;
 using InvoicePI.DesktopUI.Views.Abstractions;
-using InvoicePI.DesktopUI.Settings;
 
 namespace InvoicePI.DesktopUI.Factories.Abstractions;
 

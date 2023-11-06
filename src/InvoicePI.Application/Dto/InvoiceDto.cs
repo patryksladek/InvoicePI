@@ -1,8 +1,4 @@
-﻿using InvoicePI.Domain.Entities.Customers;
-using System.Numerics;
-using System.Xml.Linq;
-
-namespace InvoicePI.Application.Dto;
+﻿namespace InvoicePI.Application.Dto;
 
 public class InvoiceDto
 {
@@ -16,9 +12,4 @@ public class InvoiceDto
     public decimal Gross { get; set; }
     public string Currency { get; set; }
     public virtual IEnumerable<InvoiceItemDto> InvoiceItems { get; set; }
-
-    public override string ToString()
-    {
-        return $"{Id} | {IsApproved} | {Number} | {Date} | {Customer} | {Net} | {Vat} | {Gross} | {Currency}";
-    }
 }

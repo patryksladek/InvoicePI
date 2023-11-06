@@ -5,16 +5,12 @@ using System;
 using InvoicePI.Infrastructure;
 using InvoicePI.Application;
 using InvoicePI.DesktopUI.Handlers.Abstractions;
-using InvoicePI.DesktopUI.Handlers.Enums;
 using WinForms = System.Windows.Forms;
 using InvoicePI.DesktopUI.Handlers;
 using Microsoft.Extensions.Configuration;
 using System.IO;
 using Microsoft.Extensions.DependencyInjection;
 using InvoicePI.DesktopUI.Settings;
-using InvoicePI.Infrastructure.Context;
-using Microsoft.EntityFrameworkCore;
-using InvoicePI.DesktopUI.Factories.Abstractions;
 
 namespace InvoicePI.DesktopUI
 {

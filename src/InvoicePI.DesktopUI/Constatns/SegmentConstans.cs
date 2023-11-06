@@ -1,8 +1,4 @@
-﻿using Azure;
-using System;
-
-namespace InvoicePI.DesktopUI.Constatns;
-
+﻿namespace InvoicePI.DesktopUI.Constatns;
 
 public static class SegmentConstans
 {

@@ -1,7 +1,5 @@
 ﻿using InvoicePI.Application.Dto;
-using InvoicePI.Application.Queries.Units.GetUnits;
 using InvoicePI.Domain.Abstractions;
-using InvoicePI.Domain.Entities.Definitions;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 

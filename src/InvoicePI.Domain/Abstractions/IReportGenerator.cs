@@ -1,5 +1,4 @@
 ﻿using InvoicePI.Domain.Enums;
-using System.Dynamic;
 
 namespace InvoicePI.Domain.Abstractions;
 

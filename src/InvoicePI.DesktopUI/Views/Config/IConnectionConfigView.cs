@@ -1,5 +1,4 @@
-﻿using InvoicePI.DesktopUI.Events;
-using InvoicePI.DesktopUI.Views.Abstractions;
+﻿using InvoicePI.DesktopUI.Views.Abstractions;
 using System;
 using System.Collections;
 

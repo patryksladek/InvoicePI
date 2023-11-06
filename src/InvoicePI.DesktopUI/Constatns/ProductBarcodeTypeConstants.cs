@@ -1,6 +1,4 @@
-﻿using InvoicePI.Domain.Entities.Products;
-using InvoicePI.Domain.Enums;
-using System;
+﻿using System;
 
 namespace InvoicePI.DesktopUI.Constatns;
 

@@ -3,7 +3,6 @@ using InvoicePI.Domain.Abstractions;
 using InvoicePI.Domain.Enums;
 using InvoicePI.Infrastructure.Reports.Helpers;
 using RazorLight;
-using System.Dynamic;
 using System.Reflection;
 
 namespace InvoicePI.Infrastructure.Reports;
