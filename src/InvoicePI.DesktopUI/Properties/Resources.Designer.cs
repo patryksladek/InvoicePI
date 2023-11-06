@@ -349,6 +349,24 @@ namespace InvoicePI.DesktopUI.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Unexpected error.
+        /// </summary>
+        internal static string UnexpectedErrorCaption {
+            get {
+                return ResourceManager.GetString("UnexpectedErrorCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An unexpected error occurred. Contact your system administrator..
+        /// </summary>
+        internal static string UnexpectedErrorText {
+            get {
+                return ResourceManager.GetString("UnexpectedErrorText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap user_32 {

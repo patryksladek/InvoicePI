@@ -7,9 +7,11 @@ using InvoicePI.Infrastructure.DataGeneration;
 using InvoicePI.Infrastructure.Reports;
 using InvoicePI.Infrastructure.Repositories;
 using InvoicePI.Infrastructure.Security;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using NLog.Web;
 
 namespace InvoicePI.Infrastructure;
 
@@ -41,7 +43,6 @@ public static class Extensions
 
         return services;
     }
-
 
     public static string GetConnectionString(IConfiguration configuration)
     {

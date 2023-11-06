@@ -1,15 +1,21 @@
 ﻿using DevExpress.Mvvm.POCO;
+using DevExpress.XtraEditors;
 using InvoicePI.DesktopUI.Handlers.Abstractions;
+using InvoicePI.DesktopUI.Properties;
 using InvoicePI.Infrastructure.Database;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using NLog;
 using System;
+using System.Windows.Forms;
 
 namespace InvoicePI.DesktopUI.Handlers;
 
 public class DatabaseStructureHandler : IHandler
 {
+    private static readonly ILogger _logger = LogManager.GetCurrentClassLogger();
+
     public IHost Host { get; }
     public IConfiguration Configuration { get; }
 
@@ -34,7 +40,15 @@ public class DatabaseStructureHandler : IHandler
     {
         if (CanHandle())
         {
-            _databaseInitializer.MigrateDatabase();
+            try
+            {
+                _databaseInitializer.MigrateDatabase();
+            }
+            catch (Exception ex)
+            {
+                _logger.Error($"Message:{ex.Message}, StackTrace:{ex.StackTrace}");
+                XtraMessageBox.Show(Resources.UnexpectedErrorText, Resources.UnexpectedErrorCaption, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
             _nextHandler.HandleRequest();
         }

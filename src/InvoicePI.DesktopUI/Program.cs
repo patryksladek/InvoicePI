@@ -11,6 +11,8 @@ using Microsoft.Extensions.Configuration;
 using System.IO;
 using Microsoft.Extensions.DependencyInjection;
 using InvoicePI.DesktopUI.Settings;
+using NLog.Config;
+using NLog;
 
 namespace InvoicePI.DesktopUI
 {
@@ -25,9 +27,12 @@ namespace InvoicePI.DesktopUI
             WinForms.Application.EnableVisualStyles();
             WinForms.Application.SetCompatibleTextRenderingDefault(false);
 
+            LogManager.Configuration = new XmlLoggingConfiguration("NLog.config");
+            ILogger logger = LogManager.GetCurrentClassLogger();
+
             var builder = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("appsettings.json"); 
+                .AddJsonFile("appsettings.json");
 
             IConfiguration configuration = builder.Build();
 
@@ -44,6 +49,7 @@ namespace InvoicePI.DesktopUI
                   services.AddInfrastructure(configuration);
               })
               .Build();
+
 
             IHandler authenticationHandler = new AuthenticationHandler(host, configuration);
             IHandler databaseStructureHandler = new DatabaseStructureHandler(host, configuration);
