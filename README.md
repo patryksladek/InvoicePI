@@ -27,16 +27,18 @@ Desktop application using [DevExpress WinForms UI Controls](https://www.devexpre
 
 Data validation using [FluentValidation](https://github.com/JeremySkinner/FluentValidation).
 
-## Data Export
+## Export
 
 Data export (list) to two formats:
 XML using [XmlSerializer](https://learn.microsoft.com/pl-pl/dotnet/api/system.xml.serialization.xmlserializer?view=net-7.0) and CSV using [CsvHelper](https://joshclose.github.io/CsvHelper/).
 
+## Data Generation
+
+Sample data generation using [Bogus](https://github.com/bchavez/Bogus).
+
 ## Reports
 
-Generate raports using [HiQPdf](https://www.hiqpdf.com). 
-HiQPdf Free HTML to PDF Converter for .NET Core offers you a modern, simple, fast, flexible and powerful tool to create complex and stylish PDF documents in .NET Core applications with just a few lines of C# code.
-The Free version allows you to create small PDF documents with up to 3 PDF pages. 
+Generate raports using [HiQPdf](https://www.hiqpdf.com). The Free version allows to create small PDF documents with up to 3 PDF pages. 
 
 ## How to configure and run application
 1. Run app from Visual Studio, NET CLI or using a file with the .exe extension.
