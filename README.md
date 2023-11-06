@@ -27,6 +27,10 @@ Desktop application using [DevExpress WinForms UI Controls](https://www.devexpre
 
 Data validation using [FluentValidation](https://github.com/JeremySkinner/FluentValidation).
 
+## Logging
+
+Log messages using [Nlog](https://nlog-project.org/).
+
 ## Export
 
 Data export (list) to two formats:
