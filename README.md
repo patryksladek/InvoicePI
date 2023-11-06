@@ -1,11 +1,11 @@
 # InvoicePI
-Sample .NET Core WinForms application implemented with basic [CQRS](https://docs.microsoft.com/en-us/azure/architecture/guide/architecture-styles/cqrs) approach and [MVP (Model-View-Presenter) Passive-View](https://martinfowler.com/eaaDev/PassiveScreen.html) pattern.
+Sample .NET WinForms application implemented with basic [CQRS](https://docs.microsoft.com/en-us/azure/architecture/guide/architecture-styles/cqrs) approach and [MVP (Model-View-Presenter) Passive-View](https://martinfowler.com/eaaDev/PassiveScreen.html) pattern.
 
 ## Description
-At the beginning, the program asks you to provide the database server on which it will work and the credentials with which it will be able to authenticate.
-The program will then create the required structure in the database for its later work and will automatically generate the number provided by the user objects.
-The program allows you to view, create, modify and export data about customers, products and invoices.
-The program also allows you to export data to XML, CSV, XLSX and TXT formats.
+Initially, the program prompts you to input the database server where it will operate and the authentication credentials for verification. 
+Subsequently, it proceeds to set up the essential database structure needed for its subsequent operations and automatically generates objects based on the user's specified quantity.
+The program boasts a wide range of features, allowing you to view, create, edit, and menage customer, product, and invoice data. 
+Furthermore, it provides the capability to export data in formats such as XML and CSV, and it also provides the capability to generate reports in PDF format.
 
 ## Architecture [Clean Architecture](https://jasontaylor.dev/clean-architecture-getting-started/)
 
@@ -13,9 +13,7 @@ The program also allows you to export data to XML, CSV, XLSX and TXT formats.
 
 ## CQRS
 
-Read Model/Write Model - implementing the [Repository and Unit of Work](https://learn.microsoft.com/en-us/aspnet/mvc/overview/older-versions/getting-started-with-ef-5-using-mvc-4/implementing-the-repository-and-unit-of-work-patterns-in-an-asp-net-mvc-application) patterns (using Entity Framework Core).
-
-Commands/Queries handling using [MediatR](https://github.com/jbogard/MediatR) library.
+Read Model/Write Model implementing the [Repository and Unit of Work](https://learn.microsoft.com/en-us/aspnet/mvc/overview/older-versions/getting-started-with-ef-5-using-mvc-4/implementing-the-repository-and-unit-of-work-patterns-in-an-asp-net-mvc-application) patterns (using Entity Framework Core). Commands/Queries handling using [MediatR](https://github.com/jbogard/MediatR) library.
 
 ## Database Diagram
 
@@ -23,21 +21,27 @@ Commands/Queries handling using [MediatR](https://github.com/jbogard/MediatR) li
 
 ## User Interface
 
-Desktop application using [DevExpress WinForms UI Controls](https://www.devexpress.com/products/net/controls/winforms/) v23.1 
+Desktop application using [DevExpress WinForms UI Controls](https://www.devexpress.com/products/net/controls/winforms/) v23.1.
 
 ## Validation
 
-Data validation using [FluentValidation](https://github.com/JeremySkinner/FluentValidation)
+Data validation using [FluentValidation](https://github.com/JeremySkinner/FluentValidation).
 
-## Data Export
+## Export
 
-CSV using [CsvHelper](https://joshclose.github.io/CsvHelper/).
-XLSX using [OfficeOpenXml](https://epplussoftware.com/docs/5.8/api/OfficeOpenXml.html).
-XML using [XmlSerializer](https://learn.microsoft.com/pl-pl/dotnet/api/system.xml.serialization.xmlserializer?view=net-7.0). 
-TXT using [StreamWriter](https://learn.microsoft.com/pl-pl/dotnet/api/system.io.streamwriter?view=net-7.0).
+Data export (list) to two formats:
+XML using [XmlSerializer](https://learn.microsoft.com/pl-pl/dotnet/api/system.xml.serialization.xmlserializer?view=net-7.0) and CSV using [CsvHelper](https://joshclose.github.io/CsvHelper/).
 
-## How to run application
-1. Run from Visual Studio or using a file with the .exe extension.
+## Data Generation
+
+Sample data generation using [Bogus](https://github.com/bchavez/Bogus).
+
+## Reports
+
+Generate raports using [HiQPdf](https://www.hiqpdf.com). The Free version allows to create small PDF documents with up to 3 PDF pages. 
+
+## How to configure and run application
+1. Run app from Visual Studio, NET CLI or using a file with the .exe extension.
 2. Set connection settings to the database server.
 2. Optionally generate sample data.
-3. Run!
+3. Get started with the program!
