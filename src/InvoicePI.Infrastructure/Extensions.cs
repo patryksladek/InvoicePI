@@ -6,6 +6,7 @@ using InvoicePI.Infrastructure.Database;
 using InvoicePI.Infrastructure.DataGeneration;
 using InvoicePI.Infrastructure.Reports;
 using InvoicePI.Infrastructure.Repositories;
+using InvoicePI.Infrastructure.Security;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -48,7 +49,7 @@ public static class Extensions
         string database = configuration[ConnectionStringConstatns.Database];
         bool integratedLogin = bool.Parse(configuration[ConnectionStringConstatns.IntegratedLogin]);
         string user = configuration[ConnectionStringConstatns.User];
-        string password = configuration[ConnectionStringConstatns.Password];
+        string password = PasswordEncryptor.DecryptPassword(configuration[ConnectionStringConstatns.Password]);
 
         if (string.IsNullOrEmpty(server) && string.IsNullOrEmpty(database))
             return string.Empty;
