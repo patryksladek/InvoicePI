@@ -41,7 +41,7 @@ Sample data generation using [Bogus](https://github.com/bchavez/Bogus).
 Generate raports using [HiQPdf](https://www.hiqpdf.com). The Free version allows to create small PDF documents with up to 3 PDF pages. 
 
 ## How to configure and run application
-1. Run app from Visual Studio, NET CLI or using a file with the .exe extension.
+1. Run app from Visual Studio or .NET CLI (dotnet build, dotnet run).
 2. Set connection settings to the database server.
 2. Optionally generate sample data.
 3. Get started with the program!
