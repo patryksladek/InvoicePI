@@ -276,6 +276,12 @@
   <metadata name="currencyDtoBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>147, 9</value>
   </metadata>
+  <metadata name="customerDtoBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>346, 15</value>
+  </metadata>
+  <metadata name="invoiceItemDetailDtoBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>547, 15</value>
+  </metadata>
   <data name="btnRemoveItem.ImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAFp0RVh0VGl0
@@ -392,10 +398,4 @@
         AABJRU5ErkJggg==
 </value>
   </data>
-  <metadata name="invoiceItemDetailDtoBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>547, 15</value>
-  </metadata>
-  <metadata name="customerDtoBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>346, 15</value>
-  </metadata>
 </root>

@@ -136,7 +136,7 @@ namespace InvoicePI.DesktopUI.Views.Invoices
         }
 
         public bool IsSavable
-        { 
+        {
             set { btnOK.Enabled = value; }
         }
 

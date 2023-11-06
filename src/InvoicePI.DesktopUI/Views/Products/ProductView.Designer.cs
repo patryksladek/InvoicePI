@@ -52,23 +52,23 @@
             cbeBarcodeType = new DevExpress.XtraEditors.ComboBoxEdit();
             glueVatRate = new DevExpress.XtraEditors.GridLookUpEdit();
             vatRateDtoBindingSource = new System.Windows.Forms.BindingSource(components);
-            gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            gvVatRate = new DevExpress.XtraGrid.Views.Grid.GridView();
+            colVatRateSymbol = new DevExpress.XtraGrid.Columns.GridColumn();
             glueUnit = new DevExpress.XtraEditors.GridLookUpEdit();
             unitDtoBindingSource = new System.Windows.Forms.BindingSource(components);
             gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
             gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
             glueCurrency = new DevExpress.XtraEditors.GridLookUpEdit();
-            gridView3 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
-            labelControl2 = new DevExpress.XtraEditors.LabelControl();
-            labelControl3 = new DevExpress.XtraEditors.LabelControl();
-            labelControl5 = new DevExpress.XtraEditors.LabelControl();
-            labelControl6 = new DevExpress.XtraEditors.LabelControl();
-            labelControl7 = new DevExpress.XtraEditors.LabelControl();
+            currencyDtoBindingSource = new System.Windows.Forms.BindingSource(components);
+            gvCurrency = new DevExpress.XtraGrid.Views.Grid.GridView();
+            colCurrencySymbol = new DevExpress.XtraGrid.Columns.GridColumn();
+            lblType = new DevExpress.XtraEditors.LabelControl();
+            lblVatRate = new DevExpress.XtraEditors.LabelControl();
+            lblPrice = new DevExpress.XtraEditors.LabelControl();
+            lblUnit = new DevExpress.XtraEditors.LabelControl();
+            lblPriceRequired = new DevExpress.XtraEditors.LabelControl();
             tePrice = new DevExpress.XtraEditors.SpinEdit();
             lblCurrency = new DevExpress.XtraEditors.LabelControl();
-            currencyDtoBindingSource = new System.Windows.Forms.BindingSource(components);
             ((System.ComponentModel.ISupportInitialize)ribbon).BeginInit();
             ((System.ComponentModel.ISupportInitialize)teCode.Properties).BeginInit();
             ((System.ComponentModel.ISupportInitialize)teName.Properties).BeginInit();
@@ -78,14 +78,14 @@
             ((System.ComponentModel.ISupportInitialize)cbeBarcodeType.Properties).BeginInit();
             ((System.ComponentModel.ISupportInitialize)glueVatRate.Properties).BeginInit();
             ((System.ComponentModel.ISupportInitialize)vatRateDtoBindingSource).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)gridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)gvVatRate).BeginInit();
             ((System.ComponentModel.ISupportInitialize)glueUnit.Properties).BeginInit();
             ((System.ComponentModel.ISupportInitialize)unitDtoBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)gridView2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)glueCurrency.Properties).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)gridView3).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)tePrice.Properties).BeginInit();
             ((System.ComponentModel.ISupportInitialize)currencyDtoBindingSource).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)gvCurrency).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)tePrice.Properties).BeginInit();
             SuspendLayout();
             // 
             // ribbon
@@ -283,7 +283,7 @@
             glueVatRate.Properties.DataSource = vatRateDtoBindingSource;
             glueVatRate.Properties.DisplayMember = "Symbol";
             glueVatRate.Properties.NullText = "";
-            glueVatRate.Properties.PopupView = gridView1;
+            glueVatRate.Properties.PopupView = gvVatRate;
             glueVatRate.Properties.ValueMember = "Id";
             glueVatRate.Size = new System.Drawing.Size(98, 20);
             glueVatRate.TabIndex = 6;
@@ -292,24 +292,24 @@
             // 
             vatRateDtoBindingSource.DataSource = typeof(Application.Dto.VatRateDto);
             // 
-            // gridView1
+            // gvVatRate
             // 
-            gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] { gridColumn1 });
-            gridView1.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
-            gridView1.Name = "gridView1";
-            gridView1.OptionsBehavior.Editable = false;
-            gridView1.OptionsBehavior.ReadOnly = true;
-            gridView1.OptionsSelection.EnableAppearanceFocusedCell = false;
-            gridView1.OptionsView.ShowGroupPanel = false;
-            gridView1.OptionsView.ShowIndicator = false;
+            gvVatRate.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] { colVatRateSymbol });
+            gvVatRate.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            gvVatRate.Name = "gvVatRate";
+            gvVatRate.OptionsBehavior.Editable = false;
+            gvVatRate.OptionsBehavior.ReadOnly = true;
+            gvVatRate.OptionsSelection.EnableAppearanceFocusedCell = false;
+            gvVatRate.OptionsView.ShowGroupPanel = false;
+            gvVatRate.OptionsView.ShowIndicator = false;
             // 
-            // gridColumn1
+            // colVatRateSymbol
             // 
-            gridColumn1.Caption = "SYMBOL";
-            gridColumn1.FieldName = "Symbol";
-            gridColumn1.Name = "gridColumn1";
-            gridColumn1.Visible = true;
-            gridColumn1.VisibleIndex = 0;
+            colVatRateSymbol.Caption = "SYMBOL";
+            colVatRateSymbol.FieldName = "Symbol";
+            colVatRateSymbol.Name = "colVatRateSymbol";
+            colVatRateSymbol.Visible = true;
+            colVatRateSymbol.VisibleIndex = 0;
             // 
             // glueUnit
             // 
@@ -359,76 +359,80 @@
             glueCurrency.Properties.DataSource = currencyDtoBindingSource;
             glueCurrency.Properties.DisplayMember = "Symbol";
             glueCurrency.Properties.NullText = "";
-            glueCurrency.Properties.PopupView = gridView3;
+            glueCurrency.Properties.PopupView = gvCurrency;
             glueCurrency.Properties.ValueMember = "Id";
             glueCurrency.Size = new System.Drawing.Size(98, 20);
             glueCurrency.TabIndex = 69;
             // 
-            // gridView3
+            // currencyDtoBindingSource
             // 
-            gridView3.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] { gridColumn2 });
-            gridView3.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
-            gridView3.Name = "gridView3";
-            gridView3.OptionsBehavior.Editable = false;
-            gridView3.OptionsBehavior.ReadOnly = true;
-            gridView3.OptionsSelection.EnableAppearanceFocusedCell = false;
-            gridView3.OptionsView.ShowGroupPanel = false;
-            gridView3.OptionsView.ShowIndicator = false;
+            currencyDtoBindingSource.DataSource = typeof(Application.Dto.CurrencyDto);
             // 
-            // gridColumn2
+            // gvCurrency
             // 
-            gridColumn2.Caption = "SYMBOL";
-            gridColumn2.FieldName = "Symbol";
-            gridColumn2.Name = "gridColumn2";
-            gridColumn2.Visible = true;
-            gridColumn2.VisibleIndex = 0;
+            gvCurrency.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] { colCurrencySymbol });
+            gvCurrency.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            gvCurrency.Name = "gvCurrency";
+            gvCurrency.OptionsBehavior.Editable = false;
+            gvCurrency.OptionsBehavior.ReadOnly = true;
+            gvCurrency.OptionsSelection.EnableAppearanceFocusedCell = false;
+            gvCurrency.OptionsView.ShowGroupPanel = false;
+            gvCurrency.OptionsView.ShowIndicator = false;
             // 
-            // labelControl2
+            // colCurrencySymbol
             // 
-            labelControl2.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left;
-            labelControl2.Location = new System.Drawing.Point(390, 167);
-            labelControl2.Name = "labelControl2";
-            labelControl2.Size = new System.Drawing.Size(24, 13);
-            labelControl2.TabIndex = 53;
-            labelControl2.Text = "Type";
+            colCurrencySymbol.Caption = "SYMBOL";
+            colCurrencySymbol.FieldName = "Symbol";
+            colCurrencySymbol.Name = "colCurrencySymbol";
+            colCurrencySymbol.Visible = true;
+            colCurrencySymbol.VisibleIndex = 0;
             // 
-            // labelControl3
+            // lblType
             // 
-            labelControl3.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
-            labelControl3.Location = new System.Drawing.Point(286, 270);
-            labelControl3.Name = "labelControl3";
-            labelControl3.Size = new System.Drawing.Size(42, 13);
-            labelControl3.TabIndex = 59;
-            labelControl3.Text = "VAT rate";
+            lblType.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left;
+            lblType.Location = new System.Drawing.Point(390, 167);
+            lblType.Name = "lblType";
+            lblType.Size = new System.Drawing.Size(24, 13);
+            lblType.TabIndex = 53;
+            lblType.Text = "Type";
             // 
-            // labelControl5
+            // lblVatRate
             // 
-            labelControl5.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
-            labelControl5.Location = new System.Drawing.Point(43, 244);
-            labelControl5.Name = "labelControl5";
-            labelControl5.Size = new System.Drawing.Size(23, 13);
-            labelControl5.TabIndex = 64;
-            labelControl5.Text = "Price";
+            lblVatRate.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            lblVatRate.Location = new System.Drawing.Point(286, 270);
+            lblVatRate.Name = "lblVatRate";
+            lblVatRate.Size = new System.Drawing.Size(42, 13);
+            lblVatRate.TabIndex = 59;
+            lblVatRate.Text = "VAT rate";
             // 
-            // labelControl6
+            // lblPrice
             // 
-            labelControl6.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
-            labelControl6.Location = new System.Drawing.Point(43, 270);
-            labelControl6.Name = "labelControl6";
-            labelControl6.Size = new System.Drawing.Size(19, 13);
-            labelControl6.TabIndex = 66;
-            labelControl6.Text = "Unit";
+            lblPrice.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            lblPrice.Location = new System.Drawing.Point(43, 244);
+            lblPrice.Name = "lblPrice";
+            lblPrice.Size = new System.Drawing.Size(23, 13);
+            lblPrice.TabIndex = 64;
+            lblPrice.Text = "Price";
             // 
-            // labelControl7
+            // lblUnit
             // 
-            labelControl7.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left;
-            labelControl7.Appearance.ForeColor = System.Drawing.Color.Red;
-            labelControl7.Appearance.Options.UseForeColor = true;
-            labelControl7.Location = new System.Drawing.Point(74, 244);
-            labelControl7.Name = "labelControl7";
-            labelControl7.Size = new System.Drawing.Size(6, 13);
-            labelControl7.TabIndex = 67;
-            labelControl7.Text = "*";
+            lblUnit.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            lblUnit.Location = new System.Drawing.Point(43, 270);
+            lblUnit.Name = "lblUnit";
+            lblUnit.Size = new System.Drawing.Size(19, 13);
+            lblUnit.TabIndex = 66;
+            lblUnit.Text = "Unit";
+            // 
+            // lblPriceRequired
+            // 
+            lblPriceRequired.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left;
+            lblPriceRequired.Appearance.ForeColor = System.Drawing.Color.Red;
+            lblPriceRequired.Appearance.Options.UseForeColor = true;
+            lblPriceRequired.Location = new System.Drawing.Point(74, 244);
+            lblPriceRequired.Name = "lblPriceRequired";
+            lblPriceRequired.Size = new System.Drawing.Size(6, 13);
+            lblPriceRequired.TabIndex = 67;
+            lblPriceRequired.Text = "*";
             // 
             // tePrice
             // 
@@ -453,10 +457,6 @@
             lblCurrency.TabIndex = 70;
             lblCurrency.Text = "Currency";
             // 
-            // currencyDtoBindingSource
-            // 
-            currencyDtoBindingSource.DataSource = typeof(Application.Dto.CurrencyDto);
-            // 
             // ProductView
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -465,15 +465,15 @@
             Controls.Add(glueCurrency);
             Controls.Add(lblCurrency);
             Controls.Add(tePrice);
-            Controls.Add(labelControl7);
+            Controls.Add(lblPriceRequired);
             Controls.Add(glueUnit);
-            Controls.Add(labelControl6);
-            Controls.Add(labelControl5);
+            Controls.Add(lblUnit);
+            Controls.Add(lblPrice);
             Controls.Add(glueVatRate);
-            Controls.Add(labelControl3);
+            Controls.Add(lblVatRate);
             Controls.Add(cbeBarcodeType);
             Controls.Add(cbeType);
-            Controls.Add(labelControl2);
+            Controls.Add(lblType);
             Controls.Add(lblCodeRequired);
             Controls.Add(lblNameRequired);
             Controls.Add(teBarcode);
@@ -498,14 +498,14 @@
             ((System.ComponentModel.ISupportInitialize)cbeBarcodeType.Properties).EndInit();
             ((System.ComponentModel.ISupportInitialize)glueVatRate.Properties).EndInit();
             ((System.ComponentModel.ISupportInitialize)vatRateDtoBindingSource).EndInit();
-            ((System.ComponentModel.ISupportInitialize)gridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)gvVatRate).EndInit();
             ((System.ComponentModel.ISupportInitialize)glueUnit.Properties).EndInit();
             ((System.ComponentModel.ISupportInitialize)unitDtoBindingSource).EndInit();
             ((System.ComponentModel.ISupportInitialize)gridView2).EndInit();
             ((System.ComponentModel.ISupportInitialize)glueCurrency.Properties).EndInit();
-            ((System.ComponentModel.ISupportInitialize)gridView3).EndInit();
-            ((System.ComponentModel.ISupportInitialize)tePrice.Properties).EndInit();
             ((System.ComponentModel.ISupportInitialize)currencyDtoBindingSource).EndInit();
+            ((System.ComponentModel.ISupportInitialize)gvCurrency).EndInit();
+            ((System.ComponentModel.ISupportInitialize)tePrice.Properties).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -531,24 +531,24 @@
         private DevExpress.XtraEditors.LabelControl lblCodeRequired;
         private DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider errorProvider;
         private DevExpress.XtraEditors.ComboBoxEdit cbeType;
-        private DevExpress.XtraEditors.LabelControl labelControl2;
+        private DevExpress.XtraEditors.LabelControl lblType;
         private DevExpress.XtraEditors.ComboBoxEdit cbeBarcodeType;
         private DevExpress.XtraEditors.GridLookUpEdit glueVatRate;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
-        private DevExpress.XtraEditors.LabelControl labelControl3;
-        private DevExpress.XtraEditors.LabelControl labelControl7;
+        private DevExpress.XtraGrid.Views.Grid.GridView gvVatRate;
+        private DevExpress.XtraGrid.Columns.GridColumn colVatRateSymbol;
+        private DevExpress.XtraEditors.LabelControl lblVatRate;
+        private DevExpress.XtraEditors.LabelControl lblPriceRequired;
         private DevExpress.XtraEditors.GridLookUpEdit glueUnit;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView2;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
-        private DevExpress.XtraEditors.LabelControl labelControl6;
-        private DevExpress.XtraEditors.LabelControl labelControl5;
+        private DevExpress.XtraEditors.LabelControl lblUnit;
+        private DevExpress.XtraEditors.LabelControl lblPrice;
         private System.Windows.Forms.BindingSource unitDtoBindingSource;
         private System.Windows.Forms.BindingSource vatRateDtoBindingSource;
         private DevExpress.XtraEditors.SpinEdit tePrice;
         private DevExpress.XtraEditors.GridLookUpEdit glueCurrency;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView3;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
+        private DevExpress.XtraGrid.Views.Grid.GridView gvCurrency;
+        private DevExpress.XtraGrid.Columns.GridColumn colCurrencySymbol;
         private DevExpress.XtraEditors.LabelControl lblCurrency;
         private System.Windows.Forms.BindingSource currencyDtoBindingSource;
     }

@@ -43,8 +43,8 @@
             nudProductsCount = new System.Windows.Forms.NumericUpDown();
             nudInvoicesCount = new System.Windows.Forms.NumericUpDown();
             lblCustomersCount = new System.Windows.Forms.Label();
-            label2 = new System.Windows.Forms.Label();
-            label3 = new System.Windows.Forms.Label();
+            lblProductsCount = new System.Windows.Forms.Label();
+            lblInvoicesCount = new System.Windows.Forms.Label();
             panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pbCustomers).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pbInvoices).BeginInit();
@@ -192,25 +192,25 @@
             lblCustomersCount.TabIndex = 19;
             lblCustomersCount.Text = "Customers count:";
             // 
-            // label2
+            // lblProductsCount
             // 
-            label2.AutoSize = true;
-            label2.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            label2.Location = new System.Drawing.Point(62, 209);
-            label2.Name = "label2";
-            label2.Size = new System.Drawing.Size(120, 19);
-            label2.TabIndex = 20;
-            label2.Text = "Products count:";
+            lblProductsCount.AutoSize = true;
+            lblProductsCount.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            lblProductsCount.Location = new System.Drawing.Point(62, 209);
+            lblProductsCount.Name = "lblProductsCount";
+            lblProductsCount.Size = new System.Drawing.Size(120, 19);
+            lblProductsCount.TabIndex = 20;
+            lblProductsCount.Text = "Products count:";
             // 
-            // label3
+            // lblInvoicesCount
             // 
-            label3.AutoSize = true;
-            label3.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            label3.Location = new System.Drawing.Point(62, 258);
-            label3.Name = "label3";
-            label3.Size = new System.Drawing.Size(117, 19);
-            label3.TabIndex = 21;
-            label3.Text = "Invoices count:";
+            lblInvoicesCount.AutoSize = true;
+            lblInvoicesCount.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            lblInvoicesCount.Location = new System.Drawing.Point(62, 258);
+            lblInvoicesCount.Name = "lblInvoicesCount";
+            lblInvoicesCount.Size = new System.Drawing.Size(117, 19);
+            lblInvoicesCount.TabIndex = 21;
+            lblInvoicesCount.Text = "Invoices count:";
             // 
             // ObjectGenerationView
             // 
@@ -219,8 +219,8 @@
             AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             ClientSize = new System.Drawing.Size(387, 356);
-            Controls.Add(label3);
-            Controls.Add(label2);
+            Controls.Add(lblInvoicesCount);
+            Controls.Add(lblProductsCount);
             Controls.Add(lblCustomersCount);
             Controls.Add(nudInvoicesCount);
             Controls.Add(nudProductsCount);
@@ -265,8 +265,8 @@
         private System.Windows.Forms.NumericUpDown nudInvoicesCount;
         private System.Windows.Forms.NumericUpDown nudProductsCount;
         private System.Windows.Forms.NumericUpDown nudCustomersCount;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblInvoicesCount;
+        private System.Windows.Forms.Label lblProductsCount;
         private System.Windows.Forms.Label lblCustomersCount;
     }
 }

@@ -36,79 +36,76 @@
             rpCustomer = new DevExpress.XtraBars.Ribbon.RibbonPage();
             rpgSave = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             rpgDelete = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            lblNameRequired = new DevExpress.XtraEditors.LabelControl();
+            lblProductRequired = new DevExpress.XtraEditors.LabelControl();
             errorProvider = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(components);
             glueVatRate = new DevExpress.XtraEditors.GridLookUpEdit();
             vatRateDtoBindingSource = new System.Windows.Forms.BindingSource(components);
-            gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            gvVatRate = new DevExpress.XtraGrid.Views.Grid.GridView();
+            colVatRateSymbol = new DevExpress.XtraGrid.Columns.GridColumn();
             glueProduct = new DevExpress.XtraEditors.GridLookUpEdit();
             productDtoBindingSource = new System.Windows.Forms.BindingSource(components);
-            gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            gvProducts = new DevExpress.XtraGrid.Views.Grid.GridView();
             colName = new DevExpress.XtraGrid.Columns.GridColumn();
             glueCurrency = new DevExpress.XtraEditors.GridLookUpEdit();
             currencyDtoBindingSource = new System.Windows.Forms.BindingSource(components);
-            gridView3 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
+            gvCurrency = new DevExpress.XtraGrid.Views.Grid.GridView();
+            colCurrencySymbol = new DevExpress.XtraGrid.Columns.GridColumn();
             glueSummaryCurrency = new DevExpress.XtraEditors.GridLookUpEdit();
             summaryCurrencyDtoBindingSource = new System.Windows.Forms.BindingSource(components);
-            gridView4 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
+            gvSummaryCurrency = new DevExpress.XtraGrid.Views.Grid.GridView();
+            colSummaryCurrencySymbol = new DevExpress.XtraGrid.Columns.GridColumn();
             lblQuantity = new DevExpress.XtraEditors.LabelControl();
             lblVatRate = new DevExpress.XtraEditors.LabelControl();
             lblPrice = new DevExpress.XtraEditors.LabelControl();
             tePrice = new DevExpress.XtraEditors.SpinEdit();
             lblCurrency = new DevExpress.XtraEditors.LabelControl();
             seQuantity = new DevExpress.XtraEditors.SpinEdit();
-            labelControl1 = new DevExpress.XtraEditors.LabelControl();
+            lblSummaryCurrency = new DevExpress.XtraEditors.LabelControl();
             seSummaryGross = new DevExpress.XtraEditors.SpinEdit();
-            labelControl4 = new DevExpress.XtraEditors.LabelControl();
+            lblSummaryGross = new DevExpress.XtraEditors.LabelControl();
             seSummaryVat = new DevExpress.XtraEditors.SpinEdit();
-            labelControl6 = new DevExpress.XtraEditors.LabelControl();
+            lblSummaryVat = new DevExpress.XtraEditors.LabelControl();
             seSummaryNet = new DevExpress.XtraEditors.SpinEdit();
-            labelControl7 = new DevExpress.XtraEditors.LabelControl();
-            label2 = new System.Windows.Forms.Label();
-            separatorControl3 = new DevExpress.XtraEditors.SeparatorControl();
-            labelControl2 = new DevExpress.XtraEditors.LabelControl();
+            lblSummaryNet = new DevExpress.XtraEditors.LabelControl();
+            lblSummary = new System.Windows.Forms.Label();
+            scSummary = new DevExpress.XtraEditors.SeparatorControl();
+            lblProduct = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)ribbon).BeginInit();
             ((System.ComponentModel.ISupportInitialize)errorProvider).BeginInit();
             ((System.ComponentModel.ISupportInitialize)glueVatRate.Properties).BeginInit();
             ((System.ComponentModel.ISupportInitialize)vatRateDtoBindingSource).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)gridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)gvVatRate).BeginInit();
             ((System.ComponentModel.ISupportInitialize)glueProduct.Properties).BeginInit();
             ((System.ComponentModel.ISupportInitialize)productDtoBindingSource).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)gridView2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)gvProducts).BeginInit();
             ((System.ComponentModel.ISupportInitialize)glueCurrency.Properties).BeginInit();
             ((System.ComponentModel.ISupportInitialize)currencyDtoBindingSource).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)gridView3).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)gvCurrency).BeginInit();
             ((System.ComponentModel.ISupportInitialize)glueSummaryCurrency.Properties).BeginInit();
             ((System.ComponentModel.ISupportInitialize)summaryCurrencyDtoBindingSource).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)gridView4).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)gvSummaryCurrency).BeginInit();
             ((System.ComponentModel.ISupportInitialize)tePrice.Properties).BeginInit();
             ((System.ComponentModel.ISupportInitialize)seQuantity.Properties).BeginInit();
             ((System.ComponentModel.ISupportInitialize)seSummaryGross.Properties).BeginInit();
             ((System.ComponentModel.ISupportInitialize)seSummaryVat.Properties).BeginInit();
             ((System.ComponentModel.ISupportInitialize)seSummaryNet.Properties).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)separatorControl3).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)scSummary).BeginInit();
             SuspendLayout();
             // 
             // ribbon
             // 
-            ribbon.EmptyAreaImageOptions.ImagePadding = new System.Windows.Forms.Padding(35, 37, 35, 37);
             ribbon.ExpandCollapseItem.Id = 0;
             ribbon.Items.AddRange(new DevExpress.XtraBars.BarItem[] { ribbon.ExpandCollapseItem, btnOK, btnDelete });
             ribbon.Location = new System.Drawing.Point(0, 0);
-            ribbon.Margin = new System.Windows.Forms.Padding(4);
             ribbon.MaxItemId = 9;
             ribbon.Name = "ribbon";
-            ribbon.OptionsMenuMinWidth = 385;
             ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] { rpCustomer });
             ribbon.ShowApplicationButton = DevExpress.Utils.DefaultBoolean.False;
             ribbon.ShowDisplayOptionsMenuButton = DevExpress.Utils.DefaultBoolean.False;
             ribbon.ShowExpandCollapseButton = DevExpress.Utils.DefaultBoolean.False;
             ribbon.ShowPageHeadersMode = DevExpress.XtraBars.Ribbon.ShowPageHeadersMode.Hide;
             ribbon.ShowToolbarCustomizeItem = false;
-            ribbon.Size = new System.Drawing.Size(719, 193);
+            ribbon.Size = new System.Drawing.Size(616, 158);
             ribbon.Toolbar.ShowCustomizeItem = false;
             // 
             // btnOK
@@ -124,8 +121,8 @@
             // 
             btnDelete.Caption = "Delete";
             btnDelete.Id = 8;
-            btnDelete.ImageOptions.Image = (System.Drawing.Image)resources.GetObject("bbiDelete.ImageOptions.Image");
-            btnDelete.ImageOptions.LargeImage = (System.Drawing.Image)resources.GetObject("bbiDelete.ImageOptions.LargeImage");
+            btnDelete.ImageOptions.Image = (System.Drawing.Image)resources.GetObject("btnDelete.ImageOptions.Image");
+            btnDelete.ImageOptions.LargeImage = (System.Drawing.Image)resources.GetObject("btnDelete.ImageOptions.LargeImage");
             btnDelete.Name = "btnDelete";
             btnDelete.ItemClick += btnDelete_ItemClick;
             // 
@@ -147,17 +144,16 @@
             rpgDelete.Name = "rpgDelete";
             rpgDelete.Text = "Delete";
             // 
-            // lblNameRequired
+            // lblProductRequired
             // 
-            lblNameRequired.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left;
-            lblNameRequired.Appearance.ForeColor = System.Drawing.Color.Red;
-            lblNameRequired.Appearance.Options.UseForeColor = true;
-            lblNameRequired.Location = new System.Drawing.Point(85, 206);
-            lblNameRequired.Margin = new System.Windows.Forms.Padding(4);
-            lblNameRequired.Name = "lblNameRequired";
-            lblNameRequired.Size = new System.Drawing.Size(8, 16);
-            lblNameRequired.TabIndex = 35;
-            lblNameRequired.Text = "*";
+            lblProductRequired.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left;
+            lblProductRequired.Appearance.ForeColor = System.Drawing.Color.Red;
+            lblProductRequired.Appearance.Options.UseForeColor = true;
+            lblProductRequired.Location = new System.Drawing.Point(73, 167);
+            lblProductRequired.Name = "lblProductRequired";
+            lblProductRequired.Size = new System.Drawing.Size(6, 13);
+            lblProductRequired.TabIndex = 35;
+            lblProductRequired.Text = "*";
             // 
             // errorProvider
             // 
@@ -166,61 +162,55 @@
             // glueVatRate
             // 
             errorProvider.SetIconAlignment(glueVatRate, System.Windows.Forms.ErrorIconAlignment.MiddleRight);
-            glueVatRate.Location = new System.Drawing.Point(573, 202);
-            glueVatRate.Margin = new System.Windows.Forms.Padding(4);
+            glueVatRate.Location = new System.Drawing.Point(491, 164);
             glueVatRate.MenuManager = ribbon;
             glueVatRate.Name = "glueVatRate";
             glueVatRate.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] { new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo) });
             glueVatRate.Properties.DataSource = vatRateDtoBindingSource;
             glueVatRate.Properties.DisplayMember = "Symbol";
             glueVatRate.Properties.NullText = "";
-            glueVatRate.Properties.PopupView = gridView1;
+            glueVatRate.Properties.PopupView = gvVatRate;
             glueVatRate.Properties.ReadOnly = true;
             glueVatRate.Properties.ValueMember = "Id";
-            glueVatRate.Size = new System.Drawing.Size(114, 22);
+            glueVatRate.Size = new System.Drawing.Size(98, 20);
             glueVatRate.TabIndex = 6;
             // 
             // vatRateDtoBindingSource
             // 
             vatRateDtoBindingSource.DataSource = typeof(Application.Dto.VatRateDto);
             // 
-            // gridView1
+            // gvVatRate
             // 
-            gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] { gridColumn1 });
-            gridView1.DetailHeight = 431;
-            gridView1.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
-            gridView1.Name = "gridView1";
-            gridView1.OptionsBehavior.Editable = false;
-            gridView1.OptionsBehavior.ReadOnly = true;
-            gridView1.OptionsEditForm.PopupEditFormWidth = 933;
-            gridView1.OptionsSelection.EnableAppearanceFocusedCell = false;
-            gridView1.OptionsView.ShowGroupPanel = false;
-            gridView1.OptionsView.ShowIndicator = false;
+            gvVatRate.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] { colVatRateSymbol });
+            gvVatRate.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            gvVatRate.Name = "gvVatRate";
+            gvVatRate.OptionsBehavior.Editable = false;
+            gvVatRate.OptionsBehavior.ReadOnly = true;
+            gvVatRate.OptionsSelection.EnableAppearanceFocusedCell = false;
+            gvVatRate.OptionsView.ShowGroupPanel = false;
+            gvVatRate.OptionsView.ShowIndicator = false;
             // 
-            // gridColumn1
+            // colVatRateSymbol
             // 
-            gridColumn1.Caption = "SYMBOL";
-            gridColumn1.FieldName = "Symbol";
-            gridColumn1.MinWidth = 23;
-            gridColumn1.Name = "gridColumn1";
-            gridColumn1.Visible = true;
-            gridColumn1.VisibleIndex = 0;
-            gridColumn1.Width = 87;
+            colVatRateSymbol.Caption = "SYMBOL";
+            colVatRateSymbol.FieldName = "Symbol";
+            colVatRateSymbol.Name = "colVatRateSymbol";
+            colVatRateSymbol.Visible = true;
+            colVatRateSymbol.VisibleIndex = 0;
             // 
             // glueProduct
             // 
             errorProvider.SetIconAlignment(glueProduct, System.Windows.Forms.ErrorIconAlignment.MiddleRight);
-            glueProduct.Location = new System.Drawing.Point(127, 202);
-            glueProduct.Margin = new System.Windows.Forms.Padding(4);
+            glueProduct.Location = new System.Drawing.Point(109, 164);
             glueProduct.MenuManager = ribbon;
             glueProduct.Name = "glueProduct";
             glueProduct.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] { new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo) });
             glueProduct.Properties.DataSource = productDtoBindingSource;
             glueProduct.Properties.DisplayMember = "Name";
             glueProduct.Properties.NullText = "";
-            glueProduct.Properties.PopupView = gridView2;
+            glueProduct.Properties.PopupView = gvProducts;
             glueProduct.Properties.ValueMember = "Id";
-            glueProduct.Size = new System.Drawing.Size(310, 22);
+            glueProduct.Size = new System.Drawing.Size(266, 20);
             glueProduct.TabIndex = 1;
             glueProduct.EditValueChanged += glueProduct_EditValueChanged;
             // 
@@ -228,42 +218,37 @@
             // 
             productDtoBindingSource.DataSource = typeof(Application.Dto.ProductDto);
             // 
-            // gridView2
+            // gvProducts
             // 
-            gridView2.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] { colName });
-            gridView2.DetailHeight = 431;
-            gridView2.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
-            gridView2.Name = "gridView2";
-            gridView2.OptionsBehavior.Editable = false;
-            gridView2.OptionsBehavior.ReadOnly = true;
-            gridView2.OptionsEditForm.PopupEditFormWidth = 933;
-            gridView2.OptionsSelection.EnableAppearanceFocusedCell = false;
-            gridView2.OptionsView.ShowGroupPanel = false;
-            gridView2.OptionsView.ShowIndicator = false;
+            gvProducts.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] { colName });
+            gvProducts.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            gvProducts.Name = "gvProducts";
+            gvProducts.OptionsBehavior.Editable = false;
+            gvProducts.OptionsBehavior.ReadOnly = true;
+            gvProducts.OptionsSelection.EnableAppearanceFocusedCell = false;
+            gvProducts.OptionsView.ShowGroupPanel = false;
+            gvProducts.OptionsView.ShowIndicator = false;
             // 
             // colName
             // 
             colName.FieldName = "Name";
-            colName.MinWidth = 23;
             colName.Name = "colName";
             colName.Visible = true;
             colName.VisibleIndex = 0;
-            colName.Width = 87;
             // 
             // glueCurrency
             // 
             errorProvider.SetIconAlignment(glueCurrency, System.Windows.Forms.ErrorIconAlignment.MiddleRight);
-            glueCurrency.Location = new System.Drawing.Point(573, 234);
-            glueCurrency.Margin = new System.Windows.Forms.Padding(4);
+            glueCurrency.Location = new System.Drawing.Point(491, 190);
             glueCurrency.MenuManager = ribbon;
             glueCurrency.Name = "glueCurrency";
             glueCurrency.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] { new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo) });
             glueCurrency.Properties.DataSource = currencyDtoBindingSource;
             glueCurrency.Properties.DisplayMember = "Symbol";
             glueCurrency.Properties.NullText = "";
-            glueCurrency.Properties.PopupView = gridView3;
+            glueCurrency.Properties.PopupView = gvCurrency;
             glueCurrency.Properties.ValueMember = "Id";
-            glueCurrency.Size = new System.Drawing.Size(114, 22);
+            glueCurrency.Size = new System.Drawing.Size(98, 20);
             glueCurrency.TabIndex = 3;
             glueCurrency.EditValueChanged += glueCurrency_EditValueChanged;
             // 
@@ -271,44 +256,39 @@
             // 
             currencyDtoBindingSource.DataSource = typeof(Application.Dto.CurrencyDto);
             // 
-            // gridView3
+            // gvCurrency
             // 
-            gridView3.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] { gridColumn2 });
-            gridView3.DetailHeight = 431;
-            gridView3.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
-            gridView3.Name = "gridView3";
-            gridView3.OptionsBehavior.Editable = false;
-            gridView3.OptionsBehavior.ReadOnly = true;
-            gridView3.OptionsEditForm.PopupEditFormWidth = 933;
-            gridView3.OptionsSelection.EnableAppearanceFocusedCell = false;
-            gridView3.OptionsView.ShowGroupPanel = false;
-            gridView3.OptionsView.ShowIndicator = false;
+            gvCurrency.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] { colCurrencySymbol });
+            gvCurrency.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            gvCurrency.Name = "gvCurrency";
+            gvCurrency.OptionsBehavior.Editable = false;
+            gvCurrency.OptionsBehavior.ReadOnly = true;
+            gvCurrency.OptionsSelection.EnableAppearanceFocusedCell = false;
+            gvCurrency.OptionsView.ShowGroupPanel = false;
+            gvCurrency.OptionsView.ShowIndicator = false;
             // 
-            // gridColumn2
+            // colCurrencySymbol
             // 
-            gridColumn2.Caption = "SYMBOL";
-            gridColumn2.FieldName = "Symbol";
-            gridColumn2.MinWidth = 23;
-            gridColumn2.Name = "gridColumn2";
-            gridColumn2.Visible = true;
-            gridColumn2.VisibleIndex = 0;
-            gridColumn2.Width = 87;
+            colCurrencySymbol.Caption = "SYMBOL";
+            colCurrencySymbol.FieldName = "Symbol";
+            colCurrencySymbol.Name = "colCurrencySymbol";
+            colCurrencySymbol.Visible = true;
+            colCurrencySymbol.VisibleIndex = 0;
             // 
             // glueSummaryCurrency
             // 
             errorProvider.SetIconAlignment(glueSummaryCurrency, System.Windows.Forms.ErrorIconAlignment.MiddleRight);
-            glueSummaryCurrency.Location = new System.Drawing.Point(600, 347);
-            glueSummaryCurrency.Margin = new System.Windows.Forms.Padding(4);
+            glueSummaryCurrency.Location = new System.Drawing.Point(514, 282);
             glueSummaryCurrency.MenuManager = ribbon;
             glueSummaryCurrency.Name = "glueSummaryCurrency";
             glueSummaryCurrency.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] { new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo) });
             glueSummaryCurrency.Properties.DataSource = summaryCurrencyDtoBindingSource;
             glueSummaryCurrency.Properties.DisplayMember = "Symbol";
             glueSummaryCurrency.Properties.NullText = "";
-            glueSummaryCurrency.Properties.PopupView = gridView4;
+            glueSummaryCurrency.Properties.PopupView = gvSummaryCurrency;
             glueSummaryCurrency.Properties.ReadOnly = true;
             glueSummaryCurrency.Properties.ValueMember = "Id";
-            glueSummaryCurrency.Size = new System.Drawing.Size(88, 22);
+            glueSummaryCurrency.Size = new System.Drawing.Size(75, 20);
             glueSummaryCurrency.TabIndex = 103;
             glueSummaryCurrency.TabStop = false;
             // 
@@ -316,230 +296,209 @@
             // 
             summaryCurrencyDtoBindingSource.DataSource = typeof(Application.Dto.CurrencyDto);
             // 
-            // gridView4
+            // gvSummaryCurrency
             // 
-            gridView4.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] { gridColumn4 });
-            gridView4.DetailHeight = 431;
-            gridView4.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
-            gridView4.Name = "gridView4";
-            gridView4.OptionsBehavior.Editable = false;
-            gridView4.OptionsBehavior.ReadOnly = true;
-            gridView4.OptionsEditForm.PopupEditFormWidth = 933;
-            gridView4.OptionsSelection.EnableAppearanceFocusedCell = false;
-            gridView4.OptionsView.ShowGroupPanel = false;
-            gridView4.OptionsView.ShowIndicator = false;
+            gvSummaryCurrency.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] { colSummaryCurrencySymbol });
+            gvSummaryCurrency.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            gvSummaryCurrency.Name = "gvSummaryCurrency";
+            gvSummaryCurrency.OptionsBehavior.Editable = false;
+            gvSummaryCurrency.OptionsBehavior.ReadOnly = true;
+            gvSummaryCurrency.OptionsSelection.EnableAppearanceFocusedCell = false;
+            gvSummaryCurrency.OptionsView.ShowGroupPanel = false;
+            gvSummaryCurrency.OptionsView.ShowIndicator = false;
             // 
-            // gridColumn4
+            // colSummaryCurrencySymbol
             // 
-            gridColumn4.Caption = "SYMBOL";
-            gridColumn4.FieldName = "Symbol";
-            gridColumn4.MinWidth = 23;
-            gridColumn4.Name = "gridColumn4";
-            gridColumn4.Visible = true;
-            gridColumn4.VisibleIndex = 0;
-            gridColumn4.Width = 87;
+            colSummaryCurrencySymbol.Caption = "SYMBOL";
+            colSummaryCurrencySymbol.FieldName = "Symbol";
+            colSummaryCurrencySymbol.Name = "colSummaryCurrencySymbol";
+            colSummaryCurrencySymbol.Visible = true;
+            colSummaryCurrencySymbol.VisibleIndex = 0;
             // 
             // lblQuantity
             // 
             lblQuantity.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left;
-            lblQuantity.Location = new System.Drawing.Point(35, 270);
-            lblQuantity.Margin = new System.Windows.Forms.Padding(4);
+            lblQuantity.Location = new System.Drawing.Point(30, 219);
             lblQuantity.Name = "lblQuantity";
-            lblQuantity.Size = new System.Drawing.Size(47, 16);
+            lblQuantity.Size = new System.Drawing.Size(42, 13);
             lblQuantity.TabIndex = 53;
             lblQuantity.Text = "Quantity";
             // 
             // lblVatRate
             // 
             lblVatRate.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
-            lblVatRate.Location = new System.Drawing.Point(481, 206);
-            lblVatRate.Margin = new System.Windows.Forms.Padding(4);
+            lblVatRate.Location = new System.Drawing.Point(412, 167);
             lblVatRate.Name = "lblVatRate";
-            lblVatRate.Size = new System.Drawing.Size(51, 16);
+            lblVatRate.Size = new System.Drawing.Size(42, 13);
             lblVatRate.TabIndex = 59;
             lblVatRate.Text = "VAT rate";
             // 
             // lblPrice
             // 
             lblPrice.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
-            lblPrice.Location = new System.Drawing.Point(35, 238);
-            lblPrice.Margin = new System.Windows.Forms.Padding(4);
+            lblPrice.Location = new System.Drawing.Point(30, 193);
             lblPrice.Name = "lblPrice";
-            lblPrice.Size = new System.Drawing.Size(28, 16);
+            lblPrice.Size = new System.Drawing.Size(23, 13);
             lblPrice.TabIndex = 64;
             lblPrice.Text = "Price";
             // 
             // tePrice
             // 
             tePrice.EditValue = new decimal(new int[] { 0, 0, 0, 0 });
-            tePrice.Location = new System.Drawing.Point(127, 234);
-            tePrice.Margin = new System.Windows.Forms.Padding(4);
+            tePrice.Location = new System.Drawing.Point(109, 190);
             tePrice.MenuManager = ribbon;
             tePrice.Name = "tePrice";
             tePrice.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] { new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo) });
             tePrice.Properties.DisplayFormat.FormatString = "N2";
             tePrice.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            tePrice.Size = new System.Drawing.Size(310, 24);
+            tePrice.Size = new System.Drawing.Size(266, 20);
             tePrice.TabIndex = 2;
             tePrice.EditValueChanged += tePrice_EditValueChanged;
             // 
             // lblCurrency
             // 
             lblCurrency.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
-            lblCurrency.Location = new System.Drawing.Point(481, 238);
-            lblCurrency.Margin = new System.Windows.Forms.Padding(4);
+            lblCurrency.Location = new System.Drawing.Point(412, 193);
             lblCurrency.Name = "lblCurrency";
-            lblCurrency.Size = new System.Drawing.Size(51, 16);
+            lblCurrency.Size = new System.Drawing.Size(44, 13);
             lblCurrency.TabIndex = 70;
             lblCurrency.Text = "Currency";
             // 
             // seQuantity
             // 
             seQuantity.EditValue = new decimal(new int[] { 1, 0, 0, 0 });
-            seQuantity.Location = new System.Drawing.Point(127, 266);
-            seQuantity.Margin = new System.Windows.Forms.Padding(4);
+            seQuantity.Location = new System.Drawing.Point(109, 216);
             seQuantity.MenuManager = ribbon;
             seQuantity.Name = "seQuantity";
             seQuantity.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] { new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo) });
             seQuantity.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             seQuantity.Properties.MaxValue = new decimal(new int[] { 1000, 0, 0, 0 });
             seQuantity.Properties.MinValue = new decimal(new int[] { 1, 0, 0, 0 });
-            seQuantity.Size = new System.Drawing.Size(114, 24);
+            seQuantity.Size = new System.Drawing.Size(98, 20);
             seQuantity.TabIndex = 4;
             seQuantity.EditValueChanged += seQuantity_EditValueChanged;
             // 
-            // labelControl1
+            // lblSummaryCurrency
             // 
-            labelControl1.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
-            labelControl1.Location = new System.Drawing.Point(523, 351);
-            labelControl1.Margin = new System.Windows.Forms.Padding(4);
-            labelControl1.Name = "labelControl1";
-            labelControl1.Size = new System.Drawing.Size(51, 16);
-            labelControl1.TabIndex = 104;
-            labelControl1.Text = "Currency";
+            lblSummaryCurrency.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            lblSummaryCurrency.Location = new System.Drawing.Point(448, 285);
+            lblSummaryCurrency.Name = "lblSummaryCurrency";
+            lblSummaryCurrency.Size = new System.Drawing.Size(44, 13);
+            lblSummaryCurrency.TabIndex = 104;
+            lblSummaryCurrency.Text = "Currency";
             // 
             // seSummaryGross
             // 
             seSummaryGross.EditValue = new decimal(new int[] { 0, 0, 0, 0 });
-            seSummaryGross.Location = new System.Drawing.Point(402, 347);
-            seSummaryGross.Margin = new System.Windows.Forms.Padding(4);
+            seSummaryGross.Location = new System.Drawing.Point(345, 282);
             seSummaryGross.MenuManager = ribbon;
             seSummaryGross.Name = "seSummaryGross";
             seSummaryGross.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] { new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo) });
             seSummaryGross.Properties.DisplayFormat.FormatString = "N2";
             seSummaryGross.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             seSummaryGross.Properties.ReadOnly = true;
-            seSummaryGross.Size = new System.Drawing.Size(88, 24);
+            seSummaryGross.Size = new System.Drawing.Size(75, 20);
             seSummaryGross.TabIndex = 102;
             seSummaryGross.TabStop = false;
             // 
-            // labelControl4
+            // lblSummaryGross
             // 
-            labelControl4.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left;
-            labelControl4.Location = new System.Drawing.Point(352, 351);
-            labelControl4.Margin = new System.Windows.Forms.Padding(4);
-            labelControl4.Name = "labelControl4";
-            labelControl4.Size = new System.Drawing.Size(32, 16);
-            labelControl4.TabIndex = 101;
-            labelControl4.Text = "Gross";
+            lblSummaryGross.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left;
+            lblSummaryGross.Location = new System.Drawing.Point(302, 285);
+            lblSummaryGross.Name = "lblSummaryGross";
+            lblSummaryGross.Size = new System.Drawing.Size(27, 13);
+            lblSummaryGross.TabIndex = 101;
+            lblSummaryGross.Text = "Gross";
             // 
             // seSummaryVat
             // 
             seSummaryVat.EditValue = new decimal(new int[] { 0, 0, 0, 0 });
-            seSummaryVat.Location = new System.Drawing.Point(244, 347);
-            seSummaryVat.Margin = new System.Windows.Forms.Padding(4);
+            seSummaryVat.Location = new System.Drawing.Point(209, 282);
             seSummaryVat.MenuManager = ribbon;
             seSummaryVat.Name = "seSummaryVat";
             seSummaryVat.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] { new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo) });
             seSummaryVat.Properties.DisplayFormat.FormatString = "N2";
             seSummaryVat.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             seSummaryVat.Properties.ReadOnly = true;
-            seSummaryVat.Size = new System.Drawing.Size(88, 24);
+            seSummaryVat.Size = new System.Drawing.Size(75, 20);
             seSummaryVat.TabIndex = 100;
             seSummaryVat.TabStop = false;
             // 
-            // labelControl6
+            // lblSummaryVat
             // 
-            labelControl6.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left;
-            labelControl6.Location = new System.Drawing.Point(194, 351);
-            labelControl6.Margin = new System.Windows.Forms.Padding(4);
-            labelControl6.Name = "labelControl6";
-            labelControl6.Size = new System.Drawing.Size(19, 16);
-            labelControl6.TabIndex = 99;
-            labelControl6.Text = "Vat";
+            lblSummaryVat.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left;
+            lblSummaryVat.Location = new System.Drawing.Point(166, 285);
+            lblSummaryVat.Name = "lblSummaryVat";
+            lblSummaryVat.Size = new System.Drawing.Size(16, 13);
+            lblSummaryVat.TabIndex = 99;
+            lblSummaryVat.Text = "Vat";
             // 
             // seSummaryNet
             // 
             seSummaryNet.EditValue = new decimal(new int[] { 0, 0, 0, 0 });
-            seSummaryNet.Location = new System.Drawing.Point(85, 347);
-            seSummaryNet.Margin = new System.Windows.Forms.Padding(4);
+            seSummaryNet.Location = new System.Drawing.Point(73, 282);
             seSummaryNet.MenuManager = ribbon;
             seSummaryNet.Name = "seSummaryNet";
             seSummaryNet.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] { new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo) });
             seSummaryNet.Properties.DisplayFormat.FormatString = "N2";
             seSummaryNet.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             seSummaryNet.Properties.ReadOnly = true;
-            seSummaryNet.Size = new System.Drawing.Size(88, 24);
+            seSummaryNet.Size = new System.Drawing.Size(75, 20);
             seSummaryNet.TabIndex = 98;
             seSummaryNet.TabStop = false;
             // 
-            // labelControl7
+            // lblSummaryNet
             // 
-            labelControl7.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left;
-            labelControl7.Location = new System.Drawing.Point(35, 351);
-            labelControl7.Margin = new System.Windows.Forms.Padding(4);
-            labelControl7.Name = "labelControl7";
-            labelControl7.Size = new System.Drawing.Size(19, 16);
-            labelControl7.TabIndex = 97;
-            labelControl7.Text = "Net";
+            lblSummaryNet.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left;
+            lblSummaryNet.Location = new System.Drawing.Point(30, 285);
+            lblSummaryNet.Name = "lblSummaryNet";
+            lblSummaryNet.Size = new System.Drawing.Size(17, 13);
+            lblSummaryNet.TabIndex = 97;
+            lblSummaryNet.Text = "Net";
             // 
-            // label2
+            // lblSummary
             // 
-            label2.AutoSize = true;
-            label2.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            label2.ForeColor = System.Drawing.Color.Navy;
-            label2.Location = new System.Drawing.Point(22, 316);
-            label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            label2.Name = "label2";
-            label2.Size = new System.Drawing.Size(79, 21);
-            label2.TabIndex = 96;
-            label2.Text = "Summary";
+            lblSummary.AutoSize = true;
+            lblSummary.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            lblSummary.ForeColor = System.Drawing.Color.Navy;
+            lblSummary.Location = new System.Drawing.Point(19, 257);
+            lblSummary.Name = "lblSummary";
+            lblSummary.Size = new System.Drawing.Size(62, 16);
+            lblSummary.TabIndex = 96;
+            lblSummary.Text = "Summary";
             // 
-            // separatorControl3
+            // scSummary
             // 
-            separatorControl3.Location = new System.Drawing.Point(85, 313);
-            separatorControl3.Margin = new System.Windows.Forms.Padding(4);
-            separatorControl3.Name = "separatorControl3";
-            separatorControl3.Padding = new System.Windows.Forms.Padding(10, 11, 10, 11);
-            separatorControl3.Size = new System.Drawing.Size(600, 28);
-            separatorControl3.TabIndex = 95;
+            scSummary.Location = new System.Drawing.Point(73, 254);
+            scSummary.Name = "scSummary";
+            scSummary.Size = new System.Drawing.Size(514, 23);
+            scSummary.TabIndex = 95;
             // 
-            // labelControl2
+            // lblProduct
             // 
-            labelControl2.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
-            labelControl2.Location = new System.Drawing.Point(35, 206);
-            labelControl2.Margin = new System.Windows.Forms.Padding(4);
-            labelControl2.Name = "labelControl2";
-            labelControl2.Size = new System.Drawing.Size(43, 16);
-            labelControl2.TabIndex = 106;
-            labelControl2.Text = "Product";
+            lblProduct.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            lblProduct.Location = new System.Drawing.Point(30, 167);
+            lblProduct.Name = "lblProduct";
+            lblProduct.Size = new System.Drawing.Size(37, 13);
+            lblProduct.TabIndex = 106;
+            lblProduct.Text = "Product";
             // 
             // InvoiceItemView
             // 
-            AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
+            AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(719, 399);
-            Controls.Add(labelControl2);
+            ClientSize = new System.Drawing.Size(616, 324);
+            Controls.Add(lblProduct);
             Controls.Add(glueSummaryCurrency);
-            Controls.Add(labelControl1);
+            Controls.Add(lblSummaryCurrency);
             Controls.Add(seSummaryGross);
-            Controls.Add(labelControl4);
+            Controls.Add(lblSummaryGross);
             Controls.Add(seSummaryVat);
-            Controls.Add(labelControl6);
+            Controls.Add(lblSummaryVat);
             Controls.Add(seSummaryNet);
-            Controls.Add(labelControl7);
-            Controls.Add(label2);
-            Controls.Add(separatorControl3);
+            Controls.Add(lblSummaryNet);
+            Controls.Add(lblSummary);
+            Controls.Add(scSummary);
             Controls.Add(seQuantity);
             Controls.Add(glueCurrency);
             Controls.Add(lblCurrency);
@@ -549,10 +508,9 @@
             Controls.Add(glueVatRate);
             Controls.Add(lblVatRate);
             Controls.Add(lblQuantity);
-            Controls.Add(lblNameRequired);
+            Controls.Add(lblProductRequired);
             Controls.Add(ribbon);
             FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            Margin = new System.Windows.Forms.Padding(4);
             Name = "InvoiceItemView";
             Ribbon = ribbon;
             StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
@@ -562,22 +520,22 @@
             ((System.ComponentModel.ISupportInitialize)errorProvider).EndInit();
             ((System.ComponentModel.ISupportInitialize)glueVatRate.Properties).EndInit();
             ((System.ComponentModel.ISupportInitialize)vatRateDtoBindingSource).EndInit();
-            ((System.ComponentModel.ISupportInitialize)gridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)gvVatRate).EndInit();
             ((System.ComponentModel.ISupportInitialize)glueProduct.Properties).EndInit();
             ((System.ComponentModel.ISupportInitialize)productDtoBindingSource).EndInit();
-            ((System.ComponentModel.ISupportInitialize)gridView2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)gvProducts).EndInit();
             ((System.ComponentModel.ISupportInitialize)glueCurrency.Properties).EndInit();
             ((System.ComponentModel.ISupportInitialize)currencyDtoBindingSource).EndInit();
-            ((System.ComponentModel.ISupportInitialize)gridView3).EndInit();
+            ((System.ComponentModel.ISupportInitialize)gvCurrency).EndInit();
             ((System.ComponentModel.ISupportInitialize)glueSummaryCurrency.Properties).EndInit();
             ((System.ComponentModel.ISupportInitialize)summaryCurrencyDtoBindingSource).EndInit();
-            ((System.ComponentModel.ISupportInitialize)gridView4).EndInit();
+            ((System.ComponentModel.ISupportInitialize)gvSummaryCurrency).EndInit();
             ((System.ComponentModel.ISupportInitialize)tePrice.Properties).EndInit();
             ((System.ComponentModel.ISupportInitialize)seQuantity.Properties).EndInit();
             ((System.ComponentModel.ISupportInitialize)seSummaryGross.Properties).EndInit();
             ((System.ComponentModel.ISupportInitialize)seSummaryVat.Properties).EndInit();
             ((System.ComponentModel.ISupportInitialize)seSummaryNet.Properties).EndInit();
-            ((System.ComponentModel.ISupportInitialize)separatorControl3).EndInit();
+            ((System.ComponentModel.ISupportInitialize)scSummary).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -590,37 +548,37 @@
         private DevExpress.XtraBars.BarButtonItem btnOK;
         private DevExpress.XtraEditors.LabelControl lblCode;
         private DevExpress.XtraEditors.TextEdit teCode;
-        private DevExpress.XtraEditors.LabelControl lblNameRequired;
+        private DevExpress.XtraEditors.LabelControl lblProductRequired;
         private DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider errorProvider;
         private DevExpress.XtraEditors.LabelControl lblQuantity;
         private DevExpress.XtraEditors.GridLookUpEdit glueVatRate;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
+        private DevExpress.XtraGrid.Views.Grid.GridView gvVatRate;
+        private DevExpress.XtraGrid.Columns.GridColumn colVatRateSymbol;
         private DevExpress.XtraEditors.LabelControl lblVatRate;
         private DevExpress.XtraEditors.GridLookUpEdit glueProduct;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView2;
+        private DevExpress.XtraGrid.Views.Grid.GridView gvProducts;
         private DevExpress.XtraEditors.LabelControl lblPrice;
         private System.Windows.Forms.BindingSource vatRateDtoBindingSource;
         private DevExpress.XtraEditors.SpinEdit tePrice;
         private DevExpress.XtraEditors.GridLookUpEdit glueCurrency;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView3;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
+        private DevExpress.XtraGrid.Views.Grid.GridView gvCurrency;
+        private DevExpress.XtraGrid.Columns.GridColumn colCurrencySymbol;
         private DevExpress.XtraEditors.LabelControl lblCurrency;
         private System.Windows.Forms.BindingSource currencyDtoBindingSource;
         private DevExpress.XtraEditors.SpinEdit seQuantity;
         private DevExpress.XtraEditors.GridLookUpEdit glueSummaryCurrency;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView4;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
-        private DevExpress.XtraEditors.LabelControl labelControl1;
+        private DevExpress.XtraGrid.Views.Grid.GridView gvSummaryCurrency;
+        private DevExpress.XtraGrid.Columns.GridColumn colSummaryCurrencySymbol;
+        private DevExpress.XtraEditors.LabelControl lblSummaryCurrency;
         private DevExpress.XtraEditors.SpinEdit seSummaryGross;
-        private DevExpress.XtraEditors.LabelControl labelControl4;
+        private DevExpress.XtraEditors.LabelControl lblSummaryGross;
         private DevExpress.XtraEditors.SpinEdit seSummaryVat;
-        private DevExpress.XtraEditors.LabelControl labelControl6;
+        private DevExpress.XtraEditors.LabelControl lblSummaryVat;
         private DevExpress.XtraEditors.SpinEdit seSummaryNet;
-        private DevExpress.XtraEditors.LabelControl labelControl7;
-        private System.Windows.Forms.Label label2;
-        private DevExpress.XtraEditors.SeparatorControl separatorControl3;
-        private DevExpress.XtraEditors.LabelControl labelControl2;
+        private DevExpress.XtraEditors.LabelControl lblSummaryNet;
+        private System.Windows.Forms.Label lblSummary;
+        private DevExpress.XtraEditors.SeparatorControl scSummary;
+        private DevExpress.XtraEditors.LabelControl lblProduct;
         private System.Windows.Forms.BindingSource productDtoBindingSource;
         private DevExpress.XtraGrid.Columns.GridColumn colName;
         private System.Windows.Forms.BindingSource summaryCurrencyDtoBindingSource;

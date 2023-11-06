@@ -123,7 +123,7 @@
         rkJggg==
 </value>
   </data>
-  <data name="bbiDelete.ImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="btnDelete.ImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAACl0RVh0VGl0
         bGUAUmVtb3ZlO0RlbGV0ZTtCYXJzO1JpYmJvbjtTdGFuZGFyZDtjVkgwAAACeElEQVQ4T6WTW0iTYRjH
@@ -140,7 +140,7 @@
         tF+ohR4Z6QXShxX00uXfQdhPmOi/wI4pGN8AAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="bbiDelete.ImageOptions.LargeImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="btnDelete.ImageOptions.LargeImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAACl0RVh0VGl0
         bGUAUmVtb3ZlO0RlbGV0ZTtCYXJzO1JpYmJvbjtTdGFuZGFyZDtjVkgwAAAH1klEQVRYR8WWe1RVVR7H

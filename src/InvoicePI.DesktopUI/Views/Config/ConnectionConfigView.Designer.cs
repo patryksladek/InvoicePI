@@ -37,7 +37,7 @@
             teServer = new DevExpress.XtraEditors.TextEdit();
             teUser = new DevExpress.XtraEditors.TextEdit();
             tePassword = new DevExpress.XtraEditors.TextEdit();
-            pictureBox1 = new System.Windows.Forms.PictureBox();
+            pbAuthentication = new System.Windows.Forms.PictureBox();
             lblMessage1 = new System.Windows.Forms.Label();
             lblMessage2 = new System.Windows.Forms.Label();
             cbeAuthentication = new DevExpress.XtraEditors.ComboBoxEdit();
@@ -51,7 +51,7 @@
             ((System.ComponentModel.ISupportInitialize)teServer.Properties).BeginInit();
             ((System.ComponentModel.ISupportInitialize)teUser.Properties).BeginInit();
             ((System.ComponentModel.ISupportInitialize)tePassword.Properties).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pbAuthentication).BeginInit();
             ((System.ComponentModel.ISupportInitialize)cbeAuthentication.Properties).BeginInit();
             ((System.ComponentModel.ISupportInitialize)errorProvider).BeginInit();
             SuspendLayout();
@@ -138,14 +138,14 @@
             tePassword.TabIndex = 8;
             tePassword.ToolTip = "Password";
             // 
-            // pictureBox1
+            // pbAuthentication
             // 
-            pictureBox1.Image = Properties.Resources.authorization_32;
-            pictureBox1.Location = new System.Drawing.Point(12, 185);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new System.Drawing.Size(33, 33);
-            pictureBox1.TabIndex = 9;
-            pictureBox1.TabStop = false;
+            pbAuthentication.Image = Properties.Resources.authorization_32;
+            pbAuthentication.Location = new System.Drawing.Point(12, 185);
+            pbAuthentication.Name = "pbAuthentication";
+            pbAuthentication.Size = new System.Drawing.Size(33, 33);
+            pbAuthentication.TabIndex = 9;
+            pbAuthentication.TabStop = false;
             // 
             // lblMessage1
             // 
@@ -217,7 +217,7 @@
             Controls.Add(cbeAuthentication);
             Controls.Add(lblMessage2);
             Controls.Add(lblMessage1);
-            Controls.Add(pictureBox1);
+            Controls.Add(pbAuthentication);
             Controls.Add(tePassword);
             Controls.Add(teUser);
             Controls.Add(teServer);
@@ -238,7 +238,7 @@
             ((System.ComponentModel.ISupportInitialize)teServer.Properties).EndInit();
             ((System.ComponentModel.ISupportInitialize)teUser.Properties).EndInit();
             ((System.ComponentModel.ISupportInitialize)tePassword.Properties).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pbAuthentication).EndInit();
             ((System.ComponentModel.ISupportInitialize)cbeAuthentication.Properties).EndInit();
             ((System.ComponentModel.ISupportInitialize)errorProvider).EndInit();
             ResumeLayout(false);
@@ -255,7 +255,7 @@
         private DevExpress.XtraEditors.TextEdit teServer;
         private DevExpress.XtraEditors.TextEdit teUser;
         private DevExpress.XtraEditors.TextEdit tePassword;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pbAuthentication;
         private System.Windows.Forms.Label lblMessage1;
         private System.Windows.Forms.Label lblMessage2;
         private DevExpress.XtraEditors.ComboBoxEdit cbeAuthentication;
